@@ -766,23 +766,23 @@ void RTDEepromSaveGammaModeData(uint8_t index, uint8_t channel , int idx ,int si
   {
     default:
     case 0:
-		 UserCommonEepromWrite(GAMMA_MODE1_ADDRESS_START + channel * GAMMA_SIZE + (idx*size), size, (uint8_t *)(&buf_in));
+		 UserCommonEepromWrite(GAMMA_MODE1_ADDRESS + channel * GAMMA_SIZE + (idx*size), size, (uint8_t *)(&buf_in));
 	break;
 	
 	 case 1:
-		 UserCommonEepromWrite(GAMMA_MODE2_ADDRESS_START + channel * GAMMA_SIZE+ (idx*size), size, (uint8_t *)(&buf_in));
+		 UserCommonEepromWrite(GAMMA_MODE2_ADDRESS + channel * GAMMA_SIZE+ (idx*size), size, (uint8_t *)(&buf_in));
 	break;
 	 case 2:
-		 UserCommonEepromWrite(GAMMA_MODE3_ADDRESS_START + channel * GAMMA_SIZE+ (idx*size), size, (uint8_t *)(&buf_in));
+		 UserCommonEepromWrite(GAMMA_MODE3_ADDRESS + channel * GAMMA_SIZE+ (idx*size), size, (uint8_t *)(&buf_in));
 	break;
 	 case 3:
-		 UserCommonEepromWrite(GAMMA_MODE4_ADDRESS_START + channel * GAMMA_SIZE+ (idx*size), size, (uint8_t *)(&buf_in));
+		 UserCommonEepromWrite(GAMMA_MODE4_ADDRESS + channel * GAMMA_SIZE+ (idx*size), size, (uint8_t *)(&buf_in));
 	break;
 	 case 4:
-		 UserCommonEepromWrite(GAMMA_MODE5_ADDRESS_START + channel * GAMMA_SIZE+ (idx*size), size, (uint8_t *)(&buf_in));
+		 UserCommonEepromWrite(GAMMA_MODE5_ADDRESS + channel * GAMMA_SIZE+ (idx*size), size, (uint8_t *)(&buf_in));
 	break;
 	 case 5:
-		 UserCommonEepromWrite(GAMMA_MODE6_ADDRESS_START + channel * GAMMA_SIZE+ (idx*size), size, (uint8_t *)(&buf_in));
+		 UserCommonEepromWrite(GAMMA_MODE6_ADDRESS + channel * GAMMA_SIZE+ (idx*size), size, (uint8_t *)(&buf_in));
 	break;
 	
   }

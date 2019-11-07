@@ -20,7 +20,7 @@
 #define __MAIN__
 
 #include "SysInclude.h"
-
+#include <stdio.h>
 //****************************************************************************
 // DEFINITIONS / MACROS
 //****************************************************************************
@@ -63,9 +63,13 @@ void main(void)
     do
     {
         SysMainSystemInitial();
+		printf("get id code=0x%bx\r\n",ScalerGlobalGetIDCode());
 
         while(SysMainSytemPowerDetect() == _TRUE)
         {
+
+		
+	
 #if(_UART_SUPPORT == _ON)
 	      UartHandler();// alant add
 #endif

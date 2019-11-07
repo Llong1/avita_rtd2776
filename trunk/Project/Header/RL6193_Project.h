@@ -258,7 +258,7 @@
 //-------------------------------------------------
 // System Eeprom Start Address for Kernel Data Option
 //-------------------------------------------------
-#define _EEPROM_KERNEL_START_ADDRESS                  _EEPROM_PAGE2_BANK0//       (_EEPROM_PAGE0_BANK0)
+#define _EEPROM_KERNEL_START_ADDRESS                          (_EEPROM_PAGE0_BANK0)
 
 
 ///////////
@@ -312,10 +312,10 @@
 //-------------------------------------------------
 // HDCP Key Location Option
 //-------------------------------------------------
-#define _HDCP_1_4_KEY_LOCATION                             _TABLE_LOCATION_SYSTEM_EEPROM//    _TABLE_LOCATION_CODE
+#define _HDCP_1_4_KEY_LOCATION                               _TABLE_LOCATION_CODE
 
 // For Rx Key
-#define _RX_HDCP_1_4_KEY_ADDRESS_EEPROM            _EEPROM_PAGE0_BANK0//    (_EEPROM_PAGE2_BANK1)
+#define _RX_HDCP_1_4_KEY_ADDRESS_EEPROM                      (_EEPROM_PAGE4_BANK0)
 #define _RX_HDCP_1_4_KEY_ADDRESS_FLASH                          0
 #define _RX_HDCP_1_4_KEY_FLASH_BANK                             8
 

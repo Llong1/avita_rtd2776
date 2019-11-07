@@ -62,8 +62,8 @@ const struct command commands[] = {
   {"s_tiling", s_tiling, "s_tiling row column pos\r\n"},
   {"s_aspect", s_aspect, "s_aspect 0~4\r\n"},
   {"s_pattern", s_pattern, "s_pattern 0/1 r(0~255) g(0~255) b(0~255)\r\n"}, 
-  {"s_rootkey", s_rootkey, "s_rootkey \r\n"},
-  {"s_secureboot", s_secureboot, "s_rootkey \r\n"},
+  {"s_rootkey", s_rootkey, "s_rootkey xxxxx\r\n"},
+  {"s_secureboot", s_secureboot, "s_secureboot \r\n"},
   {"s_pq", s_pq, "s_pq 0~1\r\n"},
   {"s_gamma", s_gamma, "s_gamma 0~6\r\n"},
 
@@ -94,7 +94,7 @@ static void sendOK(void){
 
 }
 static void sendERR(void){ // para error
-	printf("ERR 1\r\n");	 
+	printf("ERR\r\n");	 
 
 }
 static void sendEmpty(void){
@@ -589,13 +589,15 @@ void g_nvram(char *para)
 
   sscanf(para,  "%d" TEST_ARGS_SPLIT "%d" ,&para1, &para2); // format string
 
-  //printf("%bd %bd\r\n" , para1, para2);  
+  printf("%bd %bd\r\n" , para1, para2);  
 
-  RTDNVRamLoadGammaModeData(para1,para2,buf);
+  UserCommonEepromRead(GAMMA_MODE1_ADDRESS , 32, (uint8_t *)(&buf));
 
-  for (i = 0; i < 320; i += 8)
+ //RTDNVRamLoadGammaModeData(para1,para2,buf);
+
+  for (i = 0; i < 32; i += 8)
   {
- 	printf("%bx,%bx,%bx,%bx,%bx,%bx,%bx,%bx \r\n", buf[i], buf[i + 1], buf[i + 2], buf[i + 3], buf[i+4], buf[i + 5], buf[i + 6], buf[i + 7]);
+ 	printf("%b02x,%b02x,%b02x,%b02x,%b02x,%b02x,%b02x,%b02x \r\n", buf[i], buf[i + 1], buf[i + 2], buf[i + 3], buf[i+4], buf[i + 5], buf[i + 6], buf[i + 7]);
   }
 
 }
