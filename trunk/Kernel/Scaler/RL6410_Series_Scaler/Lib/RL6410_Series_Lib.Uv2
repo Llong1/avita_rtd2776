@@ -1,0 +1,455 @@
+### uVision2 Project, (C) Keil Software
+### Do not modify !
+
+Target (RL6410_Series_Base), 0x0000 // Tools: 'MCS-51'
+
+Group (Common)
+Group (Scaler)
+Group (ScalerColor)
+Group (ScalerDp)
+Group (ScalerMDomain)
+Group (ScalerMemory)
+Group (ScalerNVRam)
+Group (ScalerOSD)
+Group (ScalerReg)
+Group (ScalerTcon)
+Group (RL6410_Series_Color)
+Group (RL6410_Series_OD)
+Group (RL6410_Series_Osd)
+Group (RL6410_Series_Reg)
+Group (RL6410_Series_Tcon)
+
+File 2,5,<..\..\ScalerFunction\Lib\Header\ScalerLibInclude.h><ScalerLibInclude.h>
+File 2,5,<..\..\ScalerFunction\Lib\Header\ScalerLibInterface.h><ScalerLibInterface.h>
+File 2,5,<..\..\ScalerFunction\Lib\Header\ScalerLibInternalInclude.h><ScalerLibInternalInclude.h>
+File 2,1,<..\..\ScalerFunction\Lib\Code\Scaler\ScalerAutoMeasureColorValue.c><ScalerAutoMeasureColorValue.c>
+File 2,1,<..\..\ScalerFunction\Lib\Code\Scaler\ScalerTimerPollingDataBitFlagProc.c><ScalerTimerPollingDataBitFlagProc.c>
+File 2,1,<..\..\ScalerFunction\Lib\Code\Scaler\ScalerComputeDwordMulDiv.c><ScalerComputeDwordMulDiv.c>
+File 2,1,<..\..\ScalerFunction\Lib\Code\Scaler\ScalerDDomainBackgroundCheck.c><ScalerDDomainBackgroundCheck.c>
+File 3,5,<..\..\ScalerFunction\Lib\Header\ScalerColorLibInclude.h><ScalerColorLibInclude.h>
+File 3,5,<..\..\ScalerFunction\Lib\Header\ScalerColorLibInterface.h><ScalerColorLibInterface.h>
+File 3,5,<..\..\ScalerFunction\Lib\Header\ScalerColorLibInternalInclude.h><ScalerColorLibInternalInclude.h>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColor422To444.c><ScalerColor422To444.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorBorderAdjust.c><ScalerColorBorderAdjust.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorBorderEnable.c><ScalerColorBorderEnable.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorBorderPositionAdjust.c><ScalerColorBorderPositionAdjust.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorBrightnessAdjust.c><ScalerColorBrightnessAdjust.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorBrightnessEnable.c><ScalerColorBrightnessEnable.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorColorimetry.c><ScalerColorColorimetry.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorContrastAdjust.c><ScalerColorContrastAdjust.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorContrastEnable.c><ScalerColorContrastEnable.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorDCCAdjust.c><ScalerColorDCCAdjust.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorDCCClrDataReadyStatus.c><ScalerColorDCCClrDataReadyStatus.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorDCCEnable.c><ScalerColorDCCEnable.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorDCCGetDataReadyStatus.c><ScalerColorDCCGetDataReadyStatus.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorDCCGetHistoInfo.c><ScalerColorDCCGetHistoInfo.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorDCCHistoSetting.c><ScalerColorDCCHistoSetting.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorDCCNormalizeFactorAdjust.c><ScalerColorDCCNormalizeFactorAdjust.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorDCCRegionEnable.c><ScalerColorDCCRegionEnable.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorDCCSetEffectiveRegion.c><ScalerColorDCCSetEffectiveRegion.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorDCCSetMeasureRegion.c><ScalerColorDCCSetMeasureRegion.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorDCRAdjust.c><ScalerColorDCRAdjust.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorDCRClrDataReadyStatus.c><ScalerColorDCRClrDataReadyStatus.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorDCRDataRefreshControl.c><ScalerColorDCRDataRefreshControl.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorDCREnable.c><ScalerColorDCREnable.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorDCRGetAverage.c><ScalerColorDCRGetAverage.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorDCRGetDataReadyStatus.c><ScalerColorDCRGetDataReadyStatus.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorDCRGetMeasureRegionSize.c><ScalerColorDCRGetMeasureRegionSize.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorDCRReadResult.c><ScalerColorDCRReadResult.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorDCRSetMeasureRegion.c><ScalerColorDCRSetMeasureRegion.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorDDither.c><ScalerColorDDither.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorDDitherAdvance.c><ScalerColorDDitherAdvance.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorDDitherEnable.c><ScalerColorDDitherEnable.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorDigitalFilterEnable.c><ScalerColorDigitalFilterEnable.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorDigitalFilterEnhancePhaseAdjust.c><ScalerColorDigitalFilterEnhancePhaseAdjust.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorDigitalFilterExtensionAdjust.c><ScalerColorDigitalFilterExtensionAdjust.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorDigitalFilterNRDisableAdjust.c><ScalerColorDigitalFilterNRDisableAdjust.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorDigitalFilterNRingAdjust.c><ScalerColorDigitalFilterNRingAdjust.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorDigitalFilterNSmearAdjust.c><ScalerColorDigitalFilterNSmearAdjust.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorDigitalFilterPRingAdjust.c><ScalerColorDigitalFilterPRingAdjust.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorDigitalFilterPSmearAdjust.c><ScalerColorDigitalFilterPSmearAdjust.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorGamma.c><ScalerColorGamma.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorGammaRegionEnable.c><ScalerColorGammaRegionEnable.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorGammaSetEffectiveRegion.c><ScalerColorGammaSetEffectiveRegion.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorGetColorDepth.c><ScalerColorGetColorDepth.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorGetColorSpace.c><ScalerColorGetColorSpace.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorGetColorSpaceRGB.c><ScalerColorGetColorSpaceRGB.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorGetRGBQuantizationRange.c><ScalerColorGetRGBQuantizationRange.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorGetYCCQuantizationRange.c><ScalerColorGetYCCQuantizationRange.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorGlobalHueSat.c><ScalerColorGlobalHueSat.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorHLW.c><ScalerColorHLW.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorHLWAdjustSetSel.c><ScalerColorHLWAdjustSetSel.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorHLWBorderAdjust.c><ScalerColorHLWBorderAdjust.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorHLWBorderEnable.c><ScalerColorHLWBorderEnable.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorHLWDCCAdjust.c><ScalerColorHLWDCCAdjust.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorHLWDDomainEnable.c><ScalerColorHLWDDomainEnable.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorHLWGamma.c><ScalerColorHLWGamma.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorHLWGlobalHueSat.c><ScalerColorHLWGlobalHueSat.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorHLWIAPSGainAdjust.c><ScalerColorHLWIAPSGainAdjust.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorHLWICMAdjust.c><ScalerColorHLWICMAdjust.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorHLWPanelUniformity.c><ScalerColorHLWPanelUniformity.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorHLWRGB3DGamma.c><ScalerColorHLWRGB3DGamma.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorHLWUltraVivid.c><ScalerColorHLWUltraVivid.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorIAPSGainEnable.c><ScalerColorIAPSGainEnable.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorIAPSGainSetEffectiveRegion.c><ScalerColorIAPSGainSetEffectiveRegion.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorIAPSGainSoftClampAdjust.c><ScalerColorIAPSGainSoftClampAdjust.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorIAPSGainValueAdjust.c><ScalerColorIAPSGainValueAdjust.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorICMAdjust.c><ScalerColorICMAdjust.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorICMBRILoadTable.c><ScalerColorICMBRILoadTable.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorICMEnable.c><ScalerColorICMEnable.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorICMSCMRegionEnable.c><ScalerColorICMSCMRegionEnable.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorICMSCMSetEffectiveRegion.c><ScalerColorICMSCMSetEffectiveRegion.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorICMUVOffsetLoadTable.c><ScalerColorICMUVOffsetLoadTable.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorIDither.c><ScalerColorIDither.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorIDitherEnable.c><ScalerColorIDitherEnable.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorOutputGammaAdjust.c><ScalerColorOutputGammaAdjust.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorOutputGammaAdjustSector.c><ScalerColorOutputGammaAdjustSector.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorOutputGammaEnable.c><ScalerColorOutputGammaEnable.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorPanelUniformityEnable.c><ScalerColorPanelUniformityEnable.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorPanelUniformityRegionEnable.c><ScalerColorPanelUniformityRegionEnable.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorPIPBlending.c><ScalerColorPIPBlending.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorRegSel.c><ScalerColorRegSel.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorRGB3DGammaEnable.c><ScalerColorRGB3DGammaEnable.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorRGB3DGammaRegionEnable.c><ScalerColorRGB3DGammaRegionEnable.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorRingingFilterAdjust.c><ScalerColorRingingFilterAdjust.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorRingingFilterOff.c><ScalerColorRingingFilterOff.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorScaling.c><ScalerColorScaling.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorSCMAdjust.c><ScalerColorSCMAdjust.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorSCMLoadTable.c><ScalerColorSCMLoadTable.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorSetDCCAutoModeRegion.c><ScalerColorSetDCCAutoModeRegion.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorSetDCCHistoMeasureRegion.c><ScalerColorSetDCCHistoMeasureRegion.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorSetRGBLimitRange.c><ScalerColorSetRGBLimitRange.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorSetScalingDownMaskLSB.c><ScalerColorSetScalingDownMaskLSB.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorSetYCCFullRange.c><ScalerColorSetYCCFullRange.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorSixColorAdjust.c><ScalerColorSixColorAdjust.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorSixColorInitial.c><ScalerColorSixColorInitial.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorSpaceConvertDDomainEnable.c><ScalerColorSpaceConvertDDomainEnable.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorSpaceConvertIDomainEnable.c><ScalerColorSpaceConvertIDomainEnable.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorSpaceConvertLoadTable.c><ScalerColorSpaceConvertLoadTable.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorSpaceLoadYuv2RgbTable.c><ScalerColorSpaceLoadYuv2RgbTable.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorSRGBCtsSwap.c><ScalerColorSRGBCtsSwap.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorSRGBEnable.c><ScalerColorSRGBEnable.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorSRGBRegionEnable.c><ScalerColorSRGBRegionEnable.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorUltraVividEnable.c><ScalerColorUltraVividEnable.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorUltraVividGetStatus.c><ScalerColorUltraVividGetStatus.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorGetColorimetry.c><ScalerColorGetColorimetry.c>
+File 3,1,<..\..\ScalerFunction\Lib\Code\ScalerColor\ScalerColorGetExtColorimetry.c><ScalerColorGetExtColorimetry.c>
+File 4,5,<..\..\ScalerFunction\Lib\Header\ScalerDpLibInclude.h><ScalerDpLibInclude.h>
+File 4,5,<..\..\ScalerFunction\Lib\Header\ScalerDpLibInterface.h><ScalerDpLibInterface.h>
+File 4,5,<..\..\ScalerFunction\Lib\Header\ScalerDpLibInternalInclude.h><ScalerDpLibInternalInclude.h>
+File 4,1,<..\..\ScalerFunction\Lib\Code\ScalerDp\ScalerDpGetAudioStream.c><ScalerDpGetAudioStream.c>
+File 4,1,<..\..\ScalerFunction\Lib\Code\ScalerDp\ScalerDpGetVideoStream.c><ScalerDpGetVideoStream.c>
+File 5,5,<..\..\ScalerFunction\Lib\Header\ScalerMDomainLibInclude.h><ScalerMDomainLibInclude.h>
+File 5,5,<..\..\ScalerFunction\Lib\Header\ScalerMDomainLibInterface.h><ScalerMDomainLibInterface.h>
+File 5,5,<..\..\ScalerFunction\Lib\Header\ScalerMDomainLibInternalInclude.h><ScalerMDomainLibInternalInclude.h>
+File 5,1,<..\..\ScalerFunction\Lib\Code\ScalerMDomain\ScalerMDomainFunction.c><ScalerMDomainFunction.c>
+File 6,5,<..\..\ScalerFunction\Lib\Header\ScalerMemoryLibInclude.h><ScalerMemoryLibInclude.h>
+File 6,5,<..\..\ScalerFunction\Lib\Header\ScalerMemoryLibInterface.h><ScalerMemoryLibInterface.h>
+File 6,5,<..\..\ScalerFunction\Lib\Header\ScalerMemoryLibInternalInclude.h><ScalerMemoryLibInternalInclude.h>
+File 6,1,<..\..\ScalerFunction\Lib\Code\ScalerMemory\ScalerMemoryFunction.c><ScalerMemoryFunction.c>
+File 7,5,<..\..\ScalerFunction\Lib\Header\ScalerNVRamLibInclude.h><ScalerNVRamLibInclude.h>
+File 7,5,<..\..\ScalerFunction\Lib\Header\ScalerNVRamLibInterface.h><ScalerNVRamLibInterface.h>
+File 7,5,<..\..\ScalerFunction\Lib\Header\ScalerNVRamLibInternalInclude.h><ScalerNVRamLibInternalInclude.h>
+File 7,1,<..\..\ScalerFunction\Lib\Code\ScalerNVRam\ScalerFlashRead.c><ScalerFlashRead.c>
+File 7,1,<..\..\ScalerFunction\Lib\Code\ScalerNVRam\ScalerFlashWrite.c><ScalerFlashWrite.c>
+File 8,5,<..\..\ScalerFunction\Lib\Header\ScalerOSDLibInclude.h><ScalerOSDLibInclude.h>
+File 8,5,<..\..\ScalerFunction\Lib\Header\ScalerOSDLibInterface.h><ScalerOSDLibInterface.h>
+File 8,5,<..\..\ScalerFunction\Lib\Header\ScalerOSDLibInternalInclude.h><ScalerOSDLibInternalInclude.h>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Command\OsdAddress90_91_92.c><OsdAddress90_91_92.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Command\OsdAddressHsbClr.c><OsdAddressHsbClr.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Command\OsdAddressHsbSet.c><OsdAddressHsbSet.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Command\OsdBurstWriteDataPort.c><OsdBurstWriteDataPort.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Command\OsdFrameControlAllByte.c><OsdFrameControlAllByte.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Command\OsdFrameControlByte.c><OsdFrameControlByte.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Command\OsdFrameControlByteGet.c><OsdFrameControlByteGet.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Command\OsdWriteAllByte.c><OsdWriteAllByte.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Command\OsdWriteByte.c><OsdWriteByte.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Command\OsdWriteProtection.c><OsdWriteProtection.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Function\Osd2FontFunction.c><Osd2FontFunction.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Function\OsdCircuitActivated.c><OsdCircuitActivated.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Function\OsdEnableDisable.c><OsdEnableDisable.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Function\OsdFontWindowVericalAlignemnt.c><OsdFontWindowVericalAlignemnt.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Function\OsdGetDoubleFunctionH.c><OsdGetDoubleFunctionH.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Function\OsdGetDoubleFunctionV.c><OsdGetDoubleFunctionV.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Function\OsdGetEnable.c><OsdGetEnable.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Function\OsdGetHorizontalDelayStep.c><OsdGetHorizontalDelayStep.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Function\OsdGlobalDoubleBuffer.c><OsdGlobalDoubleBuffer.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Function\OsdHorizontalDelayStep.c><OsdHorizontalDelayStep.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Function\OsdPopOn.c><OsdPopOn.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Function\OsdPositionOffsetVerticalAlignByDVBGStart.c><OsdPositionOffsetVerticalAlignByDVBGStart.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Function\OsdReferenceDelay.c><OsdReferenceDelay.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Function\OsdRollUp.c><OsdRollUp.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Function\OsdSetColorPalette.c><OsdSetColorPalette.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Function\OsdSetTransparencyType.c><OsdSetTransparencyType.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Function\OsdSpecificColorBlending.c><OsdSpecificColorBlending.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Function\OsdVerticalStartSelect.c><OsdVerticalStartSelect.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\SRAM\Osd1BitFontShrink.c><Osd1BitFontShrink.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\SRAM\Osd2BitFontByte1Bit7Swap.c><Osd2BitFontByte1Bit7Swap.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\SRAM\Osd2BitFontOffset.c><Osd2BitFontOffset.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\SRAM\OsdAlignMark.c><OsdAlignMark.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\SRAM\OsdBlankCommandColorExtension.c><OsdBlankCommandColorExtension.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\SRAM\OsdBlankFont.c><OsdBlankFont.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\SRAM\OsdChange1BitColor.c><OsdChange1BitColor.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\SRAM\OsdChange1BitColorFont256_511.c><OsdChange1BitColorFont256_511.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\SRAM\OsdChange2BitColor16_31.c><OsdChange2BitColor16_31.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\SRAM\OsdChange2BitColor.c><OsdChange2BitColor.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\SRAM\OsdChange4BitColor.c><OsdChange4BitColor.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\SRAM\OsdCharacterWidth.c><OsdCharacterWidth.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\SRAM\OsdCharCommandAllByteSeries.c><OsdCharCommandAllByteSeries.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\SRAM\OsdCharCommandByteSeries.c><OsdCharCommandByteSeries.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\SRAM\OsdCharShadowBorderColor.c><OsdCharShadowBorderColor.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\SRAM\OsdCommandAllByte.c><OsdCommandAllByte.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\SRAM\OsdCommandByte.c><OsdCommandByte.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\SRAM\OsdCompressionCtrl.c><OsdCompressionCtrl.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\SRAM\OsdFontLibraryRotation.c><OsdFontLibraryRotation.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\SRAM\OsdFontMaskOnOff.c><OsdFontMaskOnOff.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\SRAM\OsdFontMaskRegionOnOff.c><OsdFontMaskRegionOnOff.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\SRAM\OsdFontMaskRegionSet.c><OsdFontMaskRegionSet.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\SRAM\OsdReference4BitBackground.c><OsdReference4BitBackground.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\SRAM\OsdRowHeight.c><OsdRowHeight.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\SRAM\OsdScrambleDoubleBufferDepth.c><OsdScrambleDoubleBufferDepth.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\SRAM\OsdSetBlinking.c><OsdSetBlinking.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\SRAM\OsdSramAddressCount.c><OsdSramAddressCount.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\SRAM\OsdSramAddressSet.c><OsdSramAddressSet.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\SRAM\OsdSramDataValue2Byte.c><OsdSramDataValue2Byte.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\SRAM\OsdSramDataValue.c><OsdSramDataValue.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Windows\OsdDrawGridLine.c><OsdDrawGridLine.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Windows\OsdDrawWindow.c><OsdDrawWindow.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Windows\OsdDrawWindowStartOffset.c><OsdDrawWindowStartOffset.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Windows\OsdRotationWindowSize.c><OsdRotationWindowSize.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Windows\OsdRoundedWindow.c><OsdRoundedWindow.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Windows\OsdRoundedWindowOnOff.c><OsdRoundedWindowOnOff.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Windows\OsdRoundedWindowPattern8x8.c><OsdRoundedWindowPattern8x8.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Windows\OsdRoundedWindowPattern16x16.c><OsdRoundedWindowPattern16x16.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Windows\OsdRoundedWindowPattern32x32.c><OsdRoundedWindowPattern32x32.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Windows\OsdWindow6SpecialFunction.c><OsdWindow6SpecialFunction.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Windows\OsdWindow7SpecialFunction.c><OsdWindow7SpecialFunction.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Windows\OsdWindowChessboard.c><OsdWindowChessboard.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Windows\OsdWindowDisable.c><OsdWindowDisable.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Windows\OsdWindowGradientLevel.c><OsdWindowGradientLevel.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Windows\OsdWindowGradientStep.c><OsdWindowGradientStep.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Windows\OsdWindowGrayLevel.c><OsdWindowGrayLevel.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Windows\OsdWindowHighlightFunction.c><OsdWindowHighlightFunction.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Windows\OsdWindowOnOFF.c><OsdWindowOnOFF.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Windows\OsdWindowPriority.c><OsdWindowPriority.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Windows\OsdWindowSaturatedColorSelect.c><OsdWindowSaturatedColorSelect.c>
+File 8,1,<..\..\ScalerFunction\Lib\Code\ScalerOSD\Windows\OsdWindowSpecialColorMask.c><OsdWindowSpecialColorMask.c>
+File 9,5,<..\..\ScalerFunction\Lib\Header\ScalerRegLibInclude.h><ScalerRegLibInclude.h>
+File 9,5,<..\..\ScalerFunction\Lib\Header\ScalerRegLibInterface.h><ScalerRegLibInterface.h>
+File 9,5,<..\..\ScalerFunction\Lib\Header\ScalerRegLibInternalInclude.h><ScalerRegLibInternalInclude.h>
+File 9,1,<..\..\ScalerFunction\Lib\Code\ScalerReg\ScalerBurstWrite.c><ScalerBurstWrite.c>
+File 9,1,<..\..\ScalerFunction\Lib\Code\ScalerReg\ScalerDataPortAccess.c><ScalerDataPortAccess.c>
+File 9,1,<..\..\ScalerFunction\Lib\Code\ScalerReg\ScalerGlobalGetIDCode.c><ScalerGlobalGetIDCode.c>
+File 9,1,<..\..\ScalerFunction\Lib\Code\ScalerReg\ScalerGlobalGetIDCode_EXINT.c><ScalerGlobalGetIDCode_EXINT.c>
+File 9,1,<..\..\ScalerFunction\Lib\Code\ScalerReg\ScalerMultiByteRead.c><ScalerMultiByteRead.c>
+File 9,1,<..\..\ScalerFunction\Lib\Code\ScalerReg\ScalerMultiByteWrite.c><ScalerMultiByteWrite.c>
+File 10,5,<..\..\ScalerFunction\Lib\Header\ScalerTconLibInclude.h><ScalerTconLibInclude.h>
+File 10,5,<..\..\ScalerFunction\Lib\Header\ScalerTconLibInterface.h><ScalerTconLibInterface.h>
+File 10,5,<..\..\ScalerFunction\Lib\Header\ScalerTconLibInternalInclude.h><ScalerTconLibInternalInclude.h>
+File 10,1,<..\..\ScalerFunction\Lib\Code\ScalerTcon\ScalerTconGlobalEnable.c><ScalerTconGlobalEnable.c>
+File 10,1,<..\..\ScalerFunction\Lib\Code\ScalerTcon\ScalerTconEnable.c><ScalerTconEnable.c>
+File 11,5,<.\Header\RL6410_Series_ColorLibInclude.h><RL6410_Series_ColorLibInclude.h>
+File 11,5,<.\Header\RL6410_Series_ColorLibInterface.h><RL6410_Series_ColorLibInterface.h>
+File 11,5,<.\Header\RL6410_Series_ColorLibInternalInclude.h><RL6410_Series_ColorLibInternalInclude.h>
+File 11,1,<.\Code\RL6410_Series_Color\RL6410_Series_Color420To422D2Enable.c><RL6410_Series_Color420To422D2Enable.c>
+File 11,1,<.\Code\RL6410_Series_Color\RL6410_Series_Color420To422D2Setting.c><RL6410_Series_Color420To422D2Setting.c>
+File 11,1,<.\Code\RL6410_Series_Color\RL6410_Series_Color420To422D3Enable.c><RL6410_Series_Color420To422D3Enable.c>
+File 11,1,<.\Code\RL6410_Series_Color\RL6410_Series_Color420To422D3Setting.c><RL6410_Series_Color420To422D3Setting.c>
+File 11,1,<.\Code\RL6410_Series_Color\RL6410_Series_ColorHLWBRICTS.c><RL6410_Series_ColorHLWBRICTS.c>
+File 11,1,<.\Code\RL6410_Series_Color\RL6410_Series_ColorHLWPCM.c><RL6410_Series_ColorHLWPCM.c>
+File 11,1,<.\Code\RL6410_Series_Color\RL6410_Series_ColorHLWUltraVivid.c><RL6410_Series_ColorHLWUltraVivid.c>
+File 11,1,<.\Code\RL6410_Series_Color\RL6410_Series_ColorIDitherTableSelect.c><RL6410_Series_ColorIDitherTableSelect.c>
+File 11,1,<.\Code\RL6410_Series_Color\RL6410_Series_ColorMdomainForceYUV.c><RL6410_Series_ColorMdomainForceYUV.c>
+File 11,1,<.\Code\RL6410_Series_Color\RL6410_Series_ColorPanelUniformityAdjust.c><RL6410_Series_ColorPanelUniformityAdjust.c>
+File 11,1,<.\Code\RL6410_Series_Color\RL6410_Series_ColorPanelUniformityDecayAdjust.c><RL6410_Series_ColorPanelUniformityDecayAdjust.c>
+File 11,1,<.\Code\RL6410_Series_Color\RL6410_Series_ColorPanelUniformityOffsetAdjust.c><RL6410_Series_ColorPanelUniformityOffsetAdjust.c>
+File 11,1,<.\Code\RL6410_Series_Color\RL6410_Series_ColorPanelUniformityOffsetEnable.c><RL6410_Series_ColorPanelUniformityOffsetEnable.c>
+File 11,1,<.\Code\RL6410_Series_Color\RL6410_Series_ColorPCM.c><RL6410_Series_ColorPCM.c>
+File 11,1,<.\Code\RL6410_Series_Color\RL6410_Series_ColorPCMCheckRegion.c><RL6410_Series_ColorPCMCheckRegion.c>
+File 11,1,<.\Code\RL6410_Series_Color\RL6410_Series_ColorPCMGammaRegionEnable.c><RL6410_Series_ColorPCMGammaRegionEnable.c>
+File 11,1,<.\Code\RL6410_Series_Color\RL6410_Series_ColorPCMGetStatus.c><RL6410_Series_ColorPCMGetStatus.c>
+File 11,1,<.\Code\RL6410_Series_Color\RL6410_Series_ColorPCMInputGammaAdjust.c><RL6410_Series_ColorPCMInputGammaAdjust.c>
+File 11,1,<.\Code\RL6410_Series_Color\RL6410_Series_ColorPCMInputGammaEnable.c><RL6410_Series_ColorPCMInputGammaEnable.c>
+File 11,1,<.\Code\RL6410_Series_Color\RL6410_Series_ColorPCMInputGammaLoadTable.c><RL6410_Series_ColorPCMInputGammaLoadTable.c>
+File 11,1,<.\Code\RL6410_Series_Color\RL6410_Series_ColorPCMOutputGammaAdjust.c><RL6410_Series_ColorPCMOutputGammaAdjust.c>
+File 11,1,<.\Code\RL6410_Series_Color\RL6410_Series_ColorPCMRegionEnable.c><RL6410_Series_ColorPCMRegionEnable.c>
+File 11,1,<.\Code\RL6410_Series_Color\RL6410_Series_ColorPCMRGBInputGammaAdjust.c><RL6410_Series_ColorPCMRGBInputGammaAdjust.c>
+File 11,1,<.\Code\RL6410_Series_Color\RL6410_Series_ColorPCMSetEffectiveRegion.c><RL6410_Series_ColorPCMSetEffectiveRegion.c>
+File 11,1,<.\Code\RL6410_Series_Color\RL6410_Series_ColorPCMSePCMMode.c><RL6410_Series_ColorPCMSePCMMode.c>
+File 11,1,<.\Code\RL6410_Series_Color\RL6410_Series_ColorPCMSRGBAdjust.c><RL6410_Series_ColorPCMSRGBAdjust.c>
+File 11,1,<.\Code\RL6410_Series_Color\RL6410_Series_ColorPCMSRGBRegionEnable.c><RL6410_Series_ColorPCMSRGBRegionEnable.c>
+File 11,1,<.\Code\RL6410_Series_Color\RL6410_Series_ColorPCMTable.c><RL6410_Series_ColorPCMTable.c>
+File 11,1,<.\Code\RL6410_Series_Color\RL6410_Series_ColorUltraVividAdjust.c><RL6410_Series_ColorUltraVividAdjust.c>
+File 11,1,<.\Code\RL6410_Series_Color\RL6410_Series_ColorUltraVividRegionEnable.c><RL6410_Series_ColorUltraVividRegionEnable.c>
+File 11,1,<.\Code\RL6410_Series_Color\RL6410_Series_ColorRGBOutputGammaEnable.c><RL6410_Series_ColorRGBOutputGammaEnable.c>
+File 11,1,<.\Code\RL6410_Series_Color\RL6410_Series_ColorRGBOutputGammaInitial.c><RL6410_Series_ColorRGBOutputGammaInitial.c>
+File 11,1,<.\Code\RL6410_Series_Color\RL6410_Series_ColorRGBOutputGammaAdjust.c><RL6410_Series_ColorRGBOutputGammaAdjust.c>
+File 11,1,<.\Code\RL6410_Series_Color\RL6410_Series_ColorRGB3DGamma.c><RL6410_Series_ColorRGB3DGamma.c>
+File 11,1,<.\Code\RL6410_Series_Color\RL6410_Series_ColorRGB3DGammaSwapEnable.c><RL6410_Series_ColorRGB3DGammaSwapEnable.c>
+File 11,1,<.\Code\RL6410_Series_Color\RL6410_Series_ColorShpHStartAdjust.c><RL6410_Series_ColorShpHStartAdjust.c>
+File 11,1,<.\Code\RL6410_Series_Color\RL6410_Series_ColorSpaceConvert.c><RL6410_Series_ColorSpaceConvert.c>
+File 11,1,<.\Code\RL6410_Series_Color\RL6410_Series_ColorSpaceConvertUltraVividSupport.c><RL6410_Series_ColorSpaceConvertUltraVividSupport.c>
+File 11,1,<.\Code\RL6410_Series_Color\RL6410_Series_ColorUltraVivid.c><RL6410_Series_ColorUltraVivid.c>
+File 11,1,<.\Code\RL6410_Series_Color\RL6410_Series_ColorSixColorAdjustDell.c><RL6410_Series_ColorSixColorAdjustDell.c>
+File 11,1,<.\Code\RL6410_Series_Color\RL6410_Series_ColorSixColorInitialDell.c><RL6410_Series_ColorSixColorInitialDell.c>
+File 12,5,<.\Header\RL6410_Series_ODLibInternalInclude.h><RL6410_Series_ODLibInternalInclude.h>
+File 12,5,<.\Header\RL6410_Series_ODLibInclude.h><RL6410_Series_ODLibInclude.h>
+File 12,5,<.\Header\RL6410_Series_ODLibInterface.h><RL6410_Series_ODLibInterface.h>
+File 12,1,<.\Code\RL6410_Series_OD\RL6410_Series_ODFunction.c><RL6410_Series_ODFunction.c>
+File 12,1,<.\Code\RL6410_Series_OD\RL6410_Series_ODGetStatus.c><RL6410_Series_ODGetStatus.c>
+File 13,5,<.\Header\RL6410_Series_OSDLibInclude.h><RL6410_Series_OSDLibInclude.h>
+File 13,5,<.\Header\RL6410_Series_OSDLibInterface.h><RL6410_Series_OSDLibInterface.h>
+File 13,5,<.\Header\RL6410_Series_OSDLibInternalInclude.h><RL6410_Series_OSDLibInternalInclude.h>
+File 13,1,<.\Code\RL6410_Series_OSD\SRAM\RL6410_Series_Osd4BitFontOffset.c><RL6410_Series_Osd4BitFontOffset.c>
+File 13,1,<.\Code\RL6410_Series_OSD\SRAM\RL6410_Series_OsdAutoRotateFontBStartAddr.c><RL6410_Series_OsdAutoRotateFontBStartAddr.c>
+File 13,1,<.\Code\RL6410_Series_OSD\Function\RL6410_Series_OsdGetFBShift.c><RL6410_Series_OsdGetFBShift.c>
+File 13,1,<.\Code\RL6410_Series_OSD\Function\RL6410_Series_OsdFBShift.c><RL6410_Series_OsdFBShift.c>
+File 13,1,<.\Code\RL6410_Series_OSD\Function\RL6410_Series_OsdFBShiftBoundary.c><RL6410_Series_OsdFBShiftBoundary.c>
+File 13,1,<.\Code\RL6410_Series_OSD\SRAM\RL6410_Series_OsdFont24x36OnOff.c><RL6410_Series_OsdFont24x36OnOff.c>
+File 13,1,<.\Code\RL6410_Series_OSD\SRAM\RL6410_Series_OsdFontScalingUp.c><RL6410_Series_OsdFontScalingUp.c>
+File 13,1,<.\Code\RL6410_Series_OSD\SRAM\RL6410_Series_OsdFontScalingUpOnOff.c><RL6410_Series_OsdFontScalingUpOnOff.c>
+File 13,1,<.\Code\RL6410_Series_OSD\SRAM\RL6410_Series_OsdFontRotateCtrl.c><RL6410_Series_OsdFontRotateCtrl.c>
+File 13,1,<.\Code\RL6410_Series_OSD\SRAM\RL6410_Series_OsdHardwareCompression.c><RL6410_Series_OsdHardwareCompression.c>
+File 13,1,<.\Code\RL6410_Series_OSD\SRAM\RL6410_Series_OsdHardwareVLC.c><RL6410_Series_OsdHardwareVLC.c>
+File 13,1,<.\Code\RL6410_Series_OSD\Function\RL6410_Series_OsdPosition.c><RL6410_Series_OsdPosition.c>
+File 13,1,<.\Code\RL6410_Series_OSD\Function\RL6410_Series_OsdPositionOffsetCorrection.c><RL6410_Series_OsdPositionOffsetCorrection.c>
+File 13,1,<.\Code\RL6410_Series_OSD\Function\RL6410_Series_OsdVerticalBoundaryFunction.c><RL6410_Series_OsdVerticalBoundaryFunction.c>
+File 13,1,<.\Code\RL6410_Series_OSD\Function\RL6410_Series_OsdSetTransparency.c><RL6410_Series_OsdSetTransparency.c>
+File 13,1,<.\Code\RL6410_Series_OSD\Function\RL6410_Series_OsdSetTransparency_Timer.c><RL6410_Series_OsdSetTransparency_Timer.c>
+File 13,1,<.\Code\RL6410_Series_OSD\SRAM\RL6410_Series_OsdSramBaseAddressSet.c><RL6410_Series_OsdSramBaseAddressSet.c>
+File 14,5,<.\Header\RL6410_Series_RegLibInclude.h><RL6410_Series_RegLibInclude.h>
+File 14,5,<.\Header\RL6410_Series_RegLibInterface.h><RL6410_Series_RegLibInterface.h>
+File 14,5,<.\Header\RL6410_Series_RegLibInternalInclude.h><RL6410_Series_RegLibInternalInclude.h>
+File 15,5,<.\Header\RL6410_Series_TconLibInclude.h><RL6410_Series_TconLibInclude.h>
+File 15,5,<.\Header\RL6410_Series_TconLibInterface.h><RL6410_Series_TconLibInterface.h>
+File 15,5,<.\Header\RL6410_Series_TconLibInternalInclude.h><RL6410_Series_TconLibInternalInclude.h>
+File 15,1,<.\Code\RL6410_Series_Tcon\RL6410_Series_Tcon0.c><RL6410_Series_Tcon0.c>
+File 15,1,<.\Code\RL6410_Series_Tcon\RL6410_Series_Tcon1.c><RL6410_Series_Tcon1.c>
+File 15,1,<.\Code\RL6410_Series_Tcon\RL6410_Series_Tcon2.c><RL6410_Series_Tcon2.c>
+File 15,1,<.\Code\RL6410_Series_Tcon\RL6410_Series_Tcon3.c><RL6410_Series_Tcon3.c>
+File 15,1,<.\Code\RL6410_Series_Tcon\RL6410_Series_Tcon4.c><RL6410_Series_Tcon4.c>
+File 15,1,<.\Code\RL6410_Series_Tcon\RL6410_Series_Tcon5.c><RL6410_Series_Tcon5.c>
+File 15,1,<.\Code\RL6410_Series_Tcon\RL6410_Series_Tcon6.c><RL6410_Series_Tcon6.c>
+File 15,1,<.\Code\RL6410_Series_Tcon\RL6410_Series_Tcon7.c><RL6410_Series_Tcon7.c>
+File 15,1,<.\Code\RL6410_Series_Tcon\RL6410_Series_Tcon8.c><RL6410_Series_Tcon8.c>
+File 15,1,<.\Code\RL6410_Series_Tcon\RL6410_Series_Tcon9.c><RL6410_Series_Tcon9.c>
+File 15,1,<.\Code\RL6410_Series_Tcon\RL6410_Series_Tcon10.c><RL6410_Series_Tcon10.c>
+File 15,1,<.\Code\RL6410_Series_Tcon\RL6410_Series_Tcon11.c><RL6410_Series_Tcon11.c>
+File 15,1,<.\Code\RL6410_Series_Tcon\RL6410_Series_Tcon12.c><RL6410_Series_Tcon12.c>
+File 15,1,<.\Code\RL6410_Series_Tcon\RL6410_Series_Tcon13.c><RL6410_Series_Tcon13.c>
+
+
+Options 1,0,0  // Target 'RL6410_Series_Base'
+ Device (W78LE516)
+ Vendor (Winbond)
+ Cpu (IRAM(0 - 0xFF) XRAM(0- 0xFF) IROM(0-0xFFFF) CLOCK(40000000))
+ FlashUt ()
+ StupF ("LIB\STARTUP.A51" ("Standard 8051 Startup Code"))
+ FlashDR ()
+ DevID ()
+ Rgf (REG54.H)
+ Mem ()
+ C ()
+ A ()
+ RL ()
+ OH ()
+ DBC_IFX ()
+ DBC_CMS ()
+ DBC_AMS ()
+ DBC_LMS ()
+ UseEnv=0
+ EnvBin ()
+ EnvInc ()
+ EnvLib ()
+ EnvReg (ÿWinbond\)
+ OrgReg (ÿWinbond\)
+ TgStat=16
+ OutDir (.\Output\)
+ OutName (RL6410_FunctionLib)
+ GenApp=0
+ GenLib=1
+ GenHex=0
+ Debug=1
+ Browse=1
+ LstDir (.\Output\)
+ HexSel=0
+ MG32K=0
+ TGMORE=8
+ RunUsr 0 0 <>
+ RunUsr 1 0 <>
+ BrunUsr 0 0 <>
+ BrunUsr 1 0 <>
+ CrunUsr 0 0 <>
+ CrunUsr 1 0 <>
+ SVCSID <>
+ MODEL5=2
+ RTOS5=0
+ ROMSZ5=2
+ DHOLD5=0
+ XHOLD5=0
+ T51FL=112
+ XT51FL=0
+ CBANKS5=0
+ XBANKS5=0
+ RCB51 { 0,0,0,0,0,255,255,0,0 }
+ RXB51 { 0,0,0,0,0,0,0,0,0 }
+ OCM51 { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ OCR51 { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IRO51 { 1,0,0,0,0,0,0,1,0 }
+ IRA51 { 0,0,0,0,0,0,1,0,0 }
+ XRA51 { 0,0,0,0,0,0,1,0,0 }
+ XRA512 { 0,0,0,0,0,0,0,0,0 }
+ IROM512 { 0,0,0,0,0,0,0,0,0 }
+ C51FL=21646608
+ C51VA=0
+ C51MSC ()
+ C51DEF (_SCALER_TYPE = _RL6410_SERIES)
+ C51UDF ()
+ INCC5 (..\..\..\Common;..\Header;.\Header;..\..\ScalerFunction\Header;..\..\ScalerFunction\Lib\Header)
+ AX51FL=4
+ AX51MSC ()
+ AX51SET ()
+ AX51RST ()
+ INCA5 ()
+ PropFld { 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+ IncBld=1
+ AlwaysBuild=0
+ GenAsm=0
+ AsmAsm=0
+ PublicsOnly=0
+ StopCode=3
+ CustArgs ()
+ LibMods ()
+ BankNo=65535
+ LX51FL=292
+ LX51OVL ()
+ LX51MSC ()
+ LX51DWN ()
+ LX51LFI ()
+ LX51ASN ()
+ LX51RES ()
+ LX51CCL ()
+ LX51UCL ()
+ LX51CSC ()
+ LX51UCS ()
+ LX51COB ()
+ LX51XDB ()
+ LX51PDB ()
+ LX51BIB ()
+ LX51DAB ()
+ LX51IDB ()
+ LX51PRC ()
+ LX51STK ()
+ LX51COS ()
+ LX51XDS ()
+ LX51BIS ()
+ LX51DAS ()
+ LX51IDS ()
+  OPTDL (S8051.DLL)()(DP51.DLL)(-p53)(S8051.DLL)()(TP51.DLL)(-p53)
+  OPTDBG 48125,-1,()()()()()()()()()() ()()()()
+ FLASH1 { 1,0,0,0,0,0,0,0,255,255,255,255,0,0,0,0,0,0,0,0 }
+ FLASH2 ()
+ FLASH3 ("" ())
+ FLASH4 ()
+EndOpt
+

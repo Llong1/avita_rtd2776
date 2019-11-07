@@ -1,0 +1,6 @@
+
+[WORKSPACE]
+  MPW_NAME="WorkSpace"
+  Project="..\..\RL6193_Series_Scaler\Lib\RL6193_Series_Lib.Uv2",A
+  Project="..\..\RL6410_Series_Scaler\Lib\RL6410_Series_Lib.Uv2"
+

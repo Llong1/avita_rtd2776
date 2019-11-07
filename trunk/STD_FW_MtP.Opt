@@ -1,0 +1,379 @@
+### uVision2 Project, (C) Keil Software
+### Do not modify !
+
+ cExt (*.c)
+ aExt (*.s*; *.src; *.a*)
+ oExt (*.obj)
+ lExt (*.lib)
+ tExt (*.txt; *.h; *.inc)
+ pExt (*.plm)
+ CppX (*.cpp)
+ DaveTm { 0,0,0,0,0,0,0,0 }
+
+Target (RL6193_Project), 0x0000 // Tools: 'MCS-51'
+Target (RL6410_Project), 0x0000 // Tools: 'MCS-51'
+GRPOPT 1,(Project),0,0,0
+GRPOPT 2,(Pcb),0,0,0
+GRPOPT 3,(Panel),0,0,0
+GRPOPT 4,(Common),0,0,0
+GRPOPT 5,(System),0,0,0
+GRPOPT 6,(ScalerFunction),0,0,0
+GRPOPT 7,(RL6193_Series_Scaler),0,0,0
+GRPOPT 8,(RL6410_Series_Scaler),0,0,0
+GRPOPT 9,(UserCommonFunction),0,0,0
+GRPOPT 10,(RTD2014Function),0,0,0
+GRPOPT 11,(RTD2014Osd),0,0,0
+GRPOPT 12,(RTDFactory),0,0,0
+
+OPTFFF 1,1,5,0,0,0,0,0,<.\Project\Header\User_Project_List.h><User_Project_List.h> 
+OPTFFF 1,2,5,0,0,0,0,0,<.\Project\Header\User_Project_Include.h><User_Project_Include.h> 
+OPTFFF 1,3,5,0,0,0,0,0,<.\Project\Header\User_Project_Option.h><User_Project_Option.h> 
+OPTFFF 1,4,5,0,0,0,0,0,<.\Project\Header\User_Scaler_Option.h><User_Scaler_Option.h> 
+OPTFFF 1,5,5,1476395008,0,0,0,0,<.\Project\Header\RL6193_Project.h><RL6193_Project.h> 
+OPTFFF 1,6,5,0,0,0,0,0,<.\Project\Header\RL6410_Project.h><RL6410_Project.h> 
+OPTFFF 2,7,5,0,0,0,0,0,<.\Pcb\User_Pcb_List.h><User_Pcb_List.h> 
+OPTFFF 2,8,5,0,0,0,0,0,<.\Pcb\User_Pcb_Include.h><User_Pcb_Include.h> 
+OPTFFF 2,9,5,0,0,0,0,0,<.\Pcb\User_Pcb_Option.h><User_Pcb_Option.h> 
+OPTFFF 2,10,5,0,0,0,0,0,<.\Pcb\EXAMPLE\RL6193_PCB_EXAMPLE.h><RL6193_PCB_EXAMPLE.h> 
+OPTFFF 2,11,5,0,0,0,0,0,<.\Pcb\EXAMPLE\RL6410_PCB_EXAMPLE.h><RL6410_PCB_EXAMPLE.h> 
+OPTFFF 2,12,5,0,0,0,0,0,<.\Pcb\RL6193_AVITA.h><RL6193_AVITA.h> 
+OPTFFF 2,13,5,0,0,0,0,0,<.\Pcb\RL6193_QA_A_1A1H4MHL1DP1mDP_DPTX_LVDS_VB1.h><RL6193_QA_A_1A1H4MHL1DP1mDP_DPTX_LVDS_VB1.h> 
+OPTFFF 2,14,5,0,0,0,0,0,<.\Pcb\RL6193_QA_B_1A1H4MHL1DP_DPTX_LVDS_eDP.h><RL6193_QA_B_1A1H4MHL1DP_DPTX_LVDS_eDP.h> 
+OPTFFF 2,15,5,0,0,0,0,0,<.\Pcb\RL6193_DEMO_A_1A1H4MHL1DP_DPTX_LVDS_eDP.h><RL6193_DEMO_A_1A1H4MHL1DP_DPTX_LVDS_eDP.h> 
+OPTFFF 2,16,5,0,0,0,0,0,<.\Pcb\RL6193_DEMO_B_1A2MHL1DP1mDP1DUALDVI_DPTX_LVDS_eDP.h><RL6193_DEMO_B_1A2MHL1DP1mDP1DUALDVI_DPTX_LVDS_eDP.h> 
+OPTFFF 2,17,5,0,0,0,0,0,<.\Pcb\RL6193_DEMO_C_1A3MHL1DP_DPTX_LVDS_VB1.h><RL6193_DEMO_C_1A3MHL1DP_DPTX_LVDS_VB1.h> 
+OPTFFF 2,18,5,0,0,0,0,0,<.\Pcb\RL6193_DEMO_D_1A1H4MHL1DP_DPTX_LVDS_VB1.h><RL6193_DEMO_D_1A1H4MHL1DP_DPTX_LVDS_VB1.h> 
+OPTFFF 2,19,5,0,0,0,0,0,<.\Pcb\RL6193_DEMO_E_1H4MHL1DP1mDP_DPTX_LVDS_VB1.h><RL6193_DEMO_E_1H4MHL1DP1mDP_DPTX_LVDS_VB1.h> 
+OPTFFF 2,20,5,0,0,0,0,0,<.\Pcb\RL6410_QA_A_1A4MHL1DP1mDP_DPTX_LVDS_eDP.h><RL6410_QA_A_1A4MHL1DP1mDP_DPTX_LVDS_eDP.h> 
+OPTFFF 2,21,5,0,0,0,0,0,<.\Pcb\RL6410_QA_B_1A6mDP_DPTX_LVDS_eDP.h><RL6410_QA_B_1A6mDP_DPTX_LVDS_eDP.h> 
+OPTFFF 2,22,5,0,0,0,0,0,<.\Pcb\RL6410_DEMO_A_1A4MHL2DP_DPTX_LVDS_eDP.h><RL6410_DEMO_A_1A4MHL2DP_DPTX_LVDS_eDP.h> 
+OPTFFF 2,23,5,0,0,0,0,0,<.\Pcb\RL6410_DEMO_B_1A4MHL1DP1mDP_DPTX_LVDS_eDP.h><RL6410_DEMO_B_1A4MHL1DP1mDP_DPTX_LVDS_eDP.h> 
+OPTFFF 2,24,5,0,0,0,0,0,<.\Pcb\RL6410_DEMO_C_1A2MHL1DP1mDP1DUALDVI_DPTX_LVDS_eDP.h><RL6410_DEMO_C_1A2MHL1DP1mDP1DUALDVI_DPTX_LVDS_eDP.h> 
+OPTFFF 2,25,5,0,0,0,0,0,<.\Pcb\RL6410_DEMO_D_1A4MHL1DP1mDP_DPTX_LVDS_VB1.h><RL6410_DEMO_D_1A4MHL1DP1mDP_DPTX_LVDS_VB1.h> 
+OPTFFF 2,26,5,0,0,0,0,0,<.\Pcb\RL6410_DEMO_TC_3MHL1DP1TYPEC_DPTX_LVDS_eDP.h><RL6410_DEMO_TC_3MHL1DP1TYPEC_DPTX_LVDS_eDP.h> 
+OPTFFF 2,27,5,0,0,0,0,0,<.\Pcb\RL6410_DEMO_5K3K_2H2DP_LVDS_eDP.h><RL6410_DEMO_5K3K_2H2DP_LVDS_eDP.h> 
+OPTFFF 2,28,5,0,0,0,0,0,<.\Pcb\RL6410_DEMO_E_1A4MHL2DP_DPTX_LVDS_VB1.h><RL6410_DEMO_E_1A4MHL2DP_DPTX_LVDS_VB1.h> 
+OPTFFF 3,29,5,0,0,0,0,0,<.\Panel\User_Panel_List.h><User_Panel_List.h> 
+OPTFFF 3,30,5,0,0,0,0,0,<.\Panel\User_Panel_Include.h><User_Panel_Include.h> 
+OPTFFF 3,31,5,0,0,0,0,0,<.\Panel\User_Panel_Option.h><User_Panel_Option.h> 
+OPTFFF 3,32,5,0,0,0,0,0,<.\Panel\EXAMPLE\PANEL_LVDS_EXAMPLE.h><PANEL_LVDS_EXAMPLE.h> 
+OPTFFF 3,33,5,0,0,0,0,0,<.\Panel\EXAMPLE\PANEL_DPTX_EXAMPLE.h><PANEL_DPTX_EXAMPLE.h> 
+OPTFFF 3,34,5,0,0,0,0,0,<.\Panel\EXAMPLE\PANEL_VBO_EXAMPLE.h><PANEL_VBO_EXAMPLE.h> 
+OPTFFF 3,35,5,0,0,0,0,0,<.\Panel\00_CMO_LVDS_17.h><00_CMO_LVDS_17.h> 
+OPTFFF 3,36,5,0,0,0,0,0,<.\Panel\01_CMO_LVDS_19_WXGA.h><01_CMO_LVDS_19_WXGA.h> 
+OPTFFF 3,37,5,0,0,0,0,0,<.\Panel\02_AU_LVDS_21_5_WUXGA.h><02_AU_LVDS_21_5_WUXGA.h> 
+OPTFFF 3,38,5,0,0,0,0,0,<.\Panel\03_AU_LVDS_27_WUXGA_FREESYNC.h><03_AU_LVDS_27_WUXGA_FREESYNC.h> 
+OPTFFF 3,39,5,0,0,0,0,0,<.\Panel\04_MULTIPANEL_LVDS_21_5_WUXGA.h><04_MULTIPANEL_LVDS_21_5_WUXGA.h> 
+OPTFFF 3,40,5,0,0,0,0,0,<.\Panel\05_AU_LVDS_22_WSXGA.h><05_AU_LVDS_22_WSXGA.h> 
+OPTFFF 3,41,5,0,0,0,0,0,<.\Panel\06_AU_LVDS_22_WSXGA_QC.h><06_AU_LVDS_22_WSXGA_QC.h> 
+OPTFFF 3,42,5,0,0,0,0,0,<.\Panel\07_AU_LVDS_23_WUXGA.h><07_AU_LVDS_23_WUXGA.h> 
+OPTFFF 3,43,5,0,0,0,0,0,<.\Panel\08_AU_LVDS_24_WUXGA.h><08_AU_LVDS_24_WUXGA.h> 
+OPTFFF 3,44,5,0,0,0,0,0,<.\Panel\09_AU_DP_21_5_WUXGA.h><09_AU_DP_21_5_WUXGA.h> 
+OPTFFF 3,45,5,0,0,0,0,0,<.\Panel\10_LG_LED_DP_27_UHD.h><10_LG_LED_DP_27_UHD.h> 
+OPTFFF 3,46,5,0,0,0,0,0,<.\Panel\14_LG_LED_LVDS_27_WUXGA.h><14_LG_LED_LVDS_27_WUXGA.h> 
+OPTFFF 3,47,5,0,0,0,0,0,<.\Panel\15_SAMSUNG_LED_DP_15_6_UHD.h><15_SAMSUNG_LED_DP_15_6_UHD.h> 
+OPTFFF 3,48,5,0,0,0,0,0,<.\Panel\16_AUO_LED_DP_32_UHD.h><16_AUO_LED_DP_32_UHD.h> 
+OPTFFF 3,49,5,0,0,0,0,0,<.\Panel\17_SAMSUNG_LED_DP_23_6_UHD.h><17_SAMSUNG_LED_DP_23_6_UHD.h> 
+OPTFFF 3,50,5,0,0,0,0,0,<.\Panel\18_INNOLUX_LED_VBO_28_UHD.h><18_INNOLUX_LED_VBO_28_UHD.h> 
+OPTFFF 3,51,5,0,0,0,0,0,<.\Panel\19_LG_LED_LVDS_23_UHD.h><19_LG_LED_LVDS_23_UHD.h> 
+OPTFFF 3,52,5,0,0,0,0,0,<.\Panel\20_INNOLUX_LED_VBO_40_UHD.h><20_INNOLUX_LED_VBO_40_UHD.h> 
+OPTFFF 3,53,5,0,0,0,0,0,<.\Panel\21_AU_LVDS_21_5_WUXGA_FREESYNC.h><21_AU_LVDS_21_5_WUXGA_FREESYNC.h> 
+OPTFFF 3,54,5,0,0,0,0,0,<.\Panel\22_LG_LED_DP_27_QQHD.h><22_LG_LED_DP_27_QQHD.h> 
+OPTFFF 3,55,5,0,0,0,0,0,<.\Panel\23_LG_LED_DP_27_QHD.h><23_LG_LED_DP_27_QHD.h> 
+OPTFFF 3,56,5,0,0,0,0,0,<.\Panel\24_LG_LED_DP_27_QHD_QC.h><24_LG_LED_DP_27_QHD_QC.h> 
+OPTFFF 3,57,5,0,0,0,0,0,<.\Panel\25_AU_DP_21_5_WUXGA_FREESYNC.h><25_AU_DP_21_5_WUXGA_FREESYNC.h> 
+OPTFFF 3,58,5,0,0,0,0,0,<.\Panel\26_INNOLUX_TTL_7.h><26_INNOLUX_TTL_7.h> 
+OPTFFF 3,59,5,0,0,0,0,0,<.\Panel\27_MULTIPANEL_DP_21_5_WUXGA.h><27_MULTIPANEL_DP_21_5_WUXGA.h> 
+OPTFFF 4,60,5,0,0,0,0,0,<.\Kernel\Common\reg52_RTD.h><reg52_RTD.h> 
+OPTFFF 4,61,2,0,0,0,0,0,<.\Kernel\Common\L51_bank.a51><L51_bank.a51> 
+OPTFFF 4,62,2,0,0,0,0,0,<.\Kernel\Common\STARTUP.a51><STARTUP.a51> 
+OPTFFF 4,63,5,0,0,0,0,0,<.\Kernel\Common\Debug.h><Debug.h> 
+OPTFFF 4,64,5,0,0,0,0,0,<.\Kernel\Common\Global.h><Global.h> 
+OPTFFF 4,65,5,0,0,0,0,0,<.\Kernel\Common\Project.h><Project.h> 
+OPTFFF 4,66,5,0,0,0,0,0,<.\Kernel\Common\Scaler_Test_Function.h><Scaler_Test_Function.h> 
+OPTFFF 4,67,5,0,0,0,0,0,<.\Kernel\Common\RL6193_Gen_Option.h><RL6193_Gen_Option.h> 
+OPTFFF 4,68,5,0,0,0,0,0,<.\Kernel\Common\RL6193_Project_Default.h><RL6193_Project_Default.h> 
+OPTFFF 4,69,5,0,0,0,0,0,<.\Kernel\Common\RL6193_Pcb_Default.h><RL6193_Pcb_Default.h> 
+OPTFFF 4,70,5,0,0,0,0,0,<.\Kernel\Common\RL6410_Gen_Option.h><RL6410_Gen_Option.h> 
+OPTFFF 4,71,5,0,0,0,0,0,<.\Kernel\Common\RL6410_Project_Default.h><RL6410_Project_Default.h> 
+OPTFFF 4,72,5,0,0,0,0,0,<.\Kernel\Common\RL6410_Pcb_Default.h><RL6410_Pcb_Default.h> 
+OPTFFF 5,73,5,0,0,0,0,0,<.\Kernel\System\Header\SysInterface.h><SysInterface.h> 
+OPTFFF 5,74,5,0,0,0,0,0,<.\Kernel\System\Header\SysInclude.h><SysInclude.h> 
+OPTFFF 5,75,1,0,0,0,0,0,<.\Kernel\System\Code\SysInt.c><SysInt.c> 
+OPTFFF 5,76,1,0,0,0,0,0,<.\Kernel\System\Code\SysJudge.c><SysJudge.c> 
+OPTFFF 5,77,1,0,0,0,0,0,<.\Kernel\System\Code\SysMain.c><SysMain.c> 
+OPTFFF 5,78,1,0,0,0,0,0,<.\Kernel\System\Code\SysMHL.c><SysMHL.c> 
+OPTFFF 5,79,1,0,0,0,0,0,<.\Kernel\System\Code\SysMode.c><SysMode.c> 
+OPTFFF 5,80,1,0,0,0,0,0,<.\Kernel\System\Code\SysPower.c><SysPower.c> 
+OPTFFF 5,81,1,0,0,0,0,0,<.\Kernel\System\Code\SysRegion.c><SysRegion.c> 
+OPTFFF 5,82,1,0,0,0,0,0,<.\Kernel\System\Code\SysSource.c><SysSource.c> 
+OPTFFF 5,83,1,0,0,0,0,0,<.\Kernel\System\Code\SysTimer.c><SysTimer.c> 
+OPTFFF 5,84,1,0,0,0,0,0,<.\Kernel\System\Code\SysVGA.c><SysVGA.c> 
+OPTFFF 5,85,1,0,0,0,0,0,<.\Kernel\System\Code\SysAudio.c><SysAudio.c> 
+OPTFFF 5,86,1,0,0,0,0,0,<.\Kernel\System\Code\SysDP.c><SysDP.c> 
+OPTFFF 5,87,1,0,0,0,0,0,<.\Kernel\System\Code\SysTMDS.c><SysTMDS.c> 
+OPTFFF 6,88,5,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Header\ScalerFunctionCommonInclude.h><ScalerFunctionCommonInclude.h> 
+OPTFFF 6,89,5,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Header\ScalerFunctionInclude.h><ScalerFunctionInclude.h> 
+OPTFFF 6,90,5,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Header\ScalerFunctionInterface.h><ScalerFunctionInterface.h> 
+OPTFFF 6,91,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerADC.c><ScalerADC.c> 
+OPTFFF 6,92,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerAudio.c><ScalerAudio.c> 
+OPTFFF 6,93,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerAutoFunc.c><ScalerAutoFunc.c> 
+OPTFFF 6,94,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerColor.c><ScalerColor.c> 
+OPTFFF 6,95,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerDDomain.c><ScalerDDomain.c> 
+OPTFFF 6,96,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerDDR.c><ScalerDDR.c> 
+OPTFFF 6,97,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerDebug.c><ScalerDebug.c> 
+OPTFFF 6,98,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerDisplay.c><ScalerDisplay.c> 
+OPTFFF 6,99,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerDisplayDPTx.c><ScalerDisplayDPTx.c> 
+OPTFFF 6,100,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerDP.c><ScalerDP.c> 
+OPTFFF 6,101,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerDPRx0.c><ScalerDPRx0.c> 
+OPTFFF 6,102,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerDPRx0HDCP2.c><ScalerDPRx0HDCP2.c> 
+OPTFFF 6,103,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerDPRx1.c><ScalerDPRx1.c> 
+OPTFFF 6,104,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerDPRx1HDCP2.c><ScalerDPRx1HDCP2.c> 
+OPTFFF 6,105,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerDPRxMST.c><ScalerDPRxMST.c> 
+OPTFFF 6,106,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerDPTx.c><ScalerDPTx.c> 
+OPTFFF 6,107,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerDPTxAux.c><ScalerDPTxAux.c> 
+OPTFFF 6,108,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerDPTxMST.c><ScalerDPTxMST.c> 
+OPTFFF 6,109,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerFRC.c><ScalerFRC.c> 
+OPTFFF 6,110,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerFormatConversion.c><ScalerFormatConversion.c> 
+OPTFFF 6,111,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerGDIPhy.c><ScalerGDIPhy.c> 
+OPTFFF 6,112,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerGDIPhyTx.c><ScalerGDIPhyTx.c> 
+OPTFFF 6,113,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerGlobal.c><ScalerGlobal.c> 
+OPTFFF 6,114,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerHDCP2.c><ScalerHDCP2.c> 
+OPTFFF 6,115,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerIOSC.c><ScalerIOSC.c> 
+OPTFFF 6,116,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerIDomain.c><ScalerIDomain.c> 
+OPTFFF 6,117,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerIR.c><ScalerIR.c> 
+OPTFFF 6,118,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerLDO.c><ScalerLDO.c> 
+OPTFFF 6,119,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerMcu.c><ScalerMcu.c> 
+OPTFFF 6,120,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerMDomain.c><ScalerMDomain.c> 
+OPTFFF 6,121,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerMeasure.c><ScalerMeasure.c> 
+OPTFFF 6,122,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerMemory.c><ScalerMemory.c> 
+OPTFFF 6,123,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerMHLRx0.c><ScalerMHLRx0.c> 
+OPTFFF 6,124,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerMHLRx1.c><ScalerMHLRx1.c> 
+OPTFFF 6,125,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerMHLRx2.c><ScalerMHLRx2.c> 
+OPTFFF 6,126,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerMHLRx3.c><ScalerMHLRx3.c> 
+OPTFFF 6,127,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerMHLRx4.c><ScalerMHLRx4.c> 
+OPTFFF 6,128,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerMHLRx5.c><ScalerMHLRx5.c> 
+OPTFFF 6,129,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerNVRam.c><ScalerNVRam.c> 
+OPTFFF 6,130,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerOD.c><ScalerOD.c> 
+OPTFFF 6,131,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerOsd.c><ScalerOsd.c> 
+OPTFFF 6,132,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerPinshare.c><ScalerPinshare.c> 
+OPTFFF 6,133,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerPLL.c><ScalerPLL.c> 
+OPTFFF 6,134,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerPower.c><ScalerPower.c> 
+OPTFFF 6,135,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerReg.c><ScalerReg.c> 
+OPTFFF 6,136,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerRegion.c><ScalerRegion.c> 
+OPTFFF 6,137,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerRotation.c><ScalerRotation.c> 
+OPTFFF 6,138,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerScaling.c><ScalerScaling.c> 
+OPTFFF 6,139,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerSync.c><ScalerSync.c> 
+OPTFFF 6,140,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerSyncProc.c><ScalerSyncProc.c> 
+OPTFFF 6,141,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerTCON.c><ScalerTCON.c> 
+OPTFFF 6,142,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerTimerFunction.c><ScalerTimerFunction.c> 
+OPTFFF 6,143,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerTMDSRx0.c><ScalerTMDSRx0.c> 
+OPTFFF 6,144,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerTMDSRx1.c><ScalerTMDSRx1.c> 
+OPTFFF 6,145,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerTMDSRx2.c><ScalerTMDSRx2.c> 
+OPTFFF 6,146,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerTMDSRx3.c><ScalerTMDSRx3.c> 
+OPTFFF 6,147,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerTMDSRx4.c><ScalerTMDSRx4.c> 
+OPTFFF 6,148,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerTMDSRx5.c><ScalerTMDSRx5.c> 
+OPTFFF 6,149,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerVGATop.c><ScalerVGATop.c> 
+OPTFFF 6,150,1,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\ScalerVGIP.c><ScalerVGIP.c> 
+OPTFFF 6,151,4,0,0,0,0,0,<.\Kernel\Scaler\ScalerFunction\Code\Scalers.LIB><Scalers.LIB> 
+OPTFFF 7,152,4,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Lib\Output\RL6193_FunctionLib.LIB><RL6193_FunctionLib.LIB> 
+OPTFFF 7,153,5,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Header\RL6193_Series_FunctionCommonInclude.h><RL6193_Series_FunctionCommonInclude.h> 
+OPTFFF 7,154,5,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Header\RL6193_Series_FunctionInclude.h><RL6193_Series_FunctionInclude.h> 
+OPTFFF 7,155,5,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Header\RL6193_Series_FunctionInterface.h><RL6193_Series_FunctionInterface.h> 
+OPTFFF 7,156,1,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Code\RL6193_Series_ADC.c><RL6193_Series_ADC.c> 
+OPTFFF 7,157,1,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Code\RL6193_Series_Audio.c><RL6193_Series_Audio.c> 
+OPTFFF 7,158,1,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Code\RL6193_Series_Color.c><RL6193_Series_Color.c> 
+OPTFFF 7,159,1,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Code\RL6193_Series_DDR.c><RL6193_Series_DDR.c> 
+OPTFFF 7,160,1,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Code\RL6193_Series_Display.c><RL6193_Series_Display.c> 
+OPTFFF 7,161,1,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Code\RL6193_Series_DisplayDPTx.c><RL6193_Series_DisplayDPTx.c> 
+OPTFFF 7,162,1,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Code\RL6193_Series_DP.c><RL6193_Series_DP.c> 
+OPTFFF 7,163,1,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Code\RL6193_Series_DPRx0.c><RL6193_Series_DPRx0.c> 
+OPTFFF 7,164,1,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Code\RL6193_Series_DPRx1.c><RL6193_Series_DPRx1.c> 
+OPTFFF 7,165,1,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Code\RL6193_Series_DPRxMST.c><RL6193_Series_DPRxMST.c> 
+OPTFFF 7,166,1,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Code\RL6193_Series_DPTx.c><RL6193_Series_DPTx.c> 
+OPTFFF 7,167,1,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Code\RL6193_Series_DPTxMST.c><RL6193_Series_DPTxMST.c> 
+OPTFFF 7,168,1,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Code\RL6193_Series_FRC.c><RL6193_Series_FRC.c> 
+OPTFFF 7,169,1,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Code\RL6193_Series_FormatConversion.c><RL6193_Series_FormatConversion.c> 
+OPTFFF 7,170,1,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Code\RL6193_Series_GDIPhy.c><RL6193_Series_GDIPhy.c> 
+OPTFFF 7,171,1,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Code\RL6193_Series_Global.c><RL6193_Series_Global.c> 
+OPTFFF 7,172,1,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Code\RL6193_Series_Mcu.c><RL6193_Series_Mcu.c> 
+OPTFFF 7,173,1,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Code\RL6193_Series_MDomain.c><RL6193_Series_MDomain.c> 
+OPTFFF 7,174,1,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Code\RL6193_Series_Measure.c><RL6193_Series_Measure.c> 
+OPTFFF 7,175,1,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Code\RL6193_Series_Memory.c><RL6193_Series_Memory.c> 
+OPTFFF 7,176,1,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Code\RL6193_Series_MHL.c><RL6193_Series_MHL.c> 
+OPTFFF 7,177,1,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Code\RL6193_Series_MHLRx0.c><RL6193_Series_MHLRx0.c> 
+OPTFFF 7,178,1,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Code\RL6193_Series_MHLRx1.c><RL6193_Series_MHLRx1.c> 
+OPTFFF 7,179,1,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Code\RL6193_Series_MHLRx2.c><RL6193_Series_MHLRx2.c> 
+OPTFFF 7,180,1,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Code\RL6193_Series_MHLRx3.c><RL6193_Series_MHLRx3.c> 
+OPTFFF 7,181,1,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Code\RL6193_Series_MHLRx4.c><RL6193_Series_MHLRx4.c> 
+OPTFFF 7,182,1,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Code\RL6193_Series_MHLRx5.c><RL6193_Series_MHLRx5.c> 
+OPTFFF 7,183,1,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Code\RL6193_Series_OD.c><RL6193_Series_OD.c> 
+OPTFFF 7,184,1,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Code\RL6193_Series_Osd.c><RL6193_Series_Osd.c> 
+OPTFFF 7,185,1,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Code\RL6193_Series_Pinshare.c><RL6193_Series_Pinshare.c> 
+OPTFFF 7,186,1,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Code\RL6193_Series_PLL.c><RL6193_Series_PLL.c> 
+OPTFFF 7,187,1,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Code\RL6193_Series_Reg.c><RL6193_Series_Reg.c> 
+OPTFFF 7,188,1,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Code\RL6193_Series_Power.c><RL6193_Series_Power.c> 
+OPTFFF 7,189,1,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Code\RL6193_Series_Scaling.c><RL6193_Series_Scaling.c> 
+OPTFFF 7,190,1,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Code\RL6193_Series_Sync.c><RL6193_Series_Sync.c> 
+OPTFFF 7,191,1,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Code\RL6193_Series_TMDSRx2.c><RL6193_Series_TMDSRx2.c> 
+OPTFFF 7,192,1,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Code\RL6193_Series_TMDSRx3.c><RL6193_Series_TMDSRx3.c> 
+OPTFFF 7,193,1,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Code\RL6193_Series_TMDSRx4.c><RL6193_Series_TMDSRx4.c> 
+OPTFFF 7,194,1,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Code\RL6193_Series_TMDSRx5.c><RL6193_Series_TMDSRx5.c> 
+OPTFFF 7,195,1,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Code\RL6193_Series_TMDS.c><RL6193_Series_TMDS.c> 
+OPTFFF 7,196,1,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Code\RL6193_Series_VGATop.c><RL6193_Series_VGATop.c> 
+OPTFFF 7,197,1,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Code\RL6193_Series_VGIP.c><RL6193_Series_VGIP.c> 
+OPTFFF 7,198,1,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Code\RL6193_Series_DPRx0_INT.c><RL6193_Series_DPRx0_INT.c> 
+OPTFFF 7,199,1,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Code\RL6193_Series_DPRx1_INT.c><RL6193_Series_DPRx1_INT.c> 
+OPTFFF 7,200,1,0,0,0,0,0,<.\Kernel\Scaler\RL6193_Series_Scaler\Code\RL6193_Series_DP_INT.c><RL6193_Series_DP_INT.c> 
+OPTFFF 8,201,4,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Lib\Output\RL6410_FunctionLib.LIB><RL6410_FunctionLib.LIB> 
+OPTFFF 8,202,5,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Header\RL6410_Series_FunctionCommonInclude.h><RL6410_Series_FunctionCommonInclude.h> 
+OPTFFF 8,203,5,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Header\RL6410_Series_FunctionInclude.h><RL6410_Series_FunctionInclude.h> 
+OPTFFF 8,204,5,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Header\RL6410_Series_FunctionInterface.h><RL6410_Series_FunctionInterface.h> 
+OPTFFF 8,205,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_ADC.c><RL6410_Series_ADC.c> 
+OPTFFF 8,206,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_Audio.c><RL6410_Series_Audio.c> 
+OPTFFF 8,207,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_Color.c><RL6410_Series_Color.c> 
+OPTFFF 8,208,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_DDR.c><RL6410_Series_DDR.c> 
+OPTFFF 8,209,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_Display.c><RL6410_Series_Display.c> 
+OPTFFF 8,210,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_DisplayDPTx.c><RL6410_Series_DisplayDPTx.c> 
+OPTFFF 8,211,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_DP.c><RL6410_Series_DP.c> 
+OPTFFF 8,212,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_DPRx0.c><RL6410_Series_DPRx0.c> 
+OPTFFF 8,213,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_DPRx1.c><RL6410_Series_DPRx1.c> 
+OPTFFF 8,214,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_DPRxMST.c><RL6410_Series_DPRxMST.c> 
+OPTFFF 8,215,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_DPTx.c><RL6410_Series_DPTx.c> 
+OPTFFF 8,216,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_DPTxMST.c><RL6410_Series_DPTxMST.c> 
+OPTFFF 8,217,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_FormatConversion.c><RL6410_Series_FormatConversion.c> 
+OPTFFF 8,218,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_FRC.c><RL6410_Series_FRC.c> 
+OPTFFF 8,219,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_GDIPhy.c><RL6410_Series_GDIPhy.c> 
+OPTFFF 8,220,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_Global.c><RL6410_Series_Global.c> 
+OPTFFF 8,221,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_HDCP2.c><RL6410_Series_HDCP2.c> 
+OPTFFF 8,222,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_Mcu.c><RL6410_Series_Mcu.c> 
+OPTFFF 8,223,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_MDomain.c><RL6410_Series_MDomain.c> 
+OPTFFF 8,224,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_Measure.c><RL6410_Series_Measure.c> 
+OPTFFF 8,225,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_Memory.c><RL6410_Series_Memory.c> 
+OPTFFF 8,226,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_MHL.c><RL6410_Series_MHL.c> 
+OPTFFF 8,227,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_MHLRx2.c><RL6410_Series_MHLRx2.c> 
+OPTFFF 8,228,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_MHLRx3.c><RL6410_Series_MHLRx3.c> 
+OPTFFF 8,229,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_MHLRx4.c><RL6410_Series_MHLRx4.c> 
+OPTFFF 8,230,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_MHLRx5.c><RL6410_Series_MHLRx5.c> 
+OPTFFF 8,231,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_MHL3.c><RL6410_Series_MHL3.c> 
+OPTFFF 8,232,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_MHL3Rx2.c><RL6410_Series_MHL3Rx2.c> 
+OPTFFF 8,233,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_MHL3Rx3.c><RL6410_Series_MHL3Rx3.c> 
+OPTFFF 8,234,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_MHL3Rx4.c><RL6410_Series_MHL3Rx4.c> 
+OPTFFF 8,235,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_MHL3Rx5.c><RL6410_Series_MHL3Rx5.c> 
+OPTFFF 8,236,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_OD.c><RL6410_Series_OD.c> 
+OPTFFF 8,237,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_Osd.c><RL6410_Series_Osd.c> 
+OPTFFF 8,238,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_Pinshare.c><RL6410_Series_Pinshare.c> 
+OPTFFF 8,239,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_PLL.c><RL6410_Series_PLL.c> 
+OPTFFF 8,240,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_Power.c><RL6410_Series_Power.c> 
+OPTFFF 8,241,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_Reg.c><RL6410_Series_Reg.c> 
+OPTFFF 8,242,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_Scaling.c><RL6410_Series_Scaling.c> 
+OPTFFF 8,243,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_Sync.c><RL6410_Series_Sync.c> 
+OPTFFF 8,244,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_TMDS.c><RL6410_Series_TMDS.c> 
+OPTFFF 8,245,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_TMDSRx2.c><RL6410_Series_TMDSRx2.c> 
+OPTFFF 8,246,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_TMDSRx2HDCP2.c><RL6410_Series_TMDSRx2HDCP2.c> 
+OPTFFF 8,247,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_TMDSRx3.c><RL6410_Series_TMDSRx3.c> 
+OPTFFF 8,248,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_TMDSRx3HDCP2.c><RL6410_Series_TMDSRx3HDCP2.c> 
+OPTFFF 8,249,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_TMDSRx4.c><RL6410_Series_TMDSRx4.c> 
+OPTFFF 8,250,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_TMDSRx4HDCP2.c><RL6410_Series_TMDSRx4HDCP2.c> 
+OPTFFF 8,251,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_TMDSRx5.c><RL6410_Series_TMDSRx5.c> 
+OPTFFF 8,252,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_TMDSRx5HDCP2.c><RL6410_Series_TMDSRx5HDCP2.c> 
+OPTFFF 8,253,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_VGATop.c><RL6410_Series_VGATop.c> 
+OPTFFF 8,254,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_VGIP.c><RL6410_Series_VGIP.c> 
+OPTFFF 8,255,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_DPRx0_INT.c><RL6410_Series_DPRx0_INT.c> 
+OPTFFF 8,256,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_DPRx1_INT.c><RL6410_Series_DPRx1_INT.c> 
+OPTFFF 8,257,1,0,0,0,0,0,<.\Kernel\Scaler\RL6410_Series_Scaler\Code\RL6410_Series_DP_INT.c><RL6410_Series_DP_INT.c> 
+OPTFFF 9,258,5,0,0,0,0,0,<.\Kernel\User Common Function\Header\UserCommonInclude.h><UserCommonInclude.h> 
+OPTFFF 9,259,5,0,0,0,0,0,<.\Kernel\User Common Function\Header\UserCommonInterface.h><UserCommonInterface.h> 
+OPTFFF 9,260,5,0,0,0,0,0,<.\Kernel\User Common Function\Header\UserCommonDdcciDefine.h><UserCommonDdcciDefine.h> 
+OPTFFF 9,261,1,0,0,0,0,0,<.\Kernel\User Common Function\Code\UserCommonAdjust.c><UserCommonAdjust.c> 
+OPTFFF 9,262,1,0,0,0,0,0,<.\Kernel\User Common Function\Code\UserCommonAuto.c><UserCommonAuto.c> 
+OPTFFF 9,263,1,0,0,0,0,0,<.\Kernel\User Common Function\Code\UserCommonDdcciFunction.c><UserCommonDdcciFunction.c> 
+OPTFFF 9,264,1,0,0,0,0,0,<.\Kernel\User Common Function\Code\UserCommonDisplayCalibration.c><UserCommonDisplayCalibration.c> 
+OPTFFF 9,265,1,0,0,0,0,0,<.\Kernel\User Common Function\Code\UserCommonInterface.c><UserCommonInterface.c> 
+OPTFFF 9,266,1,0,0,0,0,0,<.\Kernel\User Common Function\Code\UserCommonModeSearch.c><UserCommonModeSearch.c> 
+OPTFFF 9,267,1,0,0,0,0,0,<.\Kernel\User Common Function\Code\UserCommonNVRamSystem.c><UserCommonNVRamSystem.c> 
+OPTFFF 9,268,1,0,0,0,0,0,<.\Kernel\User Common Function\Code\UserCommonPortControllerEmbedded.c><UserCommonPortControllerEmbedded.c> 
+OPTFFF 9,269,1,0,0,0,0,0,<.\Kernel\User Common Function\Code\UserCommonPortControllerRts5400.c><UserCommonPortControllerRts5400.c> 
+OPTFFF 9,270,1,0,0,0,0,0,<.\Kernel\User Common Function\Code\UserCommonPortControllerUser.c><UserCommonPortControllerUser.c> 
+OPTFFF 9,271,1,0,0,0,0,0,<.\Kernel\User Common Function\Code\UserCommonTypecCommunication.c><UserCommonTypecCommunication.c> 
+OPTFFF 9,272,1,0,0,0,0,0,<.\Kernel\User Common Function\Code\UserCommonUsbHubUser.c><UserCommonUsbHubUser.c> 
+OPTFFF 9,273,1,0,0,0,0,0,<.\Kernel\User Common Function\Code\UserCommonUsbHubRts5411.c><UserCommonUsbHubRts5411.c> 
+OPTFFF 10,274,5,0,0,0,0,0,<.\User\RTD Series\RTD2014Function\Header\RTD2014UserInclude.h><RTD2014UserInclude.h> 
+OPTFFF 10,275,5,0,0,0,0,0,<.\User\RTD Series\RTD2014Function\Header\RTD2014UserModeTable.h><RTD2014UserModeTable.h> 
+OPTFFF 10,276,1,0,0,0,0,0,<.\User\RTD Series\RTD2014Function\Code\RTD2014UserInterface.c><RTD2014UserInterface.c> 
+OPTFFF 10,277,1,0,0,0,0,0,<.\User\RTD Series\RTD2014Function\Code\RTD2014UserAdjust.c><RTD2014UserAdjust.c> 
+OPTFFF 10,278,1,0,0,0,0,0,<.\User\RTD Series\RTD2014Function\Code\RTD2014UserAdjust3DGamma.c><RTD2014UserAdjust3DGamma.c> 
+OPTFFF 10,279,1,0,0,0,0,0,<.\User\RTD Series\RTD2014Function\Code\RTD2014UserAdjustOutputGamma.c><RTD2014UserAdjustOutputGamma.c> 
+OPTFFF 10,280,1,0,0,0,0,0,<.\User\RTD Series\RTD2014Function\Code\RTD2014UserAdjustRGBGamma.c><RTD2014UserAdjustRGBGamma.c> 
+OPTFFF 10,281,1,0,0,0,0,0,<.\User\RTD Series\RTD2014Function\Code\RTD2014UserAdjustUniformity.c><RTD2014UserAdjustUniformity.c> 
+OPTFFF 10,282,1,620756992,0,0,0,0,<.\User\RTD Series\RTD2014Function\Code\RTD2014UserBoot.c><RTD2014UserBoot.c> 
+OPTFFF 10,283,1,0,0,0,0,0,<.\User\RTD Series\RTD2014Function\Code\RTD2014UserTypeCInterface.c><RTD2014UserTypeCInterface.c> 
+OPTFFF 11,284,1,738197504,0,0,0,0,<.\User\RTD Series\RTD2014Osd\Code\w74m00av.c><w74m00av.c> 
+OPTFFF 11,285,5,0,0,0,0,0,<.\User\RTD Series\RTD2014Osd\Header\w74m00av.h><w74m00av.h> 
+OPTFFF 11,286,1,0,0,0,0,0,<.\User\RTD Series\RTD2014Osd\Code\spi_secure.c><spi_secure.c> 
+OPTFFF 11,287,5,0,0,0,0,0,<.\User\RTD Series\RTD2014Osd\Header\spi_secure.h><spi_secure.h> 
+OPTFFF 11,288,5,0,0,0,0,0,<.\User\RTD Series\RTD2014Osd\Header\RTD2014Include.h><RTD2014Include.h> 
+OPTFFF 11,289,5,0,0,0,0,0,<.\User\RTD Series\RTD2014Osd\Header\RTD2014TimerInclude.h><RTD2014TimerInclude.h> 
+OPTFFF 11,290,5,0,0,0,0,0,<.\User\RTD Series\RTD2014Osd\Header\RTD2014TimerEventIDUser.h><RTD2014TimerEventIDUser.h> 
+OPTFFF 11,291,5,0,0,0,0,0,<.\User\RTD Series\RTD2014Osd\Header\RTD2014Project.h><RTD2014Project.h> 
+OPTFFF 11,292,5,0,0,0,0,0,<.\User\RTD Series\RTD2014Osd\Header\RTD2014NVRamOsd.h><RTD2014NVRamOsd.h> 
+OPTFFF 11,293,1,83886080,0,0,0,0,<.\User\RTD Series\RTD2014Osd\Code\RTD2014NVRamOsd.c><RTD2014NVRamOsd.c> 
+OPTFFF 11,294,1,0,0,0,0,0,<.\User\RTD Series\RTD2014Osd\Code\RTD2014Ddcci.c><RTD2014Ddcci.c> 
+OPTFFF 11,295,1,0,0,0,0,0,<.\User\RTD Series\RTD2014Osd\Code\RTD2014Key.c><RTD2014Key.c> 
+OPTFFF 11,296,1,0,0,0,0,0,<.\User\RTD Series\RTD2014Osd\Code\RTD2014Osd.c><RTD2014Osd.c> 
+OPTFFF 11,297,1,0,0,0,0,0,<.\User\RTD Series\RTD2014Osd\Code\RTD2014OsdDisplay.c><RTD2014OsdDisplay.c> 
+OPTFFF 11,298,1,0,0,0,0,0,<.\User\RTD Series\RTD2014Osd\Code\RTD2014OsdFontProp.c><RTD2014OsdFontProp.c> 
+OPTFFF 11,299,1,0,0,0,0,0,<.\User\RTD Series\RTD2014Osd\Code\RTD2014OsdFontTable.c><RTD2014OsdFontTable.c> 
+OPTFFF 11,300,1,0,0,0,0,0,<.\User\RTD Series\RTD2014Osd\Code\RTD2014OsdFontVLC.c><RTD2014OsdFontVLC.c> 
+OPTFFF 11,301,1,0,0,0,0,0,<.\User\RTD Series\RTD2014Osd\Code\RTD2014OsdFunc.c><RTD2014OsdFunc.c> 
+OPTFFF 11,302,1,0,0,0,0,0,<.\User\RTD Series\RTD2014Osd\Code\RTD2014OsdPalette.c><RTD2014OsdPalette.c> 
+OPTFFF 11,303,1,0,0,0,0,0,<.\User\RTD Series\RTD2014Osd\Code\RTD2014OsdWindow.c><RTD2014OsdWindow.c> 
+OPTFFF 11,304,1,0,0,0,0,0,<.\User\RTD Series\RTD2014Osd\Code\RTD2014OsdFontDynamicIcon_1.c><RTD2014OsdFontDynamicIcon_1.c> 
+OPTFFF 11,305,1,0,0,0,0,0,<.\User\RTD Series\RTD2014Osd\Code\RTD2014OsdFontDynamicIcon_2.c><RTD2014OsdFontDynamicIcon_2.c> 
+OPTFFF 11,306,1,1493172224,0,0,0,0,<.\User\RTD Series\RTD2014Osd\Code\uart.c><uart.c> 
+OPTFFF 11,307,5,385875968,0,0,0,0,<.\User\RTD Series\RTD2014Osd\Header\uart.h><uart.h> 
+OPTFFF 11,308,1,301989888,0,0,0,0,<.\User\RTD Series\RTD2014Osd\Code\tiling.c><tiling.c> 
+OPTFFF 11,309,5,486539264,0,0,0,0,<.\User\RTD Series\RTD2014Osd\Header\tiling.h><tiling.h> 
+OPTFFF 12,310,5,0,0,0,0,0,<.\User\RTD Factory\Header\RTDFactoryInclude.h><RTDFactoryInclude.h> 
+OPTFFF 12,311,1,0,0,0,0,0,<.\User\RTD Factory\Code\RTDFactoryFunction.c><RTDFactoryFunction.c> 
+OPTFFF 12,312,1,0,0,0,0,0,<.\User\RTD Factory\Code\RTDFactoryMode.c><RTDFactoryMode.c> 
+
+
+TARGOPT 1, (RL6193_Project)
+ CLK51=33000000
+  OPTTT 0,1,1,0
+  OPTHX 0,65535,0,0,0
+  OPTLX 120,65,8,<.\Output\RL6193\>
+  OPTOX 16
+  OPTLT 1,1,1,0,1,1,0,1,0,0,0,0
+  OPTXL 1,1,1,1,1,1,1,0,0
+  OPTFL 1,0,1
+  OPTAX 0
+  OPTDL (S8051.DLL)()(DCore51.DLL)(-pDW8051)(S8051.DLL)()(TP51.DLL)(-p320)
+  OPTDBG 44029,0,()()()()()()()()()() (BIN\MON51.DLL)()()()
+  OPTBB 0,0,32,1,0,0,0,0,0,0,<spi_secure.c>()()
+  OPTBB 1,0,590,1,0,0,0,0,0,0,<uart.c>()()
+  OPTBB 2,0,564,1,0,0,0,0,0,0,<uart.c>()()
+  OPTBB 3,0,569,1,0,0,0,0,0,0,<uart.c>()()
+  OPTDF 0x0
+  OPTLE <>
+  OPTLC <>
+EndOpt
+
+TARGOPT 2, (RL6410_Project)
+ CLK51=33000000
+  OPTTT 0,1,1,0
+  OPTHX 0,65535,0,0,0
+  OPTLX 120,65,8,<.\Output\RL6410\>
+  OPTOX 16
+  OPTLT 1,1,1,0,1,1,0,1,0,0,0,0
+  OPTXL 1,1,1,1,1,1,1,0,0
+  OPTFL 0,0,0
+  OPTAX 0
+  OPTDL (S8051.DLL)()(DCore51.DLL)(-pDW8051)(S8051.DLL)()(TP51.DLL)(-p320)
+  OPTDBG 44029,0,()()()()()()()()()() (BIN\MON51.DLL)()()()
+  OPTDF 0x0
+  OPTLE <>
+  OPTLC <>
+EndOpt
+
