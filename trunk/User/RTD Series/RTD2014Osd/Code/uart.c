@@ -15,7 +15,6 @@ void s_brightness(char *para) ;
 void s_sharpness(char *para) ;
 void s_backlight(char *para) ;
 void s_reset(char *para) ;
-void s_reset(char *para) ;
 void s_colortemp(char *para) ;
 void s_tiling(char*para);
 void s_aspect(char*para);
@@ -25,6 +24,8 @@ void s_secureboot(char *para);
 void s_pq(char* para);
 void s_gamma(char* para);
 void s_gdata(char*para);
+void s_resetbuffer(char*para);
+void s_checksum(char*para);
 
 void g_colorinfo(char*para);
 // get
@@ -37,6 +38,7 @@ void g_colortemp(char *para) ;
 void g_aspect(char*para);
 void g_paneltime(char*para);
 void g_nvram(char*para);
+void g_crc(char*para);
 
 
 char acRecvBuf[MAX_BUFF_SIZE]={0};
@@ -66,7 +68,10 @@ const struct command commands[] = {
   {"s_secureboot", s_secureboot, "s_secureboot \r\n"},
   {"s_pq", s_pq, "s_pq 0~1\r\n"},
   {"s_gamma", s_gamma, "s_gamma 0~6\r\n"},
-
+  {"s_s", s_resetbuffer, "s_s \r\n"},
+  {"s_crc", s_checksum, "s_crc idx crc  \r\n"},
+  {"s_gdata", s_gdata, "s_gdata \r\n"},
+	  {"g_crc", g_crc, "g_crc \r\n"},
 
   {"g_colorinfo", g_colorinfo, "g_colorinfo : colorspace colorrange colorimetry \r\n"},
    
@@ -169,6 +174,46 @@ void g_aspect(char *para)
   para= NULL;
   u32Para =GET_OSD_ASPECT_RATIO_TYPE(UserAdjustGetSelectRegionPort());
   printf("%d\r\n" , u32Para);  
+
+}
+void s_resetbuffer(char*para)
+{
+   
+   para= NULL;
+   sendOK(); 
+}
+void s_checksum(char*para)
+{
+
+  BYTE idx= para[0]-0x30;
+ // channel = para[1]-0x30; // empty
+  BYTE buf_out = para[2]; // checksum
+
+  	 switch(idx)
+	 {
+	    default:
+        case 0:
+			 UserCommonEepromWrite(GAMMA_MODE1_ADDRESS_START, 1, (BYTE *)(&buf_out));
+		break;
+		case 1:
+			 UserCommonEepromWrite(GAMMA_MODE2_ADDRESS_START, 1, (BYTE *)(&buf_out));
+		break;
+		case 2:
+			 UserCommonEepromWrite(GAMMA_MODE3_ADDRESS_START, 1, (BYTE *)(&buf_out));
+		break;
+		case 3:
+			 UserCommonEepromWrite(GAMMA_MODE4_ADDRESS_START, 1, (BYTE *)(&buf_out));
+		break;
+		case 4:
+			 UserCommonEepromWrite(GAMMA_MODE5_ADDRESS_START, 1, (BYTE *)(&buf_out));
+		break;
+		case 5:
+			 UserCommonEepromWrite(GAMMA_MODE6_ADDRESS_START, 1, (BYTE *)(&buf_out));
+		break;
+	 }
+	 
+  sendOK(); 
+
 
 }
 
@@ -439,6 +484,7 @@ void s_sharpness(char *para)
 
 	 sendERR();
 
+
    }
 }
 void g_backlight(char *para) 
@@ -537,8 +583,9 @@ void s_gamma(char* para)
 	ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
 	UserAdjustGammaRegionEnable(GET_OSD_SYSTEM_SELECT_REGION(), _DB_APPLY_NO_POLLING, _OFF);
 
+   // printf("para = %bd\r\n", u32Para);
     
-    if(u32Para <= _GAMMA_AMOUNT && GET_OSD_GAMMA(GET_OSD_SELECT_REGION()) != _GAMMA_OFF)
+    if(u32Para <= _USER_AMOUNT)
     {
          SET_OSD_GAMMA(GET_OSD_SELECT_REGION(), u32Para);
       //  UserAdjustGamma(GET_OSD_GAMMA(GET_OSD_SELECT_REGION()),u32Para);
@@ -560,23 +607,55 @@ void s_gdata(char*para)
   BYTE idx , i=0;
   BYTE channel;
   BYTE gidx =0 ;
-  BYTE buf_in[40];
+  BYTE buf_in[80];
   //------------------
-  idx= para[0]-0x30;
-  channel = para[1]-0x30;
-  gidx = para[2]-0x30;
- 
+  idx=(BYTE) para[0] -0x30;
+  // para[1]  0x20
+  channel = (BYTE)para[1]-0x30;
+  //para[3]  0x20
+  gidx =(BYTE) para[2]-0x30;
+ //para[5]  0x20
   //---------------------------
-  for(i=0; i<40 ;i++)
+  for(i=0; i<80 ;i++)
   {
-	  buf_in[idx*40+i] = para[3+i];
+	 buf_in[i] = (BYTE)para[3+i];
 
   }
-  // trasmit gdata completely
-  // save gamma data to eeprom directly
- RTDNVRamSaveGammaModeData(idx,  channel ,  gidx , sizeof(buf_in) , buf_in);
 
- sendOK();
+ switch(idx)
+  {
+    default:
+    case 0:
+		 UserCommonEepromWrite(GAMMA_MODE1_ADDRESS + channel * GAMMA_SIZE + gidx*80, 80, (uint8_t *)(&buf_in));		
+	break;
+	
+	 case 1:
+		  UserCommonEepromWrite(GAMMA_MODE2_ADDRESS + channel * GAMMA_SIZE + gidx*80, 80, (uint8_t *)(&buf_in));	
+	break;
+	 case 2:
+		 UserCommonEepromWrite(GAMMA_MODE3_ADDRESS + channel * GAMMA_SIZE + gidx*80, 80, (uint8_t *)(&buf_in));	
+	break;
+	 case 3:
+	 UserCommonEepromWrite(GAMMA_MODE4_ADDRESS + channel * GAMMA_SIZE + gidx*80, 80, (uint8_t *)(&buf_in));	
+	break;
+	 case 4:
+		 UserCommonEepromWrite(GAMMA_MODE5_ADDRESS + channel * GAMMA_SIZE + gidx*80, 80, (uint8_t *)(&buf_in));	
+	break;
+	 case 5:
+	 UserCommonEepromWrite(GAMMA_MODE6_ADDRESS + channel * GAMMA_SIZE + gidx*80, 80, (uint8_t *)(&buf_in));	
+	break;
+	
+  }
+
+  sendOK();
+// printf("%bd" ,idx);
+// printf("%bd" ,channel);
+// printf("%bd" ,gidx);
+
+ //printf("%bd,%bd,%bd \r\n" ,idx, channel , gidx);
+ //  for (i = 0; i < 80; i += 8)
+ // {
+ // }
 
 }
 //void RTDEepromLoadGammaModeData(uint8_t index , uint8_t channel , uint8_t* buf_out)
@@ -587,21 +666,129 @@ void g_nvram(char *para)
    int i;
    BYTE buf[320]; 
 
-  sscanf(para,  "%d" TEST_ARGS_SPLIT "%d" ,&para1, &para2); // format string
+  //sscanf(para,  "%d" TEST_ARGS_SPLIT "%d" ,&para1, &para2); // format string
 
-  printf("%bd %bd\r\n" , para1, para2);  
+  para1=  para[0]-0x30 ;
+  // para[1]  = 0x20
+  para2 = para[2] - 0x30 ;
+  
+  printf("%bd,%bd\r\n",para1,para2);
 
-  UserCommonEepromRead(GAMMA_MODE1_ADDRESS , 32, (uint8_t *)(&buf));
+ switch(para1)
+ {
+   default:
+   case 0:
+	  
+	  UserCommonEepromRead(GAMMA_MODE1_ADDRESS + (para2 * 320), 320, (uint8_t *)(&buf));
+	 
+   break;
+	case 1:
+	   UserCommonEepromRead(GAMMA_MODE2_ADDRESS + (para2 * 320), 320, (uint8_t *)(&buf));
+   break;
+	case 2:
+	   UserCommonEepromRead(GAMMA_MODE3_ADDRESS + (para2 * 320), 320, (uint8_t *)(&buf));
+   break;
+	case 3:
+	   UserCommonEepromRead(GAMMA_MODE4_ADDRESS + (para2 * 320), 320, (uint8_t *)(&buf));
+   break;
+	case 4:
+	   UserCommonEepromRead(GAMMA_MODE5_ADDRESS + (para2 * 320), 320, (uint8_t *)(&buf));
+   break;
+	case 5:
+	   UserCommonEepromRead(GAMMA_MODE6_ADDRESS + (para2 * 320), 320, (uint8_t *)(&buf));
+   break;
 
- //RTDNVRamLoadGammaModeData(para1,para2,buf);
+ }
+   
 
-  for (i = 0; i < 32; i += 8)
+
+
+ for (i = 0; i < 320; i += 8)
   {
- 	printf("%b02x,%b02x,%b02x,%b02x,%b02x,%b02x,%b02x,%b02x \r\n", buf[i], buf[i + 1], buf[i + 2], buf[i + 3], buf[i+4], buf[i + 5], buf[i + 6], buf[i + 7]);
+ 	printf("buffer: %b02x,%b02x,%b02x,%b02x,%b02x,%b02x,%b02x,%b02x \r\n", buf[i], buf[i + 1], buf[i + 2], buf[i + 3], buf[i+4], buf[i + 5], buf[i + 6], buf[i + 7]);
   }
+// printf("---------------------------------------\r\n");
+
+// RTDEepromLoadGammaModeData(para1,para2, (uint8_t *)(&buf));
+
+ // for (i = 0; i < 320; i += 8)
+ // {
+ //	printf("buffer: %b02x,%b02x,%b02x,%b02x,%b02x,%b02x,%b02x,%b02x \r\n", buf[i], buf[i + 1], buf[i + 2], buf[i + 3], buf[i+4], buf[i + 5], buf[i + 6], buf[i + 7]);
+ // }
+#if 0
+
+  printf("------------------------------------- \r\n" , buf[0]);  
+
+// g
+  UserCommonEepromRead(GAMMA_MODE1_ADDRESS+320 , 320, (uint8_t *)(&buf));
+
+//RTDNVRamLoadGammaModeData(para1,para2,buf);
+
+ for (i = 0; i < 320; i += 8)
+ {
+   printf("g: %b02x,%b02x,%b02x,%b02x,%b02x,%b02x,%b02x,%b02x \r\n", buf[i], buf[i + 1], buf[i + 2], buf[i + 3], buf[i+4], buf[i + 5], buf[i + 6], buf[i + 7]);
+ }
+ 
+ printf("------------------------------------- \r\n" , buf[0]);  
+ // b
+  
+   UserCommonEepromRead(GAMMA_MODE1_ADDRESS+320*2 , 320, (uint8_t *)(&buf));
+ 
+ //RTDNVRamLoadGammaModeData(para1,para2,buf);
+ 
+  for (i = 0; i < 320; i += 8)
+  {
+	printf("b: %b02x,%b02x,%b02x,%b02x,%b02x,%b02x,%b02x,%b02x \r\n", buf[i], buf[i + 1], buf[i + 2], buf[i + 3], buf[i+4], buf[i + 5], buf[i + 6], buf[i + 7]);
+  }
+ #endif
 
 }
 
+void g_crc(char *para) 
+{
+#if 0
+  // BYTE para1 ;
+  // BYTE para2 ;
+   int i;
+    BYTE buf=0x20; 
+	para =NULL;
+ // sscanf(para,  "%d" TEST_ARGS_SPLIT "%d" ,&para1, &para2); // format string
+ 
+ // printf("%bd %bd\r\n" , para1, para2); 
+  for (i = 0; i < 128; i ++)
+  	{
+      UserCommonEepromWrite(0x1000+i , 1 ,&buf);
+  	}
+
+  for (i = 0; i < 128; i ++)
+  	{
+  	
+      UserCommonEepromRead(0x1000+i , 1, &buf);
+
+      printf("%b02x\r\n" , buf);
+  	}
+#else
+
+#define CRCSIZE 320 
+
+ // int i;
+   BYTE buf[CRCSIZE]; 
+   para =NULL;
+// sscanf(para,  "%d" TEST_ARGS_SPLIT "%d" ,&para1, &para2); // format string
+
+// printf("%bd %bd\r\n" , para1, para2); 
+    memset(buf ,0x20 , CRCSIZE);
+	UserCommonEepromWrite(GAMMA_MODE1_ADDRESS, CRCSIZE ,&buf);
+  
+ //  memset(buf ,0 , 8);
+ 
+//	UserCommonEepromRead(GAMMA_MODE1_ADDRESS , 8, &buf);
+
+	
+//	printf("%b02x,%b02x,%b02x,%b02x,%b02x,%b02x,%b02x,%b02x \r\n", buf[i], buf[i + 1], buf[i + 2], buf[i + 3], buf[i+4], buf[i + 5], buf[i + 6], buf[i + 7]);
+
+#endif  
+}
 
 void s_help(char *params)
 {

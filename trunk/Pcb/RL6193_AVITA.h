@@ -377,8 +377,8 @@
 //--------------------------------------------------
 // Eeprom System Data Storage Option
 //--------------------------------------------------
-#define _EEPROM_TYPE                            _EEPROM_24LC16
-#define _EEPROM_SLAVE_ADDRESS                   0xA0
+#define _EEPROM_TYPE                           _EEPROM_24WC64//_EEPROM_24LC16
+#define _EEPROM_SLAVE_ADDRESS                  0xA0 //  0xA0
 #define _PCB_SYS_EEPROM_IIC                     _SW_IIC_PIN_GPIO
 
 

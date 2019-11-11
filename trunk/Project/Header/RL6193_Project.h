@@ -36,7 +36,7 @@
 #define _YLI55162  1  // Dual_LG55
 #define _KUI32171 2  //Single_AUO32
 
-#define _MODEL_TYPE _YLI55161///_YLI55161//_YLI55162
+#define _MODEL_TYPE _YLI55162///_YLI55161//_YLI55162
 #define  MODEL_TYPE_NAME  "YLI55161"
 #define  FW_VERSION   "1.36"
 

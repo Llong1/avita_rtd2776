@@ -1802,7 +1802,8 @@ enum
  _DICOM_7300,
  _DICOM_6500,
  _USER_7300,
- _USER_6500
+ _USER_6500,
+ _USER_AMOUNT = _USER_6500,
 
 };
 #endif

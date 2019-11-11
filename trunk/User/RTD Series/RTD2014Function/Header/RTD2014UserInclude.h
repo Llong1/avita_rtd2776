@@ -58,9 +58,6 @@ extern BYTE code tFLASH_PARTITION_BOOTTABLE[];
 
 extern code void (*OperationTable[])(void);
 
-#if 1 // alant---
-//extern BYTE pgamma[2052] ;
-#endif
 //****************************************************************************
 // STRUCT / TYPE / ENUM DEFINITTIONS
 //****************************************************************************
@@ -429,8 +426,6 @@ extern EnumSourceSearchPort UserInterfaceGetInputPort2(void);
 extern EnumSourceSearchPort UserInterfaceGetInputPort3(void);
 #endif
 
-
-
 //-------------------------------------------------------
 // User Information
 //-------------------------------------------------------
@@ -619,4 +614,5 @@ extern void UserAdjustFREESYNCODMeasure(void);
 
 extern void RTDFactoryBurnInPattern(void); // alant debug
 //extern void UserAdjustUSBPower(BYTE mode); // alant debug
+extern BYTE calucalte_checksum(BYTE buf[] , int len);
 

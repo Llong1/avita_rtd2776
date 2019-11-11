@@ -20,7 +20,7 @@
 #define __RTD_NVRAM_OSD__
 
 #include "UserCommonInclude.h"
-
+#include <stdio.h>
 #if(_OSD_TYPE == _REALTEK_2014_OSD)
 
 //--------------------------------------------------
@@ -630,9 +630,6 @@ StructOsdInputPortDataType g_pstOsdInputPortData[9];
 StructOsdRegionDataType g_pstOsdRegionData[2];
 StructOsdDisplayModeDataType g_stOsdDisplayModeData;
 
-#if 0 // alant
-StructGammaDataType g_stGammaModeData;//[GAMMA_AMOUNT];
-#endif
 
 #if(_SYSTEM_EEPROM_EMULATION_SUPPORT == _ON)
 DWORD g_ulFlashMoveCount;
@@ -727,28 +724,33 @@ BYTE RTDNVRamTransferOsdRegionIndex(BYTE ucDisplayMode, BYTE ucRegion);
 #if(_SYSTEM_EEPROM_EMULATION_SUPPORT == _OFF)
 //----------------------------------------------------------------------------
 // alant add
-void RTDEepromLoadGammaModeData(uint8_t index , uint8_t channel , uint8_t* buf_out)
+void RTDEepromLoadGammaModeData(uint8_t index , uint8_t channel , uint8_t *buf_out)
 {
+// int i=0;
+// BYTE buf ;
   switch(index)
   {
     default:
     case 0:
-		UserCommonEepromRead(GAMMA_MODE1_ADDRESS + channel * GAMMA_SIZE, GAMMA_SIZE, (uint8_t *)(&buf_out));
+		//for(i=0 ; i< 320 ;i++) {
+		  UserCommonEepromRead(GAMMA_MODE1_ADDRESS + (channel * 320), 320, (uint8_t *)(&buf_out));
+        //  buf_out[i] = buf;
+		//}
 	break;
 	 case 1:
-		UserCommonEepromRead(GAMMA_MODE2_ADDRESS + channel * GAMMA_SIZE, GAMMA_SIZE, (uint8_t *)(&buf_out));
+		UserCommonEepromRead(GAMMA_MODE2_ADDRESS + (channel * 320), 320, (uint8_t *)(&buf_out));
 	break;
 	 case 2:
-		UserCommonEepromRead(GAMMA_MODE3_ADDRESS + channel * GAMMA_SIZE, GAMMA_SIZE, (uint8_t *)(&buf_out));
+		UserCommonEepromRead(GAMMA_MODE3_ADDRESS + (channel * 320), 320, (uint8_t *)(&buf_out));
 	break;
 	 case 3:
-		UserCommonEepromRead(GAMMA_MODE4_ADDRESS + channel * GAMMA_SIZE, GAMMA_SIZE, (uint8_t *)(&buf_out));
+		UserCommonEepromRead(GAMMA_MODE4_ADDRESS + (channel * 320), 320, (uint8_t *)(&buf_out));
 	break;
 	 case 4:
-		UserCommonEepromRead(GAMMA_MODE5_ADDRESS + channel * GAMMA_SIZE, GAMMA_SIZE, (uint8_t *)(&buf_out));
+		UserCommonEepromRead(GAMMA_MODE5_ADDRESS + (channel * 320), 320, (uint8_t *)(&buf_out));
 	break;
 	 case 5:
-		UserCommonEepromRead(GAMMA_MODE6_ADDRESS + channel * GAMMA_SIZE, GAMMA_SIZE, (uint8_t *)(&buf_out));
+		UserCommonEepromRead(GAMMA_MODE6_ADDRESS + (channel * 320), 320, (uint8_t *)(&buf_out));
 	break;
 
   }
@@ -762,11 +764,16 @@ void RTDEepromLoadGammaModeData(uint8_t index , uint8_t channel , uint8_t* buf_o
 //--------------------------------------------------
 void RTDEepromSaveGammaModeData(uint8_t index, uint8_t channel , int idx ,int size , uint8_t *buf_in)
 {
+ // int i =0;
+
   switch(index)
   {
     default:
     case 0:
+		//for(i=0 ; i< size ;i++)
+		{
 		 UserCommonEepromWrite(GAMMA_MODE1_ADDRESS + channel * GAMMA_SIZE + (idx*size), size, (uint8_t *)(&buf_in));
+		}
 	break;
 	
 	 case 1:
@@ -797,21 +804,22 @@ void RTDEepromSaveGammaModeData(uint8_t index, uint8_t channel , int idx ,int si
 //--------------------------------------------------
 void RTDEepromStartup(void)
 {
+#if 1
     BYTE ucCnt = 0;
 
     // Check twice if VERSION CODE matches
     for(ucCnt = 0; ucCnt < 2; ucCnt++)
     {
-        pData[0] = _CHECKSUM ^ 0xFF;
-        pData[1] = _VERSION_CODE ^ 0xFF;
+        pData[0] = _CHECKSUM ^ 0xFF; //0x11
+        pData[1] = _VERSION_CODE ^ 0xFF; //
         UserCommonEepromRead(_EEPROM_CHECKSUM_ADDRESS, 2, pData);
-
+//printf("%bx,%bx \r\n",pData[0],pData[1]);
         if((pData[0] == _CHECKSUM) && (pData[1] == _VERSION_CODE))
         {
             break;
         }
     }
-
+#endif
 /////////////////////////////////////////////
     // Force default value
 //    pData[0] = ~_CHECKSUM;
@@ -838,6 +846,9 @@ void RTDEepromStartup(void)
     //else
 	if(pData[1] != _VERSION_CODE)
     {
+     pData[1] = _VERSION_CODE;
+        UserCommonEepromWrite(_EEPROM_VERSION_CODE_ADDRESS, 1, &pData[1]);
+	 
         g_stColorProcData = tColorTempDefaultData[_CT_USER];
         RTDEepromSaveColorSetting(_CT_USER);
   

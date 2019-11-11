@@ -36,7 +36,6 @@
 #define _OSD_REGION_ADDRESS                             (_OSD_PORT_ADDRESS_END + 1)
 #define _OSD_REGION_ADDRESS_END                         (_OSD_REGION_ADDRESS + (sizeof(StructOsdRegionDataType) * _REGION_AMOUNT) - 1)
 
-
 #define _OSD_DISPLAY_MODE_ADDRESS                       (_OSD_REGION_ADDRESS_END + 1)
 #define _OSD_DISPLAY_MODE_ADDRESS_EMD                   (_OSD_DISPLAY_MODE_ADDRESS + (sizeof(StructOsdDisplayModeDataType) * _OSD_DM_AMOUNT) - 1)
 
@@ -48,7 +47,7 @@
 
 
 // mode1
-#define GAMMA_MODE1_ADDRESS_START _OSD_DISPLAY_MODE_ADDRESS_EMD + 1 // checksum
+#define GAMMA_MODE1_ADDRESS_START 0x1000 + 1 // checksum
 #define GAMMA_MODE1_ADDRESS GAMMA_MODE1_ADDRESS_START + GAMMA_SIZE*3 
 #define GAMMA_MODE1_ADDRESS_END GAMMA_MODE1_ADDRESS + 1
 //mode2
@@ -219,10 +218,7 @@ extern StructOsdInputPortDataType g_pstOsdInputPortData[9];
 extern StructOsdRegionDataType g_pstOsdRegionData[2];
 extern StructOsdDisplayModeDataType g_stOsdDisplayModeData;
 
-#if 0// alant
-extern StructGammaDataType g_stGammaModeData;//[GAMMA_AMOUNT];
 
-#endif
 //    extern StructBriConDataType g_stBriConData;
 
 //    extern code StructColorProcDataType tColorTempDefaultData[];

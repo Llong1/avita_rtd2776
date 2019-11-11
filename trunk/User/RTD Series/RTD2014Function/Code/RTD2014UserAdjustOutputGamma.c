@@ -21,6 +21,7 @@
 
 #include "UserCommonInclude.h"
 #include "ScalerColorLibInternalInclude.h"
+#include <stdio.h>
 
 #if((_OSD_TYPE == _REALTEK_2014_OSD) && (_GAMMA_FUNCTION == _ON))
 
@@ -71,8 +72,6 @@ WORD code tGAMMA_OSD_INDEX[] =
 #if(_GAMMA_FUNCTION == _ON)
 void UserAdjustGamma(EnumSelRegion enumSelRegion, BYTE ucGamma);
 void UserAdjustGammaRegionEnable(EnumSelRegion enumSelRegion, EnumDBApply enumDBApply, bit bOn);
-//void NewScalerColorOutputGammaAdjust(EnumSelRegion enumSelRegion,BYTE *pucGammaTableArray, BYTE ucBankNum);
-
 #endif
 //-------------------------------------------------------
 // PCM
@@ -186,27 +185,47 @@ BYTE calucalte_checksum(BYTE buf[] , int len)
  {
    crc+=buf[i];
  }
- 
+ printf("crc = %b02x \r\n", crc);
  return crc ;
 
 }
 
 
-bit check_checksum(void)
+bit check_checksum(BYTE ucGamma, BYTE pucGammaTableArray[320])
 {
-
-#define CRC_SIZE 8
 
 	  bit ret = _FALSE;
 	  BYTE buf_out ;
-	  BYTE crc[CRC_SIZE] ;
+	//  BYTE crc;
+#if 1
+	 switch(ucGamma)
+	 {
+	    default:
+        case 0:
+			 UserCommonEepromRead(GAMMA_MODE1_ADDRESS_START, 1, (BYTE *)(&buf_out));
+		break;
+		case 1:
+			 UserCommonEepromRead(GAMMA_MODE2_ADDRESS_START, 1, (BYTE *)(&buf_out));
+		break;
+		case 2:
+			 UserCommonEepromRead(GAMMA_MODE3_ADDRESS_START, 1, (BYTE *)(&buf_out));
+		break;
+		case 3:
+			 UserCommonEepromRead(GAMMA_MODE4_ADDRESS_START, 1, (BYTE *)(&buf_out));
+		break;
+		case 4:
+			 UserCommonEepromRead(GAMMA_MODE5_ADDRESS_START, 1, (BYTE *)(&buf_out));
+		break;
+		case 5:
+			 UserCommonEepromRead(GAMMA_MODE6_ADDRESS_START, 1, (BYTE *)(&buf_out));
+		break;
+	 }
 	
-	  UserCommonEepromRead(GAMMA_MODE1_ADDRESS_START, 1, (BYTE *)(&buf_out));
-	  UserCommonEepromRead(GAMMA_MODE1_ADDRESS, 8, (BYTE *)(&crc));
-     if(buf_out == calucalte_checksum(crc, CRC_SIZE))
+     if(buf_out == calucalte_checksum(pucGammaTableArray, sizeof(pucGammaTableArray)))
 	 	ret= _TRUE;
-     
-	
+
+	  printf("buf_out = %b02x \r\n", buf_out);
+#endif	 
 	  return ret ;
 }
 
@@ -215,12 +234,13 @@ bit check_checksum(void)
 
 
 #endif
+
 void NewScalerColorOutputGammaAdjust(EnumSelRegion enumSelRegion, BYTE ucGamma, BYTE ucBankNum)
 {
 	
 	BYTE pucGammaTableArray[320] ;
 	BYTE  pgamma[2052] ;
-
+    int i =0;
 	WORD usPage = ScalerRegionGetRegisterPage(_REG_DDOMAIN_AFTER_BLENDING, enumSelRegion);
 	
 
@@ -235,8 +255,47 @@ void NewScalerColorOutputGammaAdjust(EnumSelRegion enumSelRegion, BYTE ucGamma, 
         //----------------------------
         memset(pucGammaTableArray ,0 , sizeof(pucGammaTableArray));
         memset(pgamma ,0 , sizeof(pgamma));
+	    
+
+  switch(ucGamma)
+ 
+ {
+  default:
+  case 0:
+	 
+	 UserCommonEepromRead(GAMMA_MODE1_ADDRESS + (0 * 320), 320, (uint8_t *)(&pucGammaTableArray));
 	
-        RTDEepromLoadGammaModeData(ucGamma , _GAMMA_RED_CHANNEL ,pucGammaTableArray );
+  break;
+   case 1:
+	  UserCommonEepromRead(GAMMA_MODE2_ADDRESS + (0 * 320), 320, (uint8_t *)(&pucGammaTableArray));
+  break;
+   case 2:
+	  UserCommonEepromRead(GAMMA_MODE3_ADDRESS + (0 * 320), 320, (uint8_t *)(&pucGammaTableArray));
+  break;
+   case 3:
+	  UserCommonEepromRead(GAMMA_MODE4_ADDRESS + (0 * 320), 320, (uint8_t *)(&pucGammaTableArray));
+  break;
+   case 4:
+	  UserCommonEepromRead(GAMMA_MODE5_ADDRESS + (0 * 320), 320, (uint8_t *)(&pucGammaTableArray));
+  break;
+   case 5:
+	  UserCommonEepromRead(GAMMA_MODE6_ADDRESS + (0 * 320), 320, (uint8_t *)(&pucGammaTableArray));
+  break;
+
+}
+       for (i = 0; i < 320; i += 8)
+      {
+     	printf("buffer: %b02x,%b02x,%b02x,%b02x,%b02x,%b02x,%b02x,%b02x \r\n", pucGammaTableArray[i], pucGammaTableArray[i + 1], pucGammaTableArray[i + 2],
+		pucGammaTableArray[i + 3], pucGammaTableArray[i+4], pucGammaTableArray[i + 5], pucGammaTableArray[i + 6], pucGammaTableArray[i + 7]);
+      }
+
+		if(!check_checksum(ucGamma,pucGammaTableArray)) // checksum fail
+		{
+		    //printf("crc fail\r\n");
+			ScalerColorOutputGammaAdjust(enumSelRegion, tGAMMA_TABLE[ucGamma - 1], GET_CURRENT_BANK_NUMBER());
+			return;
+		}
+		// printf("crc pass\r\n");
 	    uncompress(pucGammaTableArray, pgamma);
 
 		ScalerColorOutputGammaChannelCtrl(usPage,_GAMMA_RED_CHANNEL, 0x0000, _GAMMA_WRITE_TO_SRAM);
@@ -296,7 +355,6 @@ void UserAdjustGamma(EnumSelRegion enumSelRegion, BYTE ucGamma)
   
     EnumSelRegion enumGammaSelRegion = enumSelRegion;
 
-   
 
 #if((_PCM_FUNCTION == _ON) && (_PCM_TABLE_TYPE == _PCM_GEN_0))
     enumGammaSelRegion = ScalerColorPCMCheckPCMRegion(enumSelRegion);
@@ -314,18 +372,15 @@ void UserAdjustGamma(EnumSelRegion enumSelRegion, BYTE ucGamma)
 
 #else
 
-#if 1  // alant test
+#if 1 // alant test
 
-    	if(check_checksum())// && secure_boot(0))
+      // printf("UserAdjustGamma ....\r\n");
        NewScalerColorOutputGammaAdjust(enumGammaSelRegion, ucGamma-1, GET_CURRENT_BANK_NUMBER());
-      else
-      	
-	  ScalerColorOutputGammaAdjust(enumGammaSelRegion, tGAMMA_TABLE[ucGamma - 1], GET_CURRENT_BANK_NUMBER());
+    
 #else
         ScalerColorOutputGammaAdjust(enumGammaSelRegion, tGAMMA_TABLE[ucGamma - 1], GET_CURRENT_BANK_NUMBER());
-
 #endif
-#if 0//#if(_RGB_GAMMA_FUNCTION == _ON)
+#if(_RGB_GAMMA_FUNCTION == _ON)
         UserAdjustRGBGamma(enumGammaSelRegion, ucGamma);
 #endif
 
