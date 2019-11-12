@@ -315,7 +315,7 @@ code StructOsdRegionDataType tOsdRegionDataDefault[_REGION_AMOUNT] =
 #else
         _CT_7500,
 #endif        
-       _GAMMA_22,// _GAMMA_OFF,                             // BYTE b3Gamma : 3;
+       _GAMMA_18,// _GAMMA_OFF,                             // BYTE b3Gamma : 3;
         _PCM_OSD_NATIVE,                        // BYTE b3PCMStatus : 3;
         _OFF,                                   // BYTE b1PanelUniformity : 1;
         _ULTRA_VIVID_OFF,                       // BYTE b2UltraVividStatus : 2;
@@ -671,6 +671,8 @@ void RTDEepromSaveOsdDisplayModeData(BYTE ucDisplayMode);
 void RTDEepromRestoreOsdDisplayModeData(void);
 void RTDEepromLoadGammaModeData(uint8_t index , uint8_t channel , uint8_t* buf_out);
 void RTDEepromSaveGammaModeData(uint8_t index, uint8_t channel , int idx ,int size , uint8_t *buf_in);
+void RTDEepromLoadGammaCRC(uint8_t index ,uint8_t* buf_out);
+void RTDEepromSaveGammaCRC(uint8_t index, uint8_t *buf_in);
 
 #else // Else of #if(_SYSTEM_EEPROM_EMULATION_SUPPORT == _OFF)
 
@@ -724,36 +726,91 @@ BYTE RTDNVRamTransferOsdRegionIndex(BYTE ucDisplayMode, BYTE ucRegion);
 #if(_SYSTEM_EEPROM_EMULATION_SUPPORT == _OFF)
 //----------------------------------------------------------------------------
 // alant add
+void RTDEepromLoadGammaCRC(uint8_t idx, uint8_t* buf_out)
+{
+
+	switch(idx)
+	{
+	   default:
+	   case 0:
+			UserCommonEepromRead(GAMMA_MODE1_ADDRESS_START, 1, buf_out);
+	   break;
+	   case 1:
+			UserCommonEepromRead(GAMMA_MODE2_ADDRESS_START, 1, buf_out);
+	   break;
+	   case 2:
+			UserCommonEepromRead(GAMMA_MODE3_ADDRESS_START, 1, buf_out);
+	   break;
+	   case 3:
+			UserCommonEepromRead(GAMMA_MODE4_ADDRESS_START, 1, buf_out);
+	   break;
+	   case 4:
+			UserCommonEepromRead(GAMMA_MODE5_ADDRESS_START, 1, buf_out);
+	   break;
+	   case 5:
+			UserCommonEepromRead(GAMMA_MODE6_ADDRESS_START, 1, buf_out);
+	   break;
+	}	
+
+}
+void RTDEepromSaveGammaCRC(uint8_t idx, uint8_t *buf_in)
+{
+
+switch(idx)
+{
+   default:
+   case 0:
+		UserCommonEepromWrite(GAMMA_MODE1_ADDRESS_START, 1, buf_in);
+   break;
+   case 1:
+		UserCommonEepromWrite(GAMMA_MODE2_ADDRESS_START, 1, buf_in);
+   break;
+   case 2:
+		UserCommonEepromWrite(GAMMA_MODE3_ADDRESS_START, 1, buf_in);
+   break;
+   case 3:
+		UserCommonEepromWrite(GAMMA_MODE4_ADDRESS_START, 1, buf_in);
+   break;
+   case 4:
+		UserCommonEepromWrite(GAMMA_MODE5_ADDRESS_START, 1, buf_in);
+   break;
+   case 5:
+		UserCommonEepromWrite(GAMMA_MODE6_ADDRESS_START, 1, buf_in);
+   break;
+}
+
+
+}
+
 void RTDEepromLoadGammaModeData(uint8_t index , uint8_t channel , uint8_t *buf_out)
 {
-// int i=0;
-// BYTE buf ;
-  switch(index)
-  {
-    default:
-    case 0:
-		//for(i=0 ; i< 320 ;i++) {
-		  UserCommonEepromRead(GAMMA_MODE1_ADDRESS + (channel * 320), 320, (uint8_t *)(&buf_out));
-        //  buf_out[i] = buf;
-		//}
-	break;
-	 case 1:
-		UserCommonEepromRead(GAMMA_MODE2_ADDRESS + (channel * 320), 320, (uint8_t *)(&buf_out));
-	break;
-	 case 2:
-		UserCommonEepromRead(GAMMA_MODE3_ADDRESS + (channel * 320), 320, (uint8_t *)(&buf_out));
-	break;
-	 case 3:
-		UserCommonEepromRead(GAMMA_MODE4_ADDRESS + (channel * 320), 320, (uint8_t *)(&buf_out));
-	break;
-	 case 4:
-		UserCommonEepromRead(GAMMA_MODE5_ADDRESS + (channel * 320), 320, (uint8_t *)(&buf_out));
-	break;
-	 case 5:
-		UserCommonEepromRead(GAMMA_MODE6_ADDRESS + (channel * 320), 320, (uint8_t *)(&buf_out));
-	break;
+	int ret = channel * GAMMA_SIZE ;
+	
 
-  }
+	switch(index)
+	 {
+	   default:
+	   case 0:
+		   UserCommonEepromRead(GAMMA_MODE1_ADDRESS + ret, GAMMA_SIZE, buf_out);
+	   break;
+		case 1:
+		   UserCommonEepromRead(GAMMA_MODE2_ADDRESS + ret, GAMMA_SIZE, buf_out);
+	   break;
+		case 2:
+		   UserCommonEepromRead(GAMMA_MODE3_ADDRESS + ret, GAMMA_SIZE, buf_out);
+	   break;
+		case 3:
+		   UserCommonEepromRead(GAMMA_MODE4_ADDRESS + ret, GAMMA_SIZE, buf_out);
+	   break;
+		case 4:
+		   UserCommonEepromRead(GAMMA_MODE5_ADDRESS + ret, GAMMA_SIZE, buf_out);
+	   break;
+		case 5:
+		   UserCommonEepromRead(GAMMA_MODE6_ADDRESS + ret, GAMMA_SIZE, buf_out);
+	   break;
+	
+	 }
+
     
 }
 
@@ -764,36 +821,35 @@ void RTDEepromLoadGammaModeData(uint8_t index , uint8_t channel , uint8_t *buf_o
 //--------------------------------------------------
 void RTDEepromSaveGammaModeData(uint8_t index, uint8_t channel , int idx ,int size , uint8_t *buf_in)
 {
- // int i =0;
+  int ret = (channel * GAMMA_SIZE)+ idx*size ;
+  
 
-  switch(index)
-  {
-    default:
-    case 0:
-		//for(i=0 ; i< size ;i++)
-		{
-		 UserCommonEepromWrite(GAMMA_MODE1_ADDRESS + channel * GAMMA_SIZE + (idx*size), size, (uint8_t *)(&buf_in));
-		}
-	break;
-	
-	 case 1:
-		 UserCommonEepromWrite(GAMMA_MODE2_ADDRESS + channel * GAMMA_SIZE+ (idx*size), size, (uint8_t *)(&buf_in));
-	break;
-	 case 2:
-		 UserCommonEepromWrite(GAMMA_MODE3_ADDRESS + channel * GAMMA_SIZE+ (idx*size), size, (uint8_t *)(&buf_in));
-	break;
-	 case 3:
-		 UserCommonEepromWrite(GAMMA_MODE4_ADDRESS + channel * GAMMA_SIZE+ (idx*size), size, (uint8_t *)(&buf_in));
-	break;
-	 case 4:
-		 UserCommonEepromWrite(GAMMA_MODE5_ADDRESS + channel * GAMMA_SIZE+ (idx*size), size, (uint8_t *)(&buf_in));
-	break;
-	 case 5:
-		 UserCommonEepromWrite(GAMMA_MODE6_ADDRESS + channel * GAMMA_SIZE+ (idx*size), size, (uint8_t *)(&buf_in));
-	break;
-	
-  }
-   
+	switch(index)
+	{
+	  default:
+	  case 0:
+		   UserCommonEepromWrite(GAMMA_MODE1_ADDRESS +ret, size, buf_in);
+	  break;
+	  
+	   case 1:
+		   UserCommonEepromWrite(GAMMA_MODE2_ADDRESS + ret, size, buf_in);
+	  break;
+	   case 2:
+		   UserCommonEepromWrite(GAMMA_MODE3_ADDRESS +  ret, size, buf_in);
+	  break;
+	   case 3:
+		   UserCommonEepromWrite(GAMMA_MODE4_ADDRESS +  ret, size, buf_in);
+	  break;
+	   case 4:
+		   UserCommonEepromWrite(GAMMA_MODE5_ADDRESS +  ret, size, buf_in);
+	  break;
+	   case 5:
+		   UserCommonEepromWrite(GAMMA_MODE6_ADDRESS + ret, size, buf_in);
+	  break;
+	  
+	}
+	 
+
 }
 
 
@@ -804,7 +860,7 @@ void RTDEepromSaveGammaModeData(uint8_t index, uint8_t channel , int idx ,int si
 //--------------------------------------------------
 void RTDEepromStartup(void)
 {
-#if 1
+#if 0
     BYTE ucCnt = 0;
 
     // Check twice if VERSION CODE matches

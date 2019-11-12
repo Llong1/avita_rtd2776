@@ -44,38 +44,38 @@
 
 #define GAMMA_AMOUNT 6
 #define GAMMA_SIZE 320 //2052
-
+#define RESERVED_BYTE 8
 
 // mode1
-#define GAMMA_MODE1_ADDRESS_START 0x1000 + 1 // checksum
+#define GAMMA_MODE1_ADDRESS_START 0x1000 + RESERVED_BYTE// checksum - reserved 
 #define GAMMA_MODE1_ADDRESS GAMMA_MODE1_ADDRESS_START + GAMMA_SIZE*3 
-#define GAMMA_MODE1_ADDRESS_END GAMMA_MODE1_ADDRESS + 1
+#define GAMMA_MODE1_ADDRESS_END GAMMA_MODE1_ADDRESS 
 //mode2
-#define GAMMA_MODE2_ADDRESS_START GAMMA_MODE1_ADDRESS_END + 1 // checksum
+#define GAMMA_MODE2_ADDRESS_START GAMMA_MODE1_ADDRESS_END +RESERVED_BYTE // checksum
 #define GAMMA_MODE2_ADDRESS GAMMA_MODE2_ADDRESS_START + GAMMA_SIZE*3 
-#define GAMMA_MODE2_ADDRESS_END GAMMA_MODE2_ADDRESS + 1
+#define GAMMA_MODE2_ADDRESS_END GAMMA_MODE2_ADDRESS 
 
 
 //mode3
-#define GAMMA_MODE3_ADDRESS_START GAMMA_MODE2_ADDRESS_END + 1 // checksum 
+#define GAMMA_MODE3_ADDRESS_START GAMMA_MODE2_ADDRESS_END +RESERVED_BYTE // checksum 
 #define GAMMA_MODE3_ADDRESS GAMMA_MODE3_ADDRESS_START + GAMMA_SIZE*3
-#define GAMMA_MODE3_ADDRESS_END GAMMA_MODE3_ADDRESS + 1
+#define GAMMA_MODE3_ADDRESS_END GAMMA_MODE3_ADDRESS 
 
 // mode4
-#define GAMMA_MODE4_ADDRESS_START GAMMA_MODE3_ADDRESS_END + 1 // checksum
+#define GAMMA_MODE4_ADDRESS_START GAMMA_MODE3_ADDRESS_END + RESERVED_BYTE // checksum
 #define GAMMA_MODE4_ADDRESS GAMMA_MODE4_ADDRESS_START + GAMMA_SIZE*3
-#define GAMMA_MODE4_ADDRESS_END GAMMA_MODE4_ADDRESS + 1
+#define GAMMA_MODE4_ADDRESS_END GAMMA_MODE4_ADDRESS 
 
 
 // mode5
-#define GAMMA_MODE5_ADDRESS_START GAMMA_MODE4_ADDRESS_END + 1 // checksum
+#define GAMMA_MODE5_ADDRESS_START GAMMA_MODE4_ADDRESS_END + RESERVED_BYTE // checksum
 #define GAMMA_MODE5_ADDRESS GAMMA_MODE5_ADDRESS_START + GAMMA_SIZE*3
-#define GAMMA_MODE5_ADDRESS_END GAMMA_MODE5_ADDRESS + 1
+#define GAMMA_MODE5_ADDRESS_END GAMMA_MODE5_ADDRESS 
 
 // mode6
-#define GAMMA_MODE6_ADDRESS_START GAMMA_MODE5_ADDRESS_END + 1 // checksum
+#define GAMMA_MODE6_ADDRESS_START GAMMA_MODE5_ADDRESS_END + RESERVED_BYTE // checksum
 #define GAMMA_MODE6_ADDRESS GAMMA_MODE6_ADDRESS_START + GAMMA_SIZE*3
-#define GAMMA_MODE6_ADDRESS_END GAMMA_MODE6_ADDRESS + 1
+#define GAMMA_MODE6_ADDRESS_END GAMMA_MODE6_ADDRESS 
 
 //---------------------------------------------------------------------------------------------------------------------------------------
 
@@ -258,6 +258,9 @@ extern void RTDEepromRestoreOsdDisplayModeData(void);
 
 extern void RTDEepromLoadGammaModeData(uint8_t index , uint8_t channel , uint8_t* buf_out);
 extern void RTDEepromSaveGammaModeData(uint8_t index, uint8_t channel , int idx ,int size , uint8_t *buf_in);
+
+extern void RTDEepromLoadGammaCRC(uint8_t index ,uint8_t* buf_out);
+extern void RTDEepromSaveGammaCRC(uint8_t index, uint8_t *buf_in);
 
 //extern void RTDEepromRestoreSixColorData(void);
 //extern void RTDEepromSavePanelUsedTimeData(void);
