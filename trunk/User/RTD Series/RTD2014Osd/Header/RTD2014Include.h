@@ -1794,7 +1794,7 @@ typedef enum
     _PCM_SOFT_MODE_AMOUNT = _PCM_SOFT_MODE_2,
 }EnumPCMSoftProftMode;
 
-#if 1// alant add
+#if 0// alant add
 enum
 {
  _GAMMA22_7300=1,
@@ -1817,6 +1817,8 @@ typedef enum
     _GAMMA_20,
     _GAMMA_22,
     _GAMMA_24,
+    _USER_7300,
+    _USER_6500,
     _GAMMA_AMOUNT = _GAMMA_24,
 }EnumGammaType;
 

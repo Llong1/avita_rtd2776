@@ -579,7 +579,7 @@ void s_gamma(char* para)
 
      SET_OSD_GAMMA(GET_OSD_SELECT_REGION(), u32Para);
     
-    if(u32Para <= _USER_AMOUNT)
+    if(u32Para <= _GAMMA_AMOUNT)
     {
         // SET_OSD_GAMMA(GET_OSD_SELECT_REGION(), u32Para);
       //  UserAdjustGamma(GET_OSD_GAMMA(GET_OSD_SELECT_REGION()),u32Para);
@@ -618,37 +618,10 @@ void s_gdata(char*para)
 	 buf_in[i] = (BYTE)para[3+i];
 
   }
-#if 1
 
    RTDEepromSaveGammaModeData(idx,channel, gidx , 80 , buf_in);
 
-#else
- switch(idx)
-  {
-    default:
-    case 0:
-		 UserCommonEepromWrite(GAMMA_MODE1_ADDRESS + channel * 320 + gidx*80, 80, (uint8_t *)(&buf_in));		
-	break;
-	
-	 case 1:
-		  UserCommonEepromWrite(GAMMA_MODE2_ADDRESS + channel * 320 + gidx*80, 80, (uint8_t *)(&buf_in));	
-	break;
-	 case 2:
-		 UserCommonEepromWrite(GAMMA_MODE3_ADDRESS + channel * 320 + gidx*80, 80, (uint8_t *)(&buf_in));	
-	break;
-	 case 3:
-	 UserCommonEepromWrite(GAMMA_MODE4_ADDRESS + channel * 320 + gidx*80, 80, (uint8_t *)(&buf_in));	
-	break;
-	 case 4:
-		 UserCommonEepromWrite(GAMMA_MODE5_ADDRESS + channel * 320 + gidx*80, 80, (uint8_t *)(&buf_in));	
-	break;
-	 case 5:
-	 UserCommonEepromWrite(GAMMA_MODE6_ADDRESS + channel * 320 + gidx*80, 80, (uint8_t *)(&buf_in));	
-	break;
-	
-  }
 
-#endif  
   sendOK();
 
 

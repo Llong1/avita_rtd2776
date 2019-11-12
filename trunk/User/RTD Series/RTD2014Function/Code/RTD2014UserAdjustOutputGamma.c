@@ -184,7 +184,7 @@ bit check_checksum(BYTE idx)
 	
   	RTDEepromLoadGammaCRC(idx, &buf_out);
 
-  if(buf_out==0xAA) ret  = _TRUE;
+  if(buf_out== 0xAA) ret  = _TRUE;
 	 
 	return ret ;
 

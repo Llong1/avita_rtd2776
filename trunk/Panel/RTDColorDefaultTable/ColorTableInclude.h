@@ -389,6 +389,8 @@ code BYTE *tGAMMA_TABLE[] =
     tLUTGAMMA_20_TABLE,
     tLUTGAMMA_22_TABLE,
     tLUTGAMMA_24_TABLE,
+	tLUTGAMMA_22_TABLE, // user 7300
+    tLUTGAMMA_24_TABLE, // user 6500
 };
 #endif // End of #if(_GAMMA_FUNCTION == _ON)
 
