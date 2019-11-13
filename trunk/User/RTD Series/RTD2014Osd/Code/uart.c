@@ -185,19 +185,6 @@ void s_resetbuffer(char*para)
    para= NULL;
    sendOK(); 
 }
-void s_checksum(char*para)
-{
-
-  BYTE idx= para[0]-0x30;
- // channel = para[1]-0x30; // empty
-  BYTE buf_out;
-  buf_out= para[2]; // checksum
-  RTDEepromSaveGammaCRC(idx,&buf_out);
-
-  sendOK(); 
-
-
-}
 
 void s_aspect(char*para)
 {
@@ -446,27 +433,24 @@ void s_sharpness(char *para)
 
     BYTE u32Para;
 
-    if (para == NULL)
-    {
-        return;
-    }
+ //   if (para == NULL)
+ //   {
+ //       return;
+ //   }
 
    u32Para = atoi(para);
     // range check
-   if(u32Para>=0 && u32Para<=4)
+   if(u32Para<=_SHARPNESS_MAX)
    {
-	   SET_OSD_SHARPNESS(UserAdjustGetSelectRegionPort(), u32Para);
-	   
+	   SET_OSD_SHARPNESS(UserAdjustGetSelectRegionPort(), u32Para);   
 	   UserCommonAdjustSharpness(GET_OSD_SYSTEM_SELECT_REGION(), UserAdjustGetSelectRegionPort());
 	   SET_OSD_EVENT_MESSAGE(_OSDEVENT_SAVE_NVRAM_INPUTPORTDATA_MSG);
-      sendOK();
+       sendOK();
 
    }
-   else{
+   else {
 
 	 sendERR();
-
-
    }
 }
 void g_backlight(char *para) 
@@ -490,7 +474,7 @@ void s_backlight(char *para)
 
    u32Para = atoi(para);
     // range check
-   if(u32Para>=0 && u32Para<=100)
+   if(u32Para<=100)
    {
 	   u32Para = UserCommonAdjustPercentToRealValue(u32Para, _BACKLIGHT_MAX, _BACKLIGHT_MIN, _BACKLIGHT_CENTER);
 	   SET_OSD_BACKLIGHT(u32Para);
@@ -574,10 +558,15 @@ void s_gamma(char* para)
 {
 	BYTE u32Para = atoi(para);
 	
+   if(u32Para > _GAMMA_AMOUNT){
+   	sendERR(); return ;
+   	}
 	ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
 	UserAdjustGammaRegionEnable(GET_OSD_SYSTEM_SELECT_REGION(), _DB_APPLY_NO_POLLING, _OFF);
+//printf("gamma = %bd \r\n" ,u32Para);
 
-     SET_OSD_GAMMA(GET_OSD_SELECT_REGION(), u32Para);
+
+   SET_OSD_GAMMA(GET_OSD_SELECT_REGION(), u32Para);
     
     if(u32Para <= _GAMMA_AMOUNT)
     {
@@ -633,7 +622,7 @@ void g_nvram(char *para)
 	  BYTE para2 ;
 	  int i;
 	  BYTE buf[320]; 
-	//  BYTE crc ;
+	  BYTE crc=0 ;
 	// sscanf(para,  "%d" TEST_ARGS_SPLIT "%d" ,&para1, &para2); // format string
 	 para1 = para[0]-0x30 ;
 	 // para[1] = 0x20
@@ -642,7 +631,20 @@ void g_nvram(char *para)
 	 memset(buf , 0 , 320);
 
 	 RTDNVRamLoadGammaModeData(para1,para2,buf);
-	
+
+	 for (i = 0; i < 320; i ++)
+	 {
+         crc+=buf[i];
+	 }
+
+	 printf("cal crc = %bX\r\n", crc);
+
+     crc= 0;
+	 RTDEepromLoadGammaCRC(para1 , &crc);
+
+	 
+	 printf("nvram crc = %bX\r\n", crc);
+	 
 	 for (i = 0; i < 320; i += 8)
 	 {
 	   printf("%b02X,%b02X,%b02X,%b02X,%b02X,%b02X,%b02X,%b02X \r\n", buf[i], buf[i + 1], buf[i + 2], buf[i + 3], buf[i+4], buf[i + 5], buf[i + 6], buf[i + 7]);
@@ -650,6 +652,41 @@ void g_nvram(char *para)
 
 }
 
+void s_checksum(char*para)
+{
+#if 1
+   BYTE crc=0 ;
+   int i =0 ,k=0;
+   BYTE buf[320];
+   para= NULL;
+  for(k=0 ; k<6 ;k++)
+  { 
+     crc= 0;
+	 memset(buf , 0 , 320);
+	 
+     RTDNVRamLoadGammaModeData(k,0,buf);
+   
+	 for (i = 0; i < 320; i ++)
+	 {
+		crc+= buf[i];
+	 }
+	// printf("crc = %bX\r\n", crc);
+	
+    RTDEepromSaveGammaCRC(k,&crc);
+  }
+  
+#else
+
+  BYTE idx= para[0]-0x30;
+ // channel = para[1]-0x30; // empty
+  BYTE buf_out;
+  buf_out= para[2]; // checksum
+  RTDEepromSaveGammaCRC(idx,&buf_out);
+#endif
+  sendOK(); 
+
+
+}
 
 void s_help(char *params)
 {

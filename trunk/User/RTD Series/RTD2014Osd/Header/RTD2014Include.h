@@ -1819,7 +1819,7 @@ typedef enum
     _GAMMA_24,
     _USER_7300,
     _USER_6500,
-    _GAMMA_AMOUNT = _GAMMA_24,
+    _GAMMA_AMOUNT = _USER_6500,
 }EnumGammaType;
 
 //--------------------------------------------------

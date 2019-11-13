@@ -37,17 +37,25 @@
 #define _OSD_REGION_ADDRESS_END                         (_OSD_REGION_ADDRESS + (sizeof(StructOsdRegionDataType) * _REGION_AMOUNT) - 1)
 
 #define _OSD_DISPLAY_MODE_ADDRESS                       (_OSD_REGION_ADDRESS_END + 1)
-#define _OSD_DISPLAY_MODE_ADDRESS_EMD                   (_OSD_DISPLAY_MODE_ADDRESS + (sizeof(StructOsdDisplayModeDataType) * _OSD_DM_AMOUNT) - 1)
+#define _OSD_DISPLAY_MODE_ADDRESS_END                   (_OSD_DISPLAY_MODE_ADDRESS + (sizeof(StructOsdDisplayModeDataType) * _OSD_DM_AMOUNT) - 1)
+
+
+
+
 
 // alant --add
 #define _GAMMA_TABLE_SIZE 2052
 
-#define GAMMA_AMOUNT 6
+#define USER_GAMMA_AMOUNT 6
 #define GAMMA_SIZE 320 //2052
-#define RESERVED_BYTE 8
+#define RESERVED_BYTE 2
+
+
+#define GAMMA_CRC 0x800 + 6
+#define GAMMA_CRC_END GAMMA_CRC
 
 // mode1
-#define GAMMA_MODE1_ADDRESS_START 0x1000 + RESERVED_BYTE// checksum - reserved 
+#define GAMMA_MODE1_ADDRESS_START 0x900 + RESERVED_BYTE// checksum - reserved 
 #define GAMMA_MODE1_ADDRESS GAMMA_MODE1_ADDRESS_START + GAMMA_SIZE*3 
 #define GAMMA_MODE1_ADDRESS_END GAMMA_MODE1_ADDRESS 
 //mode2

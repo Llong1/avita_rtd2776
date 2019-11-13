@@ -175,18 +175,33 @@ void uncompress(uint8_t pgamma[320] , uint8_t buf[2052]) // 256*10bit to 1024*14
 }
 
 
-bit check_checksum(BYTE idx)
+bit  check_checksum(BYTE idx)
 {
+ // bit ret = 1;
+  BYTE buf_out ;
+  BYTE crc=0 ;
+  BYTE buf[320];
+  int i =0;
+  
+  RTDEepromLoadGammaCRC(idx, &buf_out);
 
-	  
-	bit ret = _FALSE;
-    BYTE buf_out ;
-	
-  	RTDEepromLoadGammaCRC(idx, &buf_out);
+ // printf("nvram crc = %bX\r\n", buf_out);
 
-  if(buf_out== 0xAA) ret  = _TRUE;
-	 
-	return ret ;
+  
+  RTDEepromLoadGammaModeData(idx,0,buf);
+  
+  for (i = 0; i < 320; i ++)
+  {
+	 crc+= buf[i];
+  }
+
+
+ // printf("cal crc = %bX\r\n", crc);
+
+  if(buf_out== crc) return 1;
+
+   printf("crc fail\r\n");	 
+	return 0 ;
 
 }
 
@@ -217,23 +232,19 @@ void NewScalerColorOutputGammaAdjust(EnumSelRegion enumSelRegion, BYTE ucGamma, 
         memset(pucGammaTableArray ,0 , sizeof(pucGammaTableArray));
         memset(pgamma ,0 , sizeof(pgamma));
 
-		if(!check_checksum(ucGamma)) // checksum fail
+	
+		RTDNVRamLoadGammaModeData(ucGamma , 0 ,pucGammaTableArray );
+/*
+	   printf("crc start\r\n");
+	   if(!check_checksum(ucGamma , pucGammaTableArray , 320)) // checksum fail
 		{
-		    printf("%bd , crc fail\r\n" , ucGamma);
-			ScalerColorOutputGammaAdjust(enumSelRegion, tGAMMA_TABLE[ucGamma - 1], GET_CURRENT_BANK_NUMBER());
+		    printf("crc fail\r\n");
+			ScalerColorOutputGammaAdjust(enumSelRegion, tGAMMA_TABLE[ucGamma], GET_CURRENT_BANK_NUMBER());
 			return;
 		}
-		RTDNVRamLoadGammaModeData(ucGamma , 0 ,pucGammaTableArray );
-		/*
-		printf("ucGamma =%bd\r\n", ucGamma);
-		for (i = 0; i < 320; i += 8)
-			{
-			  printf("%b02X,%b02X,%b02X,%b02X,%b02X,%b02X,%b02X,%b02X \r\n", pucGammaTableArray[i], pucGammaTableArray[i + 1], pucGammaTableArray[i + 2], 
-			  	pucGammaTableArray[i + 3], pucGammaTableArray[i+4], pucGammaTableArray[i + 5], pucGammaTableArray[i + 6], pucGammaTableArray[i + 7]);
-			}
-         */
 	
-		// printf("crc pass\r\n");
+	    printf("crc pass\r\n");
+*/
 	    uncompress(pucGammaTableArray, pgamma);
 
 		ScalerColorOutputGammaChannelCtrl(usPage,_GAMMA_RED_CHANNEL, 0x0000, _GAMMA_WRITE_TO_SRAM);
@@ -312,10 +323,10 @@ void UserAdjustGamma(EnumSelRegion enumSelRegion, BYTE ucGamma)
 
 #if 1 // alant test
 
-      // printf("UserAdjustGamma ....\r\n");
+     if(check_checksum(ucGamma-1))
        NewScalerColorOutputGammaAdjust(enumGammaSelRegion, ucGamma-1, GET_CURRENT_BANK_NUMBER());
-    
-#else
+    else
+//#else
         ScalerColorOutputGammaAdjust(enumGammaSelRegion, tGAMMA_TABLE[ucGamma - 1], GET_CURRENT_BANK_NUMBER());
 #endif
 #if(_RGB_GAMMA_FUNCTION == _ON)

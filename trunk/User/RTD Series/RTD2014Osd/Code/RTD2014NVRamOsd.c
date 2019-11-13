@@ -729,56 +729,11 @@ BYTE RTDNVRamTransferOsdRegionIndex(BYTE ucDisplayMode, BYTE ucRegion);
 void RTDEepromLoadGammaCRC(uint8_t idx, uint8_t* buf_out)
 {
 
-	switch(idx)
-	{
-	   default:
-	   case 0:
-			UserCommonEepromRead(GAMMA_MODE1_ADDRESS_START, 1, buf_out);
-	   break;
-	   case 1:
-			UserCommonEepromRead(GAMMA_MODE2_ADDRESS_START, 1, buf_out);
-	   break;
-	   case 2:
-			UserCommonEepromRead(GAMMA_MODE3_ADDRESS_START, 1, buf_out);
-	   break;
-	   case 3:
-			UserCommonEepromRead(GAMMA_MODE4_ADDRESS_START, 1, buf_out);
-	   break;
-	   case 4:
-			UserCommonEepromRead(GAMMA_MODE5_ADDRESS_START, 1, buf_out);
-	   break;
-	   case 5:
-			UserCommonEepromRead(GAMMA_MODE6_ADDRESS_START, 1, buf_out);
-	   break;
-	}	
-
+   UserCommonEepromRead(GAMMA_CRC+idx, 1, buf_out);
 }
 void RTDEepromSaveGammaCRC(uint8_t idx, uint8_t *buf_in)
 {
-
-switch(idx)
-{
-   default:
-   case 0:
-		UserCommonEepromWrite(GAMMA_MODE1_ADDRESS_START, 1, buf_in);
-   break;
-   case 1:
-		UserCommonEepromWrite(GAMMA_MODE2_ADDRESS_START, 1, buf_in);
-   break;
-   case 2:
-		UserCommonEepromWrite(GAMMA_MODE3_ADDRESS_START, 1, buf_in);
-   break;
-   case 3:
-		UserCommonEepromWrite(GAMMA_MODE4_ADDRESS_START, 1, buf_in);
-   break;
-   case 4:
-		UserCommonEepromWrite(GAMMA_MODE5_ADDRESS_START, 1, buf_in);
-   break;
-   case 5:
-		UserCommonEepromWrite(GAMMA_MODE6_ADDRESS_START, 1, buf_in);
-   break;
-}
-
+   UserCommonEepromWrite(GAMMA_CRC+idx, 1, buf_in);
 
 }
 
@@ -999,6 +954,8 @@ range check
             RTDEepromLoadOsdInputPortData(ucIndex);
         }
     }
+
+	
 }
 
 //--------------------------------------------------
