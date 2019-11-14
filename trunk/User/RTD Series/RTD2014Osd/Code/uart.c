@@ -620,7 +620,7 @@ void g_nvram(char *para)
 {
 	  BYTE para1 ;
 	  BYTE para2 ;
-	  int i;
+	  int i ,j ,k;
 	  BYTE buf[320]; 
 	  BYTE crc=0 ;
 	// sscanf(para,  "%d" TEST_ARGS_SPLIT "%d" ,&para1, &para2); // format string
@@ -628,9 +628,14 @@ void g_nvram(char *para)
 	 // para[1] = 0x20
 	 para2 = para[2] - 0x30 ;
 
-	 memset(buf , 0 , 320);
-
-	 RTDNVRamLoadGammaModeData(para1,para2,buf);
+	
+for(k=0 ;k<6 ;k++)
+{
+  for(j=0 ;j<3 ;j++)
+  {
+  	 memset(buf , 0 , 320);
+	 crc=0 ;
+	 RTDNVRamLoadGammaModeData(k,j,buf);
 
 	 for (i = 0; i < 320; i ++)
 	 {
@@ -638,7 +643,11 @@ void g_nvram(char *para)
 	 }
 
 	 printf("cal crc = %bX\r\n", crc);
+   }
 
+  printf("------------------------------\r\n");
+}
+/*
      crc= 0;
 	 RTDEepromLoadGammaCRC(para1 , &crc);
 
@@ -649,7 +658,7 @@ void g_nvram(char *para)
 	 {
 	   printf("%b02X,%b02X,%b02X,%b02X,%b02X,%b02X,%b02X,%b02X \r\n", buf[i], buf[i + 1], buf[i + 2], buf[i + 3], buf[i+4], buf[i + 5], buf[i + 6], buf[i + 7]);
 	 }
-
+*/
 }
 
 void s_checksum(char*para)

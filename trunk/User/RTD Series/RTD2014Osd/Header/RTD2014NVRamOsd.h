@@ -48,7 +48,7 @@
 
 #define USER_GAMMA_AMOUNT 6
 #define GAMMA_SIZE 320 //2052
-#define RESERVED_BYTE 2
+#define RESERVED_BYTE 8
 
 
 #define GAMMA_CRC 0x800 + 6
