@@ -23,12 +23,12 @@ void TilingHandler(EnumDisplayRegion enumDisplayRegion)
 	
   //printf("ori:x=%d,y=%d,w=%d,h=%d\r\n",
   //	GET_MDOMAIN_INPUT_HSTART(), GET_MDOMAIN_INPUT_VSTART(), GET_MDOMAIN_INPUT_HWIDTH(), GET_MDOMAIN_INPUT_VHEIGHT());
-       gB_hnum = MAX(gB_hnum,1);
+    gB_hnum = MAX(gB_hnum,1);
 	gB_vnum = MAX(gB_vnum,1);
 	gB_pos = MAX(gB_pos,1);
 
 
-       display_h = ((gB_pos-1)%gB_hnum)+1; 
+    display_h = ((gB_pos-1)%gB_hnum)+1; 
 	display_v = ((gB_pos-1)/gB_hnum)+1;
 	  
 	ucx=(GET_MDOMAIN_INPUT_HWIDTH()- ((GET_MDOMAIN_INPUT_HWIDTH()/gB_hnum)-h_bezel))*MAX(display_h-1,0)/MAX(gB_hnum-1,1);  
