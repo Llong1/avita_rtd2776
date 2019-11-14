@@ -631,9 +631,9 @@ void s_gdata(char*para)
    // return crc
   memset(buf_in , 0 , 80);
 
-  RTDEepromLoadGammaModeData(idx , channel , buf_in)
+  RTDEepromLoadGammaModeData(idx , channel , buf_in);
 
-   i=0;
+//   i=0;
   for(i=0; i<80 ;i++)
   {
      nvram_crc += buf_in[i];
