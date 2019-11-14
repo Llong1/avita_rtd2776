@@ -100,6 +100,7 @@
 //****************************************************************************
 BYTE idata g_ucDdcciCountEXINT;
 
+//alant test
 BYTE data g_ucDelay5usN = 1;
 BYTE data g_ucDelay5usI = 1;
 BYTE data g_ucDelay5usI_EXINT;
@@ -2245,8 +2246,8 @@ BYTE ScalerMcuIICStart(BYTE ucSlaveAddr)
     BYTE ucTemp = 0;
     WORD usTimeOut = 6;
 
-    PCB_SW_IIC_SCL_SET();
-    PCB_SW_IIC_SDA_SET();
+    PCB_SW_IIC_SCL_SET();// scl output
+    PCB_SW_IIC_SDA_SET(); // sda output
 
     Delay5us(g_ucDelay5usN * _SW_IIC_CLK_DIV);
 
@@ -2267,11 +2268,11 @@ BYTE ScalerMcuIICStart(BYTE ucSlaveAddr)
         PCB_SW_IIC_SCL_CHK(ucTemp);
     }
 
-    PCB_SW_IIC_SDA_CLR();
+    PCB_SW_IIC_SDA_CLR(); // sda 0
 
     Delay5us(g_ucDelay5usN * _SW_IIC_CLK_DIV);
 
-    PCB_SW_IIC_SCL_CLR();
+    PCB_SW_IIC_SCL_CLR();// scl 0
 
     Delay5us(g_ucDelay5usN * _SW_IIC_CLK_DIV);
 
@@ -2580,7 +2581,7 @@ bit ScalerMcuIICWrite(BYTE ucSlaveAddr, BYTE ucSubAddrLength, WORD usSubAddr, WO
     }
 
     // Write Slave address and Sub-address
-    if(ScalerMcuIICWriteStart(ucSlaveAddr, ucSubAddrLength, usSubAddr) == _FAIL)
+    if(ScalerMcuIICWriteStart(ucSlaveAddr, ucSubAddrLength, usSubAddr) == _FAIL) // start
     {
         return _FAIL;
     }
@@ -2594,7 +2595,7 @@ bit ScalerMcuIICWrite(BYTE ucSlaveAddr, BYTE ucSubAddrLength, WORD usSubAddr, WO
         }
     }
 
-    ScalerMcuIICStop();
+    ScalerMcuIICStop();  // stop
 
     return _SUCCESS;
 }

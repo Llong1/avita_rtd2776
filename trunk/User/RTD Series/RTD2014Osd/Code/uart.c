@@ -110,6 +110,21 @@ static void sendEmpty(void){
 
 }
 /*
+uint8_t I2C_Reset(void)									//	Return 0 when I2C is reset successfully
+{
+uint8_t Result;	
+	PCB_SW_IIC_SCL_CLR();//I2C_scl_Write(I2C_I2C_SCL_LOW);						//	Prepare scl 0
+	I2C_SET_I2C_SCL_HSIOM_SEL(I2C_HSIOM_GPIO_SEL);		//	Switch to GPIO
+	CyDelay(10);										//	Keep low for 10ms
+	Result = (I2C_sda_Read() == 0);						//	Resetted when sda is high
+	I2C_scl_Write(I2C_I2C_SCL_HIGH);					//	Release clock
+	I2C_SET_I2C_SCL_HSIOM_SEL(I2C_HSIOM_I2C_SEL);		//	Switch to component
+	return Result;
+}
+*/
+	
+
+/*
 static void sendUnsupport(void){
 
     printf("ERR 0\r\n");	 
