@@ -609,7 +609,7 @@ void s_gdata(char*para)
   BYTE gidx =0 ;
   BYTE buf_in[80];
   BYTE nvram_crc =0 ;
-  BYTE ori_crc =0 ;
+//  BYTE ori_crc =0 ;
   //------------------
   idx=(BYTE) para[0] -0x30;
   // para[1]  0x20
@@ -623,26 +623,26 @@ void s_gdata(char*para)
   for(i=0; i<80 ;i++)
   {
 	 buf_in[i] = (BYTE)para[3+i];
-	 ori_crc +=buf_in[i];
+	 nvram_crc +=buf_in[i];
   }
 
 
   RTDEepromSaveGammaModeData(idx,channel, gidx , 80 , buf_in);
    // return crc
-  memset(buf_in , 0 , 80);
+//  memset(buf_in , 0 , 320);
 
-  RTDEepromLoadGammaModeData(idx , channel , buf_in);
+//  RTDEepromLoadGammaModeData(idx , channel , buf_in);
 
 //   i=0;
-  for(i=0; i<80 ;i++)
-  {
-     nvram_crc += buf_in[i];
-  }
+//  for(i=0; i<80 ;i++)
+//  {
+//     nvram_crc += buf_in[i];
+//  }
 
-  if(nvram_crc == ori_crc)
-   sendOK();
-  else
-  	sendERR();
+ // if(nvram_crc == ori_crc)
+   printf("OK%bc\r\n",nvram_crc);//sendOK();
+ // else
+ // 	sendERR();
 
 
 }
