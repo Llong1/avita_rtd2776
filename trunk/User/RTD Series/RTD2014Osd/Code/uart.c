@@ -250,6 +250,7 @@ void s_tiling(char*para)
 
     UserAdjustResetDisplayByPort(GET_OSD_SYSTEM_DISPLAY_REGION());
 
+    sendOK(); 
 
 }
 

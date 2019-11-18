@@ -603,6 +603,17 @@ void RTDDdcciGetVCPFeature(void)
             // MODIFY LATER
             UserCommonDdcciSetVCPReplyValue(_DDCCI_CMD_GETVCP_TP_SET_PARAMETER, 0x0004, GET_OSD_SHARPNESS(UserAdjustGetSelectRegionPort()));
             break;
+			
+		case _DDCCI_OPCODE_VCP_GAMMA:
+            // MODIFY LATER
+            UserCommonDdcciSetVCPReplyValue(_DDCCI_CMD_GETVCP_TP_SET_PARAMETER, _GAMMA_AMOUNT, GET_OSD_GAMMA(GET_OSD_SELECT_REGION()));
+        break;
+		
+			
+			case _DDCCI_OPCODE_VCP_ROTATION:
+				// MODIFY LATER
+				UserCommonDdcciSetVCPReplyValue(_DDCCI_CMD_GETVCP_TP_SET_PARAMETER, _DISP_ROTATE_AMOUNT, GET_OSD_DISP_ROTATE());
+			break;
 
         default:
             g_pucDdcciTxBuf[_DDCCI_RESULT_CODE] = _DDCCI_CMD_GETVCP_RC_UNSUPPORTED;
@@ -730,6 +741,48 @@ void RTDDdcciSetVCPFeature(void)
 
 
 	   break;
+	    case _DDCCI_OPCODE_VCP_GAMMA: // alant
+	    
+		
+		 if(g_pucDdcciRxBuf[_DDCCI_SET_LOW_BYTE] >_GAMMA_AMOUNT)
+		 {
+			g_pucDdcciRxBuf[_DDCCI_SET_LOW_BYTE] = 1;
+		 }
+		
+	     ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
+	     UserAdjustGammaRegionEnable(GET_OSD_SYSTEM_SELECT_REGION(), _DB_APPLY_NO_POLLING, _OFF);
+
+
+
+         SET_OSD_GAMMA(GET_OSD_SELECT_REGION(), g_pucDdcciRxBuf[_DDCCI_SET_LOW_BYTE]);
+    
+         if(g_pucDdcciRxBuf[_DDCCI_SET_LOW_BYTE] <= _GAMMA_AMOUNT)
+         {
+     
+		   UserAdjustGamma(GET_OSD_SYSTEM_SELECT_REGION(), GET_OSD_GAMMA(GET_OSD_SELECT_REGION()));		 
+           ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
+	       UserAdjustGammaRegionEnable(GET_OSD_SYSTEM_SELECT_REGION(), _DB_APPLY_NO_POLLING, _ON);
+	
+         }	
+	  
+          SET_OSD_EVENT_MESSAGE(_OSDEVENT_SAVE_NVRAM_OSDUSERDATA_MSG);
+
+		break;
+		  case _DDCCI_OPCODE_VCP_ROTATION: // alant
+	    
+		
+		 if(g_pucDdcciRxBuf[_DDCCI_SET_LOW_BYTE] >_DISP_ROTATE_AMOUNT)
+		 {
+			g_pucDdcciRxBuf[_DDCCI_SET_LOW_BYTE] = 0;
+		 }
+		
+	     SET_OSD_DISP_ROTATE(g_pucDdcciRxBuf[_DDCCI_SET_LOW_BYTE]); // 0,1,2,3
+         SET_OSD_DISP_ROTATION_SIZE_TYPE(_OSD_ROTATE_DISPLAY_FULL); // 0,1,2
+	     UserAdjustResetDisplayByPort(GET_OSD_SYSTEM_DISPLAY_REGION());
+	     SET_OSD_EVENT_MESSAGE(_OSDEVENT_SAVE_NVRAM_OSDUSERDATA_MSG);
+    
+		break;
+			
 #if(_SHARPNESS_SUPPORT == _ON)
             case _DDCCI_OPCODE_VCP_SHARPNESS:
 
@@ -1099,6 +1152,7 @@ void RTDDdcciSetVCPFeature(void)
 
                 break;
 
+         
             case _DDCCI_OPCODE_VCP_BACKLIGHT:
 
                 if(g_pucDdcciRxBuf[_DDCCI_SET_LOW_BYTE] > 100)

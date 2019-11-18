@@ -190,6 +190,8 @@
 #define _DDCCI_OPCODE_VCP_SYNC_TYPE                 0xA8
 #define _DDCCI_OPCODE_VCP_HFREQ                     0xAC
 #define _DDCCI_OPCODE_VCP_VFREQ                     0xAE
+
+
 #define _DDCCI_OPCODE_VCP_STORE_SETTING             0xB0
 #define _DDCCI_OPCODE_VCP_PANEL_TYPE                0xB2
 #define _DDCCI_OPCODE_VCP_RGB_ORDERING              0xB4
