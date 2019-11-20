@@ -615,6 +615,14 @@ void RTDDdcciGetVCPFeature(void)
 				UserCommonDdcciSetVCPReplyValue(_DDCCI_CMD_GETVCP_TP_SET_PARAMETER, _DISP_ROTATE_AMOUNT, GET_OSD_DISP_ROTATE());
 			break;
 
+        case _DDCCI_OPCODE_VCP_HUE:
+			UserCommonDdcciSetVCPReplyValue(_DDCCI_CMD_GETVCP_TP_SET_PARAMETER, 100, 
+				UserCommonAdjustRealValueToPercent(GET_OSD_HUE(GET_OSD_SELECT_REGION()), _HUE_MAX, _HUE_MIN, _HUE_CENTER));
+		break;
+		 case _DDCCI_OPCODE_VCP_SATURATION:
+			UserCommonDdcciSetVCPReplyValue(_DDCCI_CMD_GETVCP_TP_SET_PARAMETER, 100, 
+			UserCommonAdjustRealValueToPercent(GET_OSD_SATURATION(GET_OSD_SELECT_REGION()), _SATURATION_MAX, _SATURATION_MIN, _SATURATION_CENTER));
+		break;
         default:
             g_pucDdcciTxBuf[_DDCCI_RESULT_CODE] = _DDCCI_CMD_GETVCP_RC_UNSUPPORTED;
             break;
@@ -781,6 +789,27 @@ void RTDDdcciSetVCPFeature(void)
 	     UserAdjustResetDisplayByPort(GET_OSD_SYSTEM_DISPLAY_REGION());
 	     SET_OSD_EVENT_MESSAGE(_OSDEVENT_SAVE_NVRAM_OSDUSERDATA_MSG);
     
+		break;
+		case _DDCCI_OPCODE_VCP_HUE:
+			if(g_pucDdcciRxBuf[_DDCCI_SET_LOW_BYTE] > 100)
+		     {
+				g_pucDdcciRxBuf[_DDCCI_SET_LOW_BYTE] = 100;
+			 }  
+		   SET_OSD_HUE(GET_OSD_SELECT_REGION(), UserCommonAdjustPercentToRealValue(g_pucDdcciRxBuf[_DDCCI_SET_LOW_BYTE], _HUE_MAX, _HUE_MIN, _HUE_CENTER));	  				 
+		   UserAdjustGlobalHueSat(GET_OSD_SYSTEM_SELECT_REGION(), (SWORD)GET_OSD_HUE(GET_OSD_SELECT_REGION()), GET_OSD_SATURATION(GET_OSD_SELECT_REGION()));
+		   SET_OSD_EVENT_MESSAGE(_OSDEVENT_SAVE_NVRAM_REGIONDATA_MSG);
+
+		break;
+		case _DDCCI_OPCODE_VCP_SATURATION: // alant add
+		 if(g_pucDdcciRxBuf[_DDCCI_SET_LOW_BYTE] > 100)
+         {
+             g_pucDdcciRxBuf[_DDCCI_SET_LOW_BYTE] = 100;
+         }	
+		 SET_OSD_SATURATION(GET_OSD_SELECT_REGION(), UserCommonAdjustPercentToRealValue(g_pucDdcciRxBuf[_DDCCI_SET_LOW_BYTE], _SATURATION_MAX, _SATURATION_MIN, _SATURATION_CENTER));      
+	  
+	    UserAdjustGlobalHueSat(GET_OSD_SYSTEM_SELECT_REGION(), (SWORD)GET_OSD_HUE(GET_OSD_SELECT_REGION()), GET_OSD_SATURATION(GET_OSD_SELECT_REGION()));
+		
+		SET_OSD_EVENT_MESSAGE(_OSDEVENT_SAVE_NVRAM_REGIONDATA_MSG);
 		break;
 			
 #if(_SHARPNESS_SUPPORT == _ON)

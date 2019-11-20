@@ -166,6 +166,7 @@
 #define _DDCCI_OPCODE_VCP_AUDIO_MUTE                0x8D
 #define _DDCCI_OPCODE_VCP_TV_CONTRAST               0x8E
 #define _DDCCI_OPCODE_VCP_AUDIO_TREBLE              0x8F
+#define _DDCCI_OPCODE_VCP_SATURATION                       0x8A // alant
 #define _DDCCI_OPCODE_VCP_HUE                       0x90
 #define _DDCCI_OPCODE_VCP_AUDIO_BASS                0x91
 #define _DDCCI_OPCODE_VCP_TV_BLACK_LEVEL            0x92
