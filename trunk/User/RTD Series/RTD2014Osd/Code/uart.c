@@ -7,6 +7,8 @@
 #if(_UART_SUPPORT == _ON)
 ///////////////////////////////
 
+#define SEND_DATA_SIZE 228
+
 // set
 void s_help(char *params);
 void s_power(char *para);

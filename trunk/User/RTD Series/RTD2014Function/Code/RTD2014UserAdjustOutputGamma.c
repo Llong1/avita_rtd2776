@@ -96,83 +96,43 @@ void UserAdjustHDR2084(EnumDisplayRegion enumDisplayRegion, EnumHDRMaxMasteringL
 // Input Value  : Gamma type
 // Output Value : None
 //--------------------------------------------------
-#if 0  // alant
+#if 1  // alant
 
-void uncompress(uint8_t pgamma[320] , uint8_t buf[2052]) // 256*10bit to 1024*14bit
+void delta_decode(uint8_t buffer[1024], uint8_t buf_out[2052], uint16_t length)
 {
-	uint16_t i, k, decimal;
-	uint16_t Now[8];
-	uint32_t Start, End;
-	uint32_t idx = 0;
-	//uint8_t a, b;
+	uint16_t last = 0;
+	uint16_t i =0 , k =0 ;
 	
-	decimal = pgamma[0];
-	
-	Start = ((pgamma[1] << 2) + (pgamma[0] & 0x03)) << 4;//14 bit --0
-	
-	for (i = 2; i < 319; i++)//1016
+	for (i = 0; i < length; i++)
 	{
-		if ((i % 5) == 0)
-		{
-			decimal = pgamma[i];//0x3f
-			i++;
-		
-		}
-	
-		End = ((pgamma[i] << 2) + (decimal & 0x03)) << 4;//14 bit  --0x35c0
-		decimal >>= 2;//0x0f
-
-		for (k = 0; k < 4; k++)
-		{
-			Now[k] = (End * k + (4 - k) * Start) >> 2;//14 bit
-			//if(i<=50)
-			buf[idx] = Now[k] >> 8;
-			buf[idx + 1] = Now[k] & 0x00FF;
-			//printf("0x%x , 0x%x \r\n", buf[idx], buf[idx + 1]);
-			idx=idx+2;
-			//printf("now[k]=0x%x\r\n", buf[idx], buf[idx+1]);
-		}
-		
-		Start = End;
-
-		
-	}
-	
-	End = (((pgamma[319] << 2) + (decimal & 0x03)) << 4) + 0x0F;//14 bit
-	
-	for (k = 0; k < 8; k++)//8 
-	{
-		Now[k] = (End * k + (8 - k) * Start) >> 3;//14 bit
-		buf[idx] = Now[k] >> 8;
-		buf[idx + 1] = Now[k] & 0x00FF;
-
-		idx = idx + 2;
+		//int delta = buffer[i];
+		buf_out[k] = (buffer[i] + last)>>8;
+		buf_out[k+1] = (buffer[i] + last) & 0xFF;
+		last = buffer[i]+last;
+		k+=2 ;
 	}
 
-	//printf("idx=%d \r\n",idx);
-	Now[7] = End;
-
-//	a= buf[2040];
-//	b= buf[2041];
-	
-	buf[2042] = buf[2040];
-	buf[2043] = buf[2041];
-
-	buf[2044] = buf[2040];
-	buf[2045] = buf[2041];
-
-	buf[2046] =buf[2040];
-	buf[2047] =buf[2041];
-	
-	buf[2048] = buf[2040];
-	buf[2049] = buf[2041];
-
-	buf[2050] = 0;
-	buf[2051] = 0;
+	buf_out[2042] = buf_out[2040];
+	buf_out[2043] = buf_out[2041];
 
 
+	buf_out[2044] = buf_out[2040];
+	buf_out[2045] = buf_out[2041];
+
+
+	buf_out[2046] = buf_out[2040];
+	buf_out[2047] = buf_out[2041];
+
+
+	buf_out[2048] = buf_out[2040];
+	buf_out[2049] = buf_out[2041];
+
+
+	buf_out[2050] = 0;
+	buf_out[2051] = 0;
 
 }
+
 
 #endif
 
@@ -256,7 +216,7 @@ void NewScalerColorOutputGammaAdjust(EnumSelRegion enumSelRegion, BYTE ucGamma, 
 {
 	
 	BYTE pucGammaTableArray[2052] ;
-	//BYTE  pgamma[2052] ;
+	BYTE  pgamma[1024] ;
     int i =0;
 	WORD usPage = ScalerRegionGetRegisterPage(_REG_DDOMAIN_AFTER_BLENDING, enumSelRegion);
 	
@@ -271,22 +231,12 @@ void NewScalerColorOutputGammaAdjust(EnumSelRegion enumSelRegion, BYTE ucGamma, 
         // Load gamma table of R Channel
         //----------------------------
         memset(pucGammaTableArray ,0 , sizeof(pucGammaTableArray));
-       // memset(pgamma ,0 , sizeof(pgamma));
+        memset(pgamma ,0 , sizeof(pgamma));
 
 	
-		RTDNVRamLoadGammaModeData(ucGamma , 0 ,pucGammaTableArray );
-/*
-	   printf("crc start\r\n");
-	   if(!check_checksum(ucGamma , pucGammaTableArray , 320)) // checksum fail
-		{
-		    printf("crc fail\r\n");
-			ScalerColorOutputGammaAdjust(enumSelRegion, tGAMMA_TABLE[ucGamma], GET_CURRENT_BANK_NUMBER());
-			return;
-		}
-	
-	    printf("crc pass\r\n");
-*/
-	   // uncompress(pucGammaTableArray, pgamma);
+		RTDNVRamLoadGammaModeData(ucGamma , 0 ,pgamma );
+		delta_decode(pgamma, pucGammaTableArray, 1024);
+
 
 		ScalerColorOutputGammaChannelCtrl(usPage,_GAMMA_RED_CHANNEL, 0x0000, _GAMMA_WRITE_TO_SRAM);
         ScalerBurstWrite(pucGammaTableArray, _GAMMA_TABLE_SIZE, ucBankNum, P0_66_GAMMA_PORT_SETA, _BURSTWRITE_DATA_COMMON, _BURSTWRITE_FROM_FLASH);
@@ -294,10 +244,11 @@ void NewScalerColorOutputGammaAdjust(EnumSelRegion enumSelRegion, BYTE ucGamma, 
         // Load gamma table of G Channel
         //------------------------------------
         memset(pucGammaTableArray ,0 , sizeof(pucGammaTableArray));
-       // memset(pgamma ,0 , sizeof(pgamma));
+        memset(pgamma ,0 , sizeof(pgamma));
 		
-        RTDNVRamLoadGammaModeData(ucGamma , 1 ,pucGammaTableArray );
-		//uncompress(pucGammaTableArray, pgamma);
+        RTDNVRamLoadGammaModeData(ucGamma , 1 ,pucGammaTableArray );		
+		delta_decode(pgamma, pucGammaTableArray, 1024);
+		
 		  
         ScalerColorOutputGammaChannelCtrl(usPage,_GAMMA_GREEN_CHANNEL, 0x0000, _GAMMA_WRITE_TO_SRAM);
         ScalerBurstWrite(pucGammaTableArray, _GAMMA_TABLE_SIZE, ucBankNum, P0_66_GAMMA_PORT_SETA, _BURSTWRITE_DATA_COMMON, _BURSTWRITE_FROM_FLASH);
@@ -305,10 +256,11 @@ void NewScalerColorOutputGammaAdjust(EnumSelRegion enumSelRegion, BYTE ucGamma, 
         // Load gamma table of B Channel
         //-------------------
         memset(pucGammaTableArray ,0 , sizeof(pucGammaTableArray));
-     //   memset(pgamma ,0 , sizeof(pgamma));
+        memset(pgamma ,0 , sizeof(pgamma));
 
         RTDNVRamLoadGammaModeData(ucGamma , 2 ,pucGammaTableArray );
-	//	uncompress(pucGammaTableArray, pgamma);
+		delta_decode(pgamma, pucGammaTableArray, 1024);
+
 		  
         ScalerColorOutputGammaChannelCtrl(usPage,_GAMMA_BLUE_CHANNEL, 0x0000, _GAMMA_WRITE_TO_SRAM);
         ScalerBurstWrite(pucGammaTableArray, _GAMMA_TABLE_SIZE, ucBankNum, P0_66_GAMMA_PORT_SETA, _BURSTWRITE_DATA_COMMON, _BURSTWRITE_FROM_FLASH);
