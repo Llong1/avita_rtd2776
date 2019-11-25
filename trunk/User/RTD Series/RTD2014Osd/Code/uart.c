@@ -15,27 +15,27 @@ void s_brightness(char *para) ;
 void s_sharpness(char *para) ;
 void s_backlight(char *para) ;
 void s_reset(char *para) ;
-void s_colortemp(char *para) ;
-void s_tiling(char*para);
-void s_aspect(char*para);
+//void s_colortemp(char *para) ;
+//void s_tiling(char*para);
+//void s_aspect(char*para);
 void s_pattern(char*para);
 void s_rootkey(char*para);
 void s_secureboot(char *para);
 void s_pq(char* para);
 void s_gamma(char* para);
 void s_gdata(char*para);
-void s_resetbuffer(char*para);
+//void s_resetbuffer(char*para);
 void s_checksum(char*para);
 
-void g_colorinfo(char*para);
+//void g_colorinfo(char*para);
 // get
 void g_power(char *para);
 void g_contrast(char *para) ;
 void g_brightness(char* para);
 void g_sharpness(char *para) ;
 void g_backlight(char *para) ;
-void g_colortemp(char *para) ;
-void g_aspect(char*para);
+//void g_colortemp(char *para) ;
+//void g_aspect(char*para);
 void g_paneltime(char*para);
 void g_nvram(char*para);
 void g_gamma(char *para) ;
@@ -60,32 +60,32 @@ const struct command commands[] = {
   {"s_brightness", s_brightness, "s_brightness 0~100\r\n"},
   {"s_sharpness", s_sharpness, "s_sharpness 0~4\r\n"},
   {"s_backlight", s_backlight, "s_backlight 0~100\r\n"},
-  {"s_power",s_power,"s_power 0/1\r\n"} ,
+ // {"s_power",s_power,"s_power 0/1\r\n"} ,
   {"reset",s_reset,"reset:user reset\r\n"} ,
-  {"s_colortemp", s_colortemp, "s_colortemp 0~5\r\n"},
-  {"s_tiling", s_tiling, "s_tiling row column pos\r\n"},
-  {"s_aspect", s_aspect, "s_aspect 0~4\r\n"},
-  {"s_pattern", s_pattern, "s_pattern 0/1 r(0~255) g(0~255) b(0~255)\r\n"}, 
+ // {"s_colortemp", s_colortemp, "s_colortemp 0~5\r\n"},
+//  {"s_tiling", s_tiling, "s_tiling row column pos\r\n"},
+//  {"s_aspect", s_aspect, "s_aspect 0~4\r\n"},
+//  {"s_pattern", s_pattern, "s_pattern 0/1 r(0~255) g(0~255) b(0~255)\r\n"}, 
   {"s_rootkey", s_rootkey, "s_rootkey xxxxx\r\n"},
   {"s_secureboot", s_secureboot, "s_secureboot \r\n"},
   {"s_pq", s_pq, "s_pq 0~1\r\n"},
   {"s_gamma", s_gamma, "s_gamma 0~6\r\n"},
-  {"s_s", s_resetbuffer, "s_s \r\n"},
+ // {"s_s", s_resetbuffer, "s_s \r\n"},
   {"s_crc", s_checksum, "s_crc idx crc  \r\n"},
   {"s_gdata", s_gdata, "s_gdata \r\n"},
   {"g_gamma", g_gamma, "g_gamma: \r\n"},
  // {"s_reboot", s_reboot, "s_reboot: software reset \r\n"},
 
-  {"g_colorinfo", g_colorinfo, "g_colorinfo : colorspace colorrange colorimetry \r\n"},
+//  {"g_colorinfo", g_colorinfo, "g_colorinfo : colorspace colorrange colorimetry \r\n"},
    
-  {"g_colortemp", g_colortemp, "g_colortemp:get colotemp value\r\n"},
-  {"g_power",g_power,"g_power:get power status\r\n"} ,
+//  {"g_colortemp", g_colortemp, "g_colortemp:get colotemp value\r\n"},
+ // {"g_power",g_power,"g_power:get power status\r\n"} ,
   {"g_contrast",g_contrast,"g_contrast:get contrast value\r\n"} ,
   {"g_brightness",g_brightness,"g_brightness:get brightness value\r\n"} ,
   {"g_sharpness", g_sharpness, "g_sharpness:get sharpness value \r\n"},
   {"g_backlight", g_backlight, "g_backlight:get backlight value\r\n"},
-  {"g_aspect", g_aspect, "g_aspect:get aspect ratio value\r\n"},
-  {"g_paneltime", g_paneltime, "g_paneltime:get panel time (hour min)\r\n"},
+ // {"g_aspect", g_aspect, "g_aspect:get aspect ratio value\r\n"},
+ // {"g_paneltime", g_paneltime, "g_paneltime:get panel time (hour min)\r\n"},
   {"g_nvram", g_nvram, "g_nvram:idx(0~5), channel(0~2)\r\n"},
   {"s_gdata", s_gdata, "s_gdata \r\n"},
 
@@ -130,6 +130,7 @@ static void sendUnsupport(void){
     printf("ERR 0\r\n");	 
 
 }*/
+/*
 void g_colorinfo(char*para)
 {
 
@@ -151,7 +152,8 @@ void g_colorinfo(char*para)
    //  sendOK(); 
   // }
 
-}
+}*/
+/*
 void s_pattern(char*para)
 {
 WORD gB_on=0 ,gB_r=0, gB_g=0, gB_b=0 ; 
@@ -226,7 +228,7 @@ void s_aspect(char*para)
   }
 
 
-}
+}*/
 void s_rootkey(char*para)
 {
 
@@ -236,6 +238,7 @@ void s_rootkey(char*para)
    sendOK(); 
 
 }
+#if 0
 
 void s_tiling(char*para)
 {
@@ -288,13 +291,15 @@ void g_colortemp(char *para)
   printf("%d\r\n" , u32Para);  
 
 }
+#endif
 void s_reset(char *para) 
 {
   para =NULL;
   OsdDispOsdReset();
   sendOK();
 
-}
+}
+/*
 void g_power(char *para) // power command
 {
 
@@ -354,6 +359,7 @@ void s_power(char *para) // power command
    sendERR();   
 
 }
+*/
 void g_contrast(char *para) 
 {
 
@@ -527,8 +533,8 @@ void s_pq(char* para)
 
 
 	  ScalerColorSRGBEnable(_FUNCTION_ON);// 3x3 matrix
-	  ScalerColorDCCEnable(_FUNCTION_ON);
-	  ScalerColorICMEnable(_FUNCTION_ON);
+	//  ScalerColorDCCEnable(_FUNCTION_ON);
+	//  ScalerColorICMEnable(_FUNCTION_ON);
 
 	  if(GET_OSD_GAMMA(GET_OSD_SELECT_REGION()) != _GAMMA_OFF)
 	  {
@@ -548,8 +554,8 @@ void s_pq(char* para)
 	  
 		//  ScalerColorSpaceConvertIDomainEnable(_OFF);
 		//  ScalerColorSpaceConvertDDomainEnable(_OFF);
-		  ScalerColorDCCEnable(_FUNCTION_OFF);
-		  ScalerColorICMEnable(_FUNCTION_OFF);
+		//  ScalerColorDCCEnable(_FUNCTION_OFF);
+		//  ScalerColorICMEnable(_FUNCTION_OFF);
 
 
 
