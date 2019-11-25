@@ -3,8 +3,8 @@
 
 #if(_UART_SUPPORT == _ON)
 	
-#define MAX_BUFF_SIZE (100)
-
+#define MAX_BUFF_SIZE (250)
+#define SEND_DATA_SIZE 228
 struct command {
   char *name;
   void (*function)(char *str);

@@ -47,7 +47,7 @@
 #define _GAMMA_TABLE_SIZE 2052
 
 #define USER_GAMMA_AMOUNT 6
-#define GAMMA_SIZE 320 //2052
+#define GAMMA_SIZE 2052 //320 //2052
 #define RESERVED_BYTE 8
 
 

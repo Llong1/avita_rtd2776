@@ -205,7 +205,29 @@ bit  check_checksum(BYTE idx)
 
    printf("crc fail\r\n");	
 #else
-idx=0;
+ BYTE buf_out ;
+ BYTE crc=0 ;
+// BYTE buf[320];
+// int i =0;
+ 
+ RTDEepromLoadGammaCRC(0, &buf_out);
+
+// printf("nvram crc = %bX\r\n", buf_out);
+
+ 
+// RTDEepromLoadGammaModeData(idx,0,buf);
+ 
+// for (i = 0; i < 320; i ++)
+// {
+//	crc+= buf[i];
+// }
+
+
+// printf("cal crc = %bX\r\n", crc);
+
+ if(buf_out== 0xAA) return 1;
+
+  printf("crc fail\r\n");  
 
 #endif 
   
@@ -217,7 +239,7 @@ idx=0;
 
 
 
-
+/*
 void NewScalerColorOutputGammaChannelCtrl(BYTE ucColorChannel, WORD usOffset, bit bLocation)
 {
     // Select Channel
@@ -229,12 +251,12 @@ void NewScalerColorOutputGammaChannelCtrl(BYTE ucColorChannel, WORD usOffset, bi
     ScalerSetByte(P0_66_GAMMA_PORT_SETA, LOBYTE(usOffset));
     ScalerSetBit(P0_67_GAMMA_CTRL_SETA, ~(_BIT7 | _BIT3), _BIT7);
 }
-
+*/
 void NewScalerColorOutputGammaAdjust(EnumSelRegion enumSelRegion, BYTE ucGamma, BYTE ucBankNum)
 {
 	
-	BYTE pucGammaTableArray[320] ;
-	BYTE  pgamma[2052] ;
+	BYTE pucGammaTableArray[2052] ;
+	//BYTE  pgamma[2052] ;
     int i =0;
 	WORD usPage = ScalerRegionGetRegisterPage(_REG_DDOMAIN_AFTER_BLENDING, enumSelRegion);
 	
@@ -249,7 +271,7 @@ void NewScalerColorOutputGammaAdjust(EnumSelRegion enumSelRegion, BYTE ucGamma, 
         // Load gamma table of R Channel
         //----------------------------
         memset(pucGammaTableArray ,0 , sizeof(pucGammaTableArray));
-        memset(pgamma ,0 , sizeof(pgamma));
+       // memset(pgamma ,0 , sizeof(pgamma));
 
 	
 		RTDNVRamLoadGammaModeData(ucGamma , 0 ,pucGammaTableArray );
@@ -266,30 +288,30 @@ void NewScalerColorOutputGammaAdjust(EnumSelRegion enumSelRegion, BYTE ucGamma, 
 */
 	   // uncompress(pucGammaTableArray, pgamma);
 
-		NewScalerColorOutputGammaChannelCtrl(_GAMMA_RED_CHANNEL, 0x0000, _GAMMA_WRITE_TO_SRAM);//ScalerColorOutputGammaChannelCtrl(usPage,_GAMMA_RED_CHANNEL, 0x0000, _GAMMA_WRITE_TO_SRAM);
-        ScalerBurstWrite(pgamma, _GAMMA_TABLE_SIZE, ucBankNum, P0_66_GAMMA_PORT_SETA, _BURSTWRITE_DATA_COMMON, _BURSTWRITE_FROM_FLASH);
+		ScalerColorOutputGammaChannelCtrl(usPage,_GAMMA_RED_CHANNEL, 0x0000, _GAMMA_WRITE_TO_SRAM);
+        ScalerBurstWrite(pucGammaTableArray, _GAMMA_TABLE_SIZE, ucBankNum, P0_66_GAMMA_PORT_SETA, _BURSTWRITE_DATA_COMMON, _BURSTWRITE_FROM_FLASH);
 
         // Load gamma table of G Channel
         //------------------------------------
         memset(pucGammaTableArray ,0 , sizeof(pucGammaTableArray));
-        memset(pgamma ,0 , sizeof(pgamma));
+       // memset(pgamma ,0 , sizeof(pgamma));
 		
         RTDNVRamLoadGammaModeData(ucGamma , 1 ,pucGammaTableArray );
 		//uncompress(pucGammaTableArray, pgamma);
 		  
-        NewScalerColorOutputGammaChannelCtrl(_GAMMA_GREEN_CHANNEL, 0x0000, _GAMMA_WRITE_TO_SRAM);//ScalerColorOutputGammaChannelCtrl(usPage,_GAMMA_GREEN_CHANNEL, 0x0000, _GAMMA_WRITE_TO_SRAM);
-        ScalerBurstWrite(pgamma + _GAMMA_TABLE_SIZE, _GAMMA_TABLE_SIZE, ucBankNum, P0_66_GAMMA_PORT_SETA, _BURSTWRITE_DATA_COMMON, _BURSTWRITE_FROM_FLASH);
+        ScalerColorOutputGammaChannelCtrl(usPage,_GAMMA_GREEN_CHANNEL, 0x0000, _GAMMA_WRITE_TO_SRAM);
+        ScalerBurstWrite(pucGammaTableArray, _GAMMA_TABLE_SIZE, ucBankNum, P0_66_GAMMA_PORT_SETA, _BURSTWRITE_DATA_COMMON, _BURSTWRITE_FROM_FLASH);
 
         // Load gamma table of B Channel
         //-------------------
         memset(pucGammaTableArray ,0 , sizeof(pucGammaTableArray));
-        memset(pgamma ,0 , sizeof(pgamma));
+     //   memset(pgamma ,0 , sizeof(pgamma));
 
         RTDNVRamLoadGammaModeData(ucGamma , 2 ,pucGammaTableArray );
 	//	uncompress(pucGammaTableArray, pgamma);
 		  
-        NewScalerColorOutputGammaChannelCtrl(_GAMMA_BLUE_CHANNEL, 0x0000, _GAMMA_WRITE_TO_SRAM);//ScalerColorOutputGammaChannelCtrl(usPage,_GAMMA_BLUE_CHANNEL, 0x0000, _GAMMA_WRITE_TO_SRAM);
-        ScalerBurstWrite(pgamma + (_GAMMA_TABLE_SIZE * 2), _GAMMA_TABLE_SIZE, ucBankNum, P0_66_GAMMA_PORT_SETA, _BURSTWRITE_DATA_COMMON, _BURSTWRITE_FROM_FLASH);
+        ScalerColorOutputGammaChannelCtrl(usPage,_GAMMA_BLUE_CHANNEL, 0x0000, _GAMMA_WRITE_TO_SRAM);
+        ScalerBurstWrite(pucGammaTableArray, _GAMMA_TABLE_SIZE, ucBankNum, P0_66_GAMMA_PORT_SETA, _BURSTWRITE_DATA_COMMON, _BURSTWRITE_FROM_FLASH);
 
         // Disable Port Access
         ScalerSetBit(P0_67_GAMMA_CTRL_SETA, ~_BIT7, 0x00);

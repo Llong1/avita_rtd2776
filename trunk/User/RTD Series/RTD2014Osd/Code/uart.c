@@ -87,7 +87,7 @@ const struct command commands[] = {
  // {"g_aspect", g_aspect, "g_aspect:get aspect ratio value\r\n"},
  // {"g_paneltime", g_paneltime, "g_paneltime:get panel time (hour min)\r\n"},
   {"g_nvram", g_nvram, "g_nvram:idx(0~5), channel(0~2)\r\n"},
-  {"s_gdata", s_gdata, "s_gdata \r\n"},
+//  {"s_gdata", s_gdata, "s_gdata \r\n"},
 
   {"help", s_help,"help:show function\r\n"} ,
 
@@ -229,6 +229,7 @@ void s_aspect(char*para)
 
 
 }*/
+
 void s_rootkey(char*para)
 {
 
@@ -298,7 +299,8 @@ void s_reset(char *para)
   OsdDispOsdReset();
   sendOK();
 
-}
+}
+
 /*
 void g_power(char *para) // power command
 {
@@ -511,6 +513,7 @@ void s_backlight(char *para)
 
    }
 }
+
 void s_secureboot(char *para)
 {
 
@@ -614,7 +617,7 @@ void s_gdata(char*para)
   BYTE idx , i=0;
   BYTE channel;
   BYTE gidx =0 ;
-  BYTE buf_in[80];
+  BYTE buf_in[SEND_DATA_SIZE];
   BYTE nvram_crc =0 ;
 //  BYTE ori_crc =0 ;
   //------------------
@@ -625,16 +628,16 @@ void s_gdata(char*para)
   gidx =(BYTE) para[2]-0x30;
  //para[5]  0x20
   //---------------------------
-  memset(buf_in , 0 , 80);
+  memset(buf_in , 0 , SEND_DATA_SIZE);
 
-  for(i=0; i<80 ;i++)
+  for(i=0; i<SEND_DATA_SIZE ;i++)
   {
 	 buf_in[i] = (BYTE)para[3+i];
 	 nvram_crc +=buf_in[i];
   }
 
 
-  RTDEepromSaveGammaModeData(idx,channel, gidx , 80 , buf_in);
+  RTDEepromSaveGammaModeData(idx,channel, gidx , SEND_DATA_SIZE , buf_in);
    // return crc
 //  memset(buf_in , 0 , 320);
 
@@ -659,23 +662,23 @@ void g_nvram(char *para)
 	  BYTE para1 ;
 	  BYTE para2 ;
 	  int i ,j ,k;
-	  BYTE buf[320]; 
+	  BYTE buf[2052]; 
 	  BYTE crc=0 ;
 	// sscanf(para,  "%d" TEST_ARGS_SPLIT "%d" ,&para1, &para2); // format string
 	 para1 = para[0]-0x30 ;
 	 // para[1] = 0x20
 	 para2 = para[2] - 0x30 ;
 
-	
+
 for(k=0 ;k<6 ;k++)
 {
   for(j=0 ;j<3 ;j++)
   {
-  	 memset(buf , 0 , 320);
+  	 memset(buf , 0 , 2052);
 	 crc=0 ;
 	 RTDNVRamLoadGammaModeData(k,j,buf);
 
-	 for (i = 0; i < 320; i ++)
+	 for (i = 0; i < 2052; i ++)
 	 {
          crc+=buf[i];
 	 }
@@ -701,7 +704,7 @@ for(k=0 ;k<6 ;k++)
 
 void s_checksum(char*para)
 {
-#if 1
+#if 0
    BYTE crc=0 ;
    int i =0 ,k=0;
    BYTE buf[320];
@@ -724,11 +727,16 @@ void s_checksum(char*para)
   
 #else
 
-  BYTE idx= para[0]-0x30;
- // channel = para[1]-0x30; // empty
-  BYTE buf_out;
-  buf_out= para[2]; // checksum
-  RTDEepromSaveGammaCRC(idx,&buf_out);
+   BYTE crc=0xAA ;
+  // int i =0 ,k=0;
+  // BYTE buf[5];
+   para= NULL;
+
+   //buf[0] = 0xAA ;
+
+
+   RTDEepromSaveGammaCRC(0,&crc);
+
 #endif
   sendOK(); 
 

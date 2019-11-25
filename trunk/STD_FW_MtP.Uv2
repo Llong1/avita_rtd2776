@@ -300,8 +300,6 @@ File 10,1,<.\User\RTD Series\RTD2014Function\Code\RTD2014UserAdjustRGBGamma.c><R
 File 10,1,<.\User\RTD Series\RTD2014Function\Code\RTD2014UserAdjustUniformity.c><RTD2014UserAdjustUniformity.c>
 File 10,1,<.\User\RTD Series\RTD2014Function\Code\RTD2014UserBoot.c><RTD2014UserBoot.c>
 File 10,1,<.\User\RTD Series\RTD2014Function\Code\RTD2014UserTypeCInterface.c><RTD2014UserTypeCInterface.c>
-File 11,1,<.\User\RTD Series\RTD2014Osd\Code\w74m00av.c><w74m00av.c>
-File 11,5,<.\User\RTD Series\RTD2014Osd\Header\w74m00av.h><w74m00av.h>
 File 11,1,<.\User\RTD Series\RTD2014Osd\Code\spi_secure.c><spi_secure.c>
 File 11,5,<.\User\RTD Series\RTD2014Osd\Header\spi_secure.h><spi_secure.h>
 File 11,5,<.\User\RTD Series\RTD2014Osd\Header\RTD2014Include.h><RTD2014Include.h>
@@ -2362,7 +2360,7 @@ Options 1,10,281  // File 'RTD2014UserAdjustUniformity.c'
  INCC5 ()
 EndOpt
 
-Options 1,11,293  // File 'RTD2014NVRamOsd.c'
+Options 1,11,291  // File 'RTD2014NVRamOsd.c'
  PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
  IncBld=2
  AlwaysBuild=2
@@ -2381,7 +2379,7 @@ Options 1,11,293  // File 'RTD2014NVRamOsd.c'
  INCC5 ()
 EndOpt
 
-Options 1,11,294  // File 'RTD2014Ddcci.c'
+Options 1,11,292  // File 'RTD2014Ddcci.c'
  PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
  IncBld=2
  AlwaysBuild=2
@@ -2400,7 +2398,7 @@ Options 1,11,294  // File 'RTD2014Ddcci.c'
  INCC5 ()
 EndOpt
 
-Options 1,11,297  // File 'RTD2014OsdDisplay.c'
+Options 1,11,295  // File 'RTD2014OsdDisplay.c'
  PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
  IncBld=2
  AlwaysBuild=2
@@ -2419,7 +2417,7 @@ Options 1,11,297  // File 'RTD2014OsdDisplay.c'
  INCC5 ()
 EndOpt
 
-Options 1,11,298  // File 'RTD2014OsdFontProp.c'
+Options 1,11,296  // File 'RTD2014OsdFontProp.c'
  PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
  IncBld=2
  AlwaysBuild=2
@@ -2438,7 +2436,7 @@ Options 1,11,298  // File 'RTD2014OsdFontProp.c'
  INCC5 ()
 EndOpt
 
-Options 1,11,299  // File 'RTD2014OsdFontTable.c'
+Options 1,11,297  // File 'RTD2014OsdFontTable.c'
  PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
  IncBld=2
  AlwaysBuild=2
@@ -2457,7 +2455,7 @@ Options 1,11,299  // File 'RTD2014OsdFontTable.c'
  INCC5 ()
 EndOpt
 
-Options 1,11,300  // File 'RTD2014OsdFontVLC.c'
+Options 1,11,298  // File 'RTD2014OsdFontVLC.c'
  PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
  IncBld=2
  AlwaysBuild=2
@@ -2476,7 +2474,7 @@ Options 1,11,300  // File 'RTD2014OsdFontVLC.c'
  INCC5 ()
 EndOpt
 
-Options 1,11,302  // File 'RTD2014OsdPalette.c'
+Options 1,11,300  // File 'RTD2014OsdPalette.c'
  PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
  IncBld=2
  AlwaysBuild=2
@@ -2495,7 +2493,7 @@ Options 1,11,302  // File 'RTD2014OsdPalette.c'
  INCC5 ()
 EndOpt
 
-Options 1,11,304  // File 'RTD2014OsdFontDynamicIcon_1.c'
+Options 1,11,302  // File 'RTD2014OsdFontDynamicIcon_1.c'
  PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
  IncBld=2
  AlwaysBuild=2
@@ -2514,7 +2512,7 @@ Options 1,11,304  // File 'RTD2014OsdFontDynamicIcon_1.c'
  INCC5 ()
 EndOpt
 
-Options 1,11,305  // File 'RTD2014OsdFontDynamicIcon_2.c'
+Options 1,11,303  // File 'RTD2014OsdFontDynamicIcon_2.c'
  PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
  IncBld=2
  AlwaysBuild=2
@@ -4725,7 +4723,7 @@ Options 2,10,281  // File 'RTD2014UserAdjustUniformity.c'
  INCC5 ()
 EndOpt
 
-Options 2,11,293  // File 'RTD2014NVRamOsd.c'
+Options 2,11,291  // File 'RTD2014NVRamOsd.c'
  PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
  IncBld=2
  AlwaysBuild=2
@@ -4744,7 +4742,7 @@ Options 2,11,293  // File 'RTD2014NVRamOsd.c'
  INCC5 ()
 EndOpt
 
-Options 2,11,294  // File 'RTD2014Ddcci.c'
+Options 2,11,292  // File 'RTD2014Ddcci.c'
  PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
  IncBld=2
  AlwaysBuild=2
@@ -4763,7 +4761,7 @@ Options 2,11,294  // File 'RTD2014Ddcci.c'
  INCC5 ()
 EndOpt
 
-Options 2,11,297  // File 'RTD2014OsdDisplay.c'
+Options 2,11,295  // File 'RTD2014OsdDisplay.c'
  PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
  IncBld=2
  AlwaysBuild=2
@@ -4782,7 +4780,7 @@ Options 2,11,297  // File 'RTD2014OsdDisplay.c'
  INCC5 ()
 EndOpt
 
-Options 2,11,298  // File 'RTD2014OsdFontProp.c'
+Options 2,11,296  // File 'RTD2014OsdFontProp.c'
  PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
  IncBld=2
  AlwaysBuild=2
@@ -4801,7 +4799,7 @@ Options 2,11,298  // File 'RTD2014OsdFontProp.c'
  INCC5 ()
 EndOpt
 
-Options 2,11,299  // File 'RTD2014OsdFontTable.c'
+Options 2,11,297  // File 'RTD2014OsdFontTable.c'
  PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
  IncBld=2
  AlwaysBuild=2
@@ -4820,7 +4818,7 @@ Options 2,11,299  // File 'RTD2014OsdFontTable.c'
  INCC5 ()
 EndOpt
 
-Options 2,11,300  // File 'RTD2014OsdFontVLC.c'
+Options 2,11,298  // File 'RTD2014OsdFontVLC.c'
  PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
  IncBld=2
  AlwaysBuild=2
@@ -4839,7 +4837,7 @@ Options 2,11,300  // File 'RTD2014OsdFontVLC.c'
  INCC5 ()
 EndOpt
 
-Options 2,11,302  // File 'RTD2014OsdPalette.c'
+Options 2,11,300  // File 'RTD2014OsdPalette.c'
  PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
  IncBld=2
  AlwaysBuild=2
@@ -4858,7 +4856,7 @@ Options 2,11,302  // File 'RTD2014OsdPalette.c'
  INCC5 ()
 EndOpt
 
-Options 2,11,304  // File 'RTD2014OsdFontDynamicIcon_1.c'
+Options 2,11,302  // File 'RTD2014OsdFontDynamicIcon_1.c'
  PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
  IncBld=2
  AlwaysBuild=2
@@ -4877,7 +4875,7 @@ Options 2,11,304  // File 'RTD2014OsdFontDynamicIcon_1.c'
  INCC5 ()
 EndOpt
 
-Options 2,11,305  // File 'RTD2014OsdFontDynamicIcon_2.c'
+Options 2,11,303  // File 'RTD2014OsdFontDynamicIcon_2.c'
  PropFld { 2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
  IncBld=2
  AlwaysBuild=2

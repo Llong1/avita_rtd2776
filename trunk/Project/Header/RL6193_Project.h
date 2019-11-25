@@ -146,10 +146,10 @@
 //--------------------------------------------------
 // Overscan Option
 //--------------------------------------------------
-#define _OVERSCAN_VGA_SUPPORT                                _ON
-#define _OVERSCAN_DVI_SUPPORT                                   _ON
-#define _OVERSCAN_HDMI_SUPPORT                                 _ON
-#define _OVERSCAN_DP_SUPPORT                               _ON
+//#define _OVERSCAN_VGA_SUPPORT                                _ON
+//#define _OVERSCAN_DVI_SUPPORT                                   _ON
+//#define _OVERSCAN_HDMI_SUPPORT                                 _ON
+//#define _OVERSCAN_DP_SUPPORT                               _ON
 
 #define _OVERSCAN_H_RATIO                                       30
 #define _OVERSCAN_V_RATIO                                       30
