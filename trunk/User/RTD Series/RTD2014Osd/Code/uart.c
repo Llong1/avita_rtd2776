@@ -533,22 +533,21 @@ void s_pq(char* para)
 
   if(u32Para)
   {
-	  ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
+	  //ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
 	  UserAdjustGammaRegionEnable(GET_OSD_SYSTEM_SELECT_REGION(), _DB_APPLY_NO_POLLING, _OFF);
 
-
 	  ScalerColorSRGBEnable(_FUNCTION_ON);// 3x3 matrix
-	//  ScalerColorDCCEnable(_FUNCTION_ON);
-	//  ScalerColorICMEnable(_FUNCTION_ON);
+	  ScalerColorDCCEnable(_FUNCTION_ON);
+	  ScalerColorICMEnable(_FUNCTION_ON);
 
-	  if(GET_OSD_GAMMA(GET_OSD_SELECT_REGION()) != _GAMMA_OFF)
-	  {
-	    UserAdjustGamma(GET_OSD_SYSTEM_SELECT_REGION(), GET_OSD_GAMMA(GET_OSD_SELECT_REGION()));
-		
-	  }
-	  
-	   ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
-	   UserAdjustGammaRegionEnable(GET_OSD_SYSTEM_SELECT_REGION(), _DB_APPLY_NO_POLLING, _ON);
+	 
+      if(GET_OSD_GAMMA(GET_OSD_SELECT_REGION()) != _GAMMA_OFF)
+       {
+           UserAdjustGamma(GET_OSD_SYSTEM_SELECT_REGION(), GET_OSD_GAMMA(GET_OSD_SELECT_REGION()));
+           UserAdjustGammaRegionEnable(GET_OSD_SYSTEM_SELECT_REGION(), _DB_APPLY_NO_POLLING, _ON);
+       }
+	 //  ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
+	 //  UserAdjustGammaRegionEnable(GET_OSD_SYSTEM_SELECT_REGION(), _DB_APPLY_NO_POLLING, _ON);
 
   }
   else // pq off
@@ -559,8 +558,8 @@ void s_pq(char* para)
 	  
 		//  ScalerColorSpaceConvertIDomainEnable(_OFF);
 		//  ScalerColorSpaceConvertDDomainEnable(_OFF);
-		//  ScalerColorDCCEnable(_FUNCTION_OFF);
-		//  ScalerColorICMEnable(_FUNCTION_OFF);
+		  ScalerColorDCCEnable(_FUNCTION_OFF);
+		  ScalerColorICMEnable(_FUNCTION_OFF);
 
 
 
@@ -588,7 +587,7 @@ void s_gamma(char* para)
    if(u32Para > _GAMMA_AMOUNT){
    	sendERR(); return ;
    	}
-	ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
+	//ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
 	UserAdjustGammaRegionEnable(GET_OSD_SYSTEM_SELECT_REGION(), _DB_APPLY_NO_POLLING, _OFF);
 //printf("gamma = %bd \r\n" ,u32Para);
 
@@ -603,12 +602,12 @@ void s_gamma(char* para)
 		{
 		  UserAdjustGamma(GET_OSD_SYSTEM_SELECT_REGION(), GET_OSD_GAMMA(GET_OSD_SELECT_REGION()));
 		 
-          ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
+        //  ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
 	      UserAdjustGammaRegionEnable(GET_OSD_SYSTEM_SELECT_REGION(), _DB_APPLY_NO_POLLING, _ON);
 		}
 	
     }	
-    SET_OSD_EVENT_MESSAGE(_OSDEVENT_SAVE_NVRAM_OSDUSERDATA_MSG);
+     SET_OSD_EVENT_MESSAGE(_OSDEVENT_SAVE_NVRAM_REGIONDATA_MSG);
 	sendOK();
 
 
