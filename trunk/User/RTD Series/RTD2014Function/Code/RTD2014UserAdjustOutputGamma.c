@@ -243,7 +243,7 @@ void NewScalerColorOutputGammaAdjust(EnumSelRegion enumSelRegion, BYTE ucGamma, 
 	BYTE pucGammaTableArray[2052] ;
 
 	WORD usPage = ScalerRegionGetRegisterPage(_REG_DDOMAIN_AFTER_BLENDING, enumSelRegion);
-	//ucBankNum = GET_CURRENT_BANK_NUMBER();
+	ucBankNum = GET_CURRENT_BANK_NUMBER();
 
     if(ScalerGetBit(P0_67_GAMMA_CTRL_SETA, _BIT6) == _BIT6) // Gamma On
     {
@@ -276,7 +276,7 @@ void NewScalerColorOutputGammaAdjust(EnumSelRegion enumSelRegion, BYTE ucGamma, 
         RTDNVRamLoadGammaModeData(ucGamma , 1 ,pucGammaTableArray );		
 		
 		  
-        ScalerColorOutputGammaChannelCtrl(usPage,_GAMMA_GREEN_CHANNEL, 0x0000, _GAMMA_WRITE_TO_SRAM);
+        ScalerColorOutputGammaChannelCtrl(usPage,_GAMMA_GREEN_CHANNEL, _GAMMA_TABLE_SIZE, _GAMMA_WRITE_TO_SRAM);
         //ScalerBurstWrite(pucGammaTableArray, _GAMMA_TABLE_SIZE, ucBankNum, P0_66_GAMMA_PORT_SETA, _BURSTWRITE_DATA_COMMON, _BURSTWRITE_FROM_FLASH);
 	    // Write Gamma LUT
 		ScalerWrite(P0_66_GAMMA_PORT_SETA, _GAMMA_TABLE_SIZE, pucGammaTableArray, _NON_AUTOINC);
@@ -289,7 +289,7 @@ void NewScalerColorOutputGammaAdjust(EnumSelRegion enumSelRegion, BYTE ucGamma, 
 	
 
 		  
-        ScalerColorOutputGammaChannelCtrl(usPage,_GAMMA_BLUE_CHANNEL, 0x0000, _GAMMA_WRITE_TO_SRAM);
+        ScalerColorOutputGammaChannelCtrl(usPage,_GAMMA_BLUE_CHANNEL, _GAMMA_TABLE_SIZE*2, _GAMMA_WRITE_TO_SRAM);
         //ScalerBurstWrite(pucGammaTableArray, _GAMMA_TABLE_SIZE, ucBankNum, P0_66_GAMMA_PORT_SETA, _BURSTWRITE_DATA_COMMON, _BURSTWRITE_FROM_FLASH);
 
 		// Write Gamma LUT
