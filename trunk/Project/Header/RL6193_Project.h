@@ -555,5 +555,6 @@
 
 #define _UART_SUPPORT                                          _ON // alant add
 
+//#define COMPRESS_GAMMA   _OFF  // alant add
 
 #endif // End of #if(_PROJECT == _RL6193_PROJECT)

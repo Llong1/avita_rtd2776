@@ -706,19 +706,19 @@ for(k=0 ;k<6 ;k++)
 
 void s_checksum(char*para)
 {
-#if 0
+#if 1
    BYTE crc=0 ;
    int i =0 ,k=0;
-   BYTE buf[320];
+   BYTE buf[2052];
    para= NULL;
   for(k=0 ; k<6 ;k++)
   { 
      crc= 0;
-	 memset(buf , 0 , 320);
+	 memset(buf , 0 , 2052);
 	 
      RTDNVRamLoadGammaModeData(k,0,buf);
    
-	 for (i = 0; i < 320; i ++)
+	 for (i = 0; i < 2052; i ++)
 	 {
 		crc+= buf[i];
 	 }

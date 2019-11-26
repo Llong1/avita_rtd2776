@@ -614,5 +614,5 @@ extern void UserAdjustFREESYNCODMeasure(void);
 
 extern void RTDFactoryBurnInPattern(void); // alant debug
 //extern void UserAdjustUSBPower(BYTE mode); // alant debug
-extern BYTE calucalte_checksum(BYTE buf[] , int len);
+//extern BYTE calucalte_checksum(BYTE buf[] , int len);
 
