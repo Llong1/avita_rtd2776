@@ -599,11 +599,13 @@ void s_gamma(char* para)
     {
         // SET_OSD_GAMMA(GET_OSD_SELECT_REGION(), u32Para);
       //  UserAdjustGamma(GET_OSD_GAMMA(GET_OSD_SELECT_REGION()),u32Para);
-
-		UserAdjustGamma(GET_OSD_SYSTEM_SELECT_REGION(), GET_OSD_GAMMA(GET_OSD_SELECT_REGION()));
+		if(GET_OSD_GAMMA(GET_OSD_SELECT_REGION()) != _GAMMA_OFF)
+		{
+		  UserAdjustGamma(GET_OSD_SYSTEM_SELECT_REGION(), GET_OSD_GAMMA(GET_OSD_SELECT_REGION()));
 		 
-        ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
-	    UserAdjustGammaRegionEnable(GET_OSD_SYSTEM_SELECT_REGION(), _DB_APPLY_NO_POLLING, _ON);
+          ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
+	      UserAdjustGammaRegionEnable(GET_OSD_SYSTEM_SELECT_REGION(), _DB_APPLY_NO_POLLING, _ON);
+		}
 	
     }	
     SET_OSD_EVENT_MESSAGE(_OSDEVENT_SAVE_NVRAM_OSDUSERDATA_MSG);
