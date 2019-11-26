@@ -3,7 +3,7 @@
 
 #if(_UART_SUPPORT == _ON)
 	
-#define MAX_BUFF_SIZE (250)
+#define MAX_BUFF_SIZE (255)
 
 struct command {
   char *name;

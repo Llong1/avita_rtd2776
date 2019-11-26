@@ -539,7 +539,8 @@ void s_pq(char* para)
 	  ScalerColorSRGBEnable(_FUNCTION_ON);// 3x3 matrix
 	  ScalerColorDCCEnable(_FUNCTION_ON);
 	  ScalerColorICMEnable(_FUNCTION_ON);
-
+	  ScalerColorBrightnessEnable(_FUNCTION_ON);
+	  ScalerColorContrastEnable(_FUNCTION_ON);
 	 
       if(GET_OSD_GAMMA(GET_OSD_SELECT_REGION()) != _GAMMA_OFF)
        {
@@ -552,6 +553,7 @@ void s_pq(char* para)
   }
   else // pq off
   {
+	      UserAdjustGammaRegionEnable(GET_OSD_SYSTEM_SELECT_REGION(), _DB_APPLY_NO_POLLING, _OFF);
 		  ScalerColorSRGBEnable(_FUNCTION_OFF);// 3x3 matrix
 		  ScalerColorBrightnessEnable(_FUNCTION_OFF);
 		  ScalerColorContrastEnable(_FUNCTION_OFF);

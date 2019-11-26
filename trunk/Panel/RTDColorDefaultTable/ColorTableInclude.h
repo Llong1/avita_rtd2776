@@ -343,7 +343,7 @@ BYTE code tLUTGAMMA_18_TABLE[] =
 #include "./GAMMA/Gamma18.h"
 #endif
 };
-
+/*
 BYTE code tLUTGAMMA_20_TABLE[] =
 {
 #if(_PANEL_TYPE == _AU_LVDS_21_5_WUXGA)
@@ -382,15 +382,15 @@ BYTE code tLUTGAMMA_24_TABLE[] =
 #include "./GAMMA/Gamma24.h"
 #endif
 };
-
+*/
 code BYTE *tGAMMA_TABLE[] =
 {
     tLUTGAMMA_18_TABLE,
-    tLUTGAMMA_20_TABLE,
-    tLUTGAMMA_22_TABLE,
-    tLUTGAMMA_24_TABLE,
-	tLUTGAMMA_22_TABLE, // user 7300
-    tLUTGAMMA_24_TABLE, // user 6500
+    tLUTGAMMA_18_TABLE,
+    tLUTGAMMA_18_TABLE,
+    tLUTGAMMA_18_TABLE,
+	tLUTGAMMA_18_TABLE, // user 7300
+    tLUTGAMMA_18_TABLE, // user 6500
 };
 #endif // End of #if(_GAMMA_FUNCTION == _ON)
 

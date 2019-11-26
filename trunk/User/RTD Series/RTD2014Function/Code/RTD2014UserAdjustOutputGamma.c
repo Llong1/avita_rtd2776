@@ -132,7 +132,7 @@ void delta_decode(uint8_t buffer[1024], uint8_t buf_out[2052], uint16_t length)
 
 }
 #endif
-
+/*
 bit  check_checksum(BYTE idx , BYTE buf[] , int len)
 {
 	
@@ -153,9 +153,20 @@ bit  check_checksum(BYTE idx , BYTE buf[] , int len)
 	return 0;
 
 
+}*/
+/*
+void NewScalerColorOutputGammaChannelCtrl(BYTE ucColorChannel, WORD usOffset, bit bLocation)
+{
+    // Select Channel
+    ScalerSetBit(P0_67_GAMMA_CTRL_SETA, ~(_BIT7 | _BIT5 | _BIT4 | _BIT2), ((ucColorChannel << 4) | ((BYTE)bLocation << 2)));
+
+    // Specify address
+    ScalerSetBit(P0_67_GAMMA_CTRL_SETA, ~_BIT3, _BIT3);
+    ScalerSetByte(P0_66_GAMMA_PORT_SETA, HIBYTE(usOffset));
+    ScalerSetByte(P0_66_GAMMA_PORT_SETA, LOBYTE(usOffset));
+    ScalerSetBit(P0_67_GAMMA_CTRL_SETA, ~(_BIT7 | _BIT3), _BIT7);
 }
-
-
+*/
 void NewScalerColorOutputGammaAdjust(EnumSelRegion enumSelRegion, BYTE ucGamma, BYTE ucBankNum)
 {
 #if 0//#if(COMPRESS_GAMMA == _ON)	
@@ -262,10 +273,10 @@ void NewScalerColorOutputGammaAdjust(EnumSelRegion enumSelRegion, BYTE ucGamma, 
 			ScalerColorOutputGammaAdjust(enumSelRegion, tGAMMA_TABLE[ucGamma], ucBankNum);
             return ;
 		}
-			
-*/
+	*/		
 
-		ScalerColorOutputGammaChannelCtrl(usPage,_GAMMA_RED_CHANNEL, 0x0000, _GAMMA_WRITE_TO_SRAM);
+
+		 ScalerColorOutputGammaChannelCtrl(usPage,_GAMMA_RED_CHANNEL, 0x0000, _GAMMA_WRITE_TO_SRAM);
         //ScalerBurstWrite(pucGammaTableArray, _GAMMA_TABLE_SIZE, ucBankNum, P0_66_GAMMA_PORT_SETA, _BURSTWRITE_DATA_COMMON, _BURSTWRITE_FROM_FLASH);
 		// Write Gamma LUT
 		ScalerWrite(P0_66_GAMMA_PORT_SETA, _GAMMA_TABLE_SIZE, pucGammaTableArray, _NON_AUTOINC);
@@ -276,7 +287,7 @@ void NewScalerColorOutputGammaAdjust(EnumSelRegion enumSelRegion, BYTE ucGamma, 
         RTDNVRamLoadGammaModeData(ucGamma , 1 ,pucGammaTableArray );		
 		
 		  
-        ScalerColorOutputGammaChannelCtrl(usPage,_GAMMA_GREEN_CHANNEL, _GAMMA_TABLE_SIZE, _GAMMA_WRITE_TO_SRAM);
+        ScalerColorOutputGammaChannelCtrl(usPage,_GAMMA_GREEN_CHANNEL, 0x0000, _GAMMA_WRITE_TO_SRAM);
         //ScalerBurstWrite(pucGammaTableArray, _GAMMA_TABLE_SIZE, ucBankNum, P0_66_GAMMA_PORT_SETA, _BURSTWRITE_DATA_COMMON, _BURSTWRITE_FROM_FLASH);
 	    // Write Gamma LUT
 		ScalerWrite(P0_66_GAMMA_PORT_SETA, _GAMMA_TABLE_SIZE, pucGammaTableArray, _NON_AUTOINC);
@@ -289,7 +300,7 @@ void NewScalerColorOutputGammaAdjust(EnumSelRegion enumSelRegion, BYTE ucGamma, 
 	
 
 		  
-        ScalerColorOutputGammaChannelCtrl(usPage,_GAMMA_BLUE_CHANNEL, _GAMMA_TABLE_SIZE*2, _GAMMA_WRITE_TO_SRAM);
+         ScalerColorOutputGammaChannelCtrl(usPage,_GAMMA_BLUE_CHANNEL, 0x0000, _GAMMA_WRITE_TO_SRAM);
         //ScalerBurstWrite(pucGammaTableArray, _GAMMA_TABLE_SIZE, ucBankNum, P0_66_GAMMA_PORT_SETA, _BURSTWRITE_DATA_COMMON, _BURSTWRITE_FROM_FLASH);
 
 		// Write Gamma LUT
@@ -343,6 +354,7 @@ void UserAdjustGamma(EnumSelRegion enumSelRegion, BYTE ucGamma)
 
 #if(_CONTRAST_SUPPORT == _ON)
         UserAdjustContrast(enumSelRegion, GET_OSD_CONTRAST(UserAdjustGetOSDSelectRegion(enumSelRegion)));
+	    UserAdjustBrightness(enumSelRegion, GET_OSD_BRIGHTNESS(UserAdjustGetOSDSelectRegion(enumSelRegion)));
 #endif
 
 #else

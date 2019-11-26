@@ -80,9 +80,9 @@
 //--------------------------------------------------
 // Language Option
 //--------------------------------------------------
-#define _CHINESE_T_SUPPORT                                  _ON
-#define _CHINESE_S_SUPPORT                                  _ON
-#define _JAPANESE_SUPPORT                                   _ON
+#define _CHINESE_T_SUPPORT                                 _OFF// _ON
+#define _CHINESE_S_SUPPORT                                _OFF//  _ON
+#define _JAPANESE_SUPPORT                                 _OFF//  _ON
 #define _RUSSIAN_SUPPORT                                 _OFF//    _ON
 #define _KOREAN_SUPPORT                                  _OFF//   _ON
 
@@ -176,12 +176,12 @@
 #define _YCC_QUANTIZATION_RANGE_SUPPORT                         _ON
 #define _ULTRA_VIVID_SUPPORT                                    _ON
 #define _DCR_SUPPORT                                            _OFF
-#define _DCC_FUNCTION                                           _ON
+#define _DCC_FUNCTION                                       _ON//    _ON
 #define _DCC_HISTOGRM_INFO                                      _OFF
-#define _ICM_SUPPORT                                          _ON
+#define _ICM_SUPPORT                                      _ON//    _ON
 #define _ICM_BRI_SUPPORT                                        _OFF
 #define _SCM_SUPPORT                                            _OFF
-#define _SIX_COLOR_SUPPORT                                     _ON
+#define _SIX_COLOR_SUPPORT                                _ON//     _ON
 #define _HIGHLIGHT_WINDOW_SUPPORT                               _ON
 #define _RINGING_FILTER_SUPPORT                                 _ON
 #define _BORDER_WINDOW_SUPPORT                                  _ON
