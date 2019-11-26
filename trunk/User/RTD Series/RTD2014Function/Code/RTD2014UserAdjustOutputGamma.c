@@ -140,7 +140,7 @@ bit  check_checksum(BYTE idx , BYTE buf[] , int len)
 	 BYTE crc= 0;
 	 BYTE buf_out=0 ;
 	
-	 for(i=0 ; i> len ; i++)
+	 for(i=0 ; i< len ; i++)
 	 {
 		crc+=buf[i] ;
 	 }
