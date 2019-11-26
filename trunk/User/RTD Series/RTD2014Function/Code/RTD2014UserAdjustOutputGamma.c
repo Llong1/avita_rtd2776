@@ -256,14 +256,14 @@ void NewScalerColorOutputGammaAdjust(EnumSelRegion enumSelRegion, BYTE ucGamma, 
 
 		RTDNVRamLoadGammaModeData(ucGamma , 0 ,pucGammaTableArray );
 	    //  CRC check R only
-
+/*
 		if(!check_checksum(ucGamma,pucGammaTableArray , 2052))
 		{
 			ScalerColorOutputGammaAdjust(enumSelRegion, tGAMMA_TABLE[ucGamma], GET_CURRENT_BANK_NUMBER());
             return ;
 		}
 			
-
+*/
 
 		ScalerColorOutputGammaChannelCtrl(usPage,_GAMMA_RED_CHANNEL, 0x0000, _GAMMA_WRITE_TO_SRAM);
         //ScalerBurstWrite(pucGammaTableArray, _GAMMA_TABLE_SIZE, ucBankNum, P0_66_GAMMA_PORT_SETA, _BURSTWRITE_DATA_COMMON, _BURSTWRITE_FROM_FLASH);
