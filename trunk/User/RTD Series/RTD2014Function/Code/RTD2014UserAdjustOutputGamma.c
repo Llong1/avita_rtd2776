@@ -243,7 +243,7 @@ void NewScalerColorOutputGammaAdjust(EnumSelRegion enumSelRegion, BYTE ucGamma, 
 	BYTE pucGammaTableArray[2052] ;
 
 	WORD usPage = ScalerRegionGetRegisterPage(_REG_DDOMAIN_AFTER_BLENDING, enumSelRegion);
-	ucBankNum = GET_CURRENT_BANK_NUMBER();
+	//ucBankNum = GET_CURRENT_BANK_NUMBER();
 
     if(ScalerGetBit(P0_67_GAMMA_CTRL_SETA, _BIT6) == _BIT6) // Gamma On
     {
@@ -259,7 +259,7 @@ void NewScalerColorOutputGammaAdjust(EnumSelRegion enumSelRegion, BYTE ucGamma, 
 
 		if(!check_checksum(ucGamma,pucGammaTableArray , 2052))
 		{
-			ScalerColorOutputGammaAdjust(enumSelRegion, tGAMMA_TABLE[ucGamma], GET_CURRENT_BANK_NUMBER());
+			ScalerColorOutputGammaAdjust(enumSelRegion, tGAMMA_TABLE[ucGamma], ucBankNum);
             return ;
 		}
 			
