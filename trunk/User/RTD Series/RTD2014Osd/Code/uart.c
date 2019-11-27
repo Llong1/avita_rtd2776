@@ -26,7 +26,7 @@ void s_secureboot(char *para);
 void s_pq(char* para);
 void s_gamma(char* para);
 void s_gdata(char*para);
-//void s_resetbuffer(char*para);
+void s_resetbuffer(char*para);
 void s_checksum(char*para);
 
 //void g_colorinfo(char*para);
@@ -51,7 +51,7 @@ BYTE g_pucUartData[MAX_BUFF_SIZE]={0};
 BYTE gB_RcvCount=0 ;  // alant add
 BYTE gB_RcvStatus=RCV_EMPTY;
 //BYTE gB_RcvComplete=0;
-BYTE gB_dummy ;
+volatile BYTE gB_dummy ;
 #define TEST_ARGS_SPLIT " "
 
 
@@ -72,7 +72,7 @@ const struct command commands[] = {
   {"s_secureboot", s_secureboot, "s_secureboot \r\n"},
   {"s_pq", s_pq, "s_pq 0~1\r\n"},
   {"s_gamma", s_gamma, "s_gamma 0~6\r\n"},
- // {"s_s", s_resetbuffer, "s_s \r\n"},
+  {"s_s", s_resetbuffer, "s_s \r\n"},
   {"s_crc", s_checksum, "s_crc idx crc  \r\n"},
   {"s_gdata", s_gdata, "s_gdata \r\n"},
   {"g_gamma", g_gamma, "g_gamma: \r\n"},
@@ -111,20 +111,6 @@ static void sendEmpty(void){
 	printf("\r\n");	 
 
 }
-/*
-uint8_t I2C_Reset(void)									//	Return 0 when I2C is reset successfully
-{
-uint8_t Result;	
-	PCB_SW_IIC_SCL_CLR();//I2C_scl_Write(I2C_I2C_SCL_LOW);						//	Prepare scl 0
-	I2C_SET_I2C_SCL_HSIOM_SEL(I2C_HSIOM_GPIO_SEL);		//	Switch to GPIO
-	CyDelay(10);										//	Keep low for 10ms
-	Result = (I2C_sda_Read() == 0);						//	Resetted when sda is high
-	I2C_scl_Write(I2C_I2C_SCL_HIGH);					//	Release clock
-	I2C_SET_I2C_SCL_HSIOM_SEL(I2C_HSIOM_I2C_SEL);		//	Switch to component
-	return Result;
-}
-*/
-	
 
 /*
 static void sendUnsupport(void){
@@ -198,12 +184,6 @@ void g_aspect(char *para)
   printf("%d\r\n" , u32Para);  
 
 }
-void s_resetbuffer(char*para)
-{
-   
-   para= NULL;
-   sendOK(); 
-}
 
 void s_aspect(char*para)
 {
@@ -231,6 +211,14 @@ void s_aspect(char*para)
 
 
 }*/
+void s_resetbuffer(char*para)
+{
+	  para= NULL;
+	  memset(g_pucUartData , 0 ,MAX_BUFF_SIZE);
+	  memset(acRecvBuf , 0 ,MAX_BUFF_SIZE);
+	  gB_RcvCount =0 ;
+	  sendOK(); 
+}
 
 void s_rootkey(char*para)
 {
