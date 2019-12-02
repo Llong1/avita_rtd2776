@@ -3,11 +3,13 @@
 #include <stdio.h>                /* prototype declarations for I/O functions */
 #include <string.h>
 #include <stdlib.h>
-#include "w74m00av.h" 
+#include "w74m00av.h"
+#include <intrins.h>
+
 #if(_UART_SUPPORT == _ON)
 ///////////////////////////////
 
-#define SEND_DATA_SIZE 228
+//#define SEND_DATA_SIZE 228
 
 // set
 void s_help(char *params);
@@ -52,6 +54,7 @@ BYTE gB_RcvCount=0 ;  // alant add
 BYTE gB_RcvStatus=RCV_EMPTY;
 //BYTE gB_RcvComplete=0;
 volatile BYTE gB_dummy ;
+
 #define TEST_ARGS_SPLIT " "
 
 
@@ -378,14 +381,14 @@ void s_contrast(char *para)
 
    if(u32Para>=0 && u32Para<=100)
    {
-    u32Para = UserCommonAdjustPercentToRealValue(u32Para, _CONTRAST_MAX, _CONTRAST_MIN, _CONTRAST_CENTER);
+     u32Para = UserCommonAdjustPercentToRealValue(u32Para, _CONTRAST_MAX, _CONTRAST_MIN, _CONTRAST_CENTER);
      SET_OSD_CONTRAST(GET_OSD_SELECT_REGION(), u32Para);
    //  printf("a : contrast value =%d \r\n" , u32Para);
     // UserAdjustContrast(GET_OSD_SYSTEM _SELECT_REGION(), u32Para);
-      UserAdjustContrast(GET_OSD_SYSTEM_SELECT_REGION(), GET_OSD_CONTRAST(GET_OSD_SELECT_REGION()));
-         UserAdjustBrightness(GET_OSD_SYSTEM_SELECT_REGION(), GET_OSD_BRIGHTNESS(GET_OSD_SELECT_REGION()));
+     UserAdjustContrast(GET_OSD_SYSTEM_SELECT_REGION(), GET_OSD_CONTRAST(GET_OSD_SELECT_REGION()));
+     UserAdjustBrightness(GET_OSD_SYSTEM_SELECT_REGION(), GET_OSD_BRIGHTNESS(GET_OSD_SELECT_REGION()));
      SET_OSD_EVENT_MESSAGE(_OSDEVENT_SAVE_NVRAM_REGIONDATA_MSG);
-      sendOK();	
+     sendOK();	
    }
    else{
 	  sendERR();
@@ -577,10 +580,16 @@ void s_gamma(char* para)
    if(u32Para > _GAMMA_AMOUNT){
    	sendERR(); return ;
    	}
+ //  sendOK();
+
+ /// _nop_ ();    // delay
+ //  _nop_ ();
+ //  _nop_ ();
 	//ScalerTimerWaitForEvent(_EVENT_DEN_STOP);
 	UserAdjustGammaRegionEnable(GET_OSD_SYSTEM_SELECT_REGION(), _DB_APPLY_NO_POLLING, _OFF);
 //printf("gamma = %bd \r\n" ,u32Para);
 
+  
 
    SET_OSD_GAMMA(GET_OSD_SELECT_REGION(), u32Para);
     
@@ -598,19 +607,20 @@ void s_gamma(char* para)
 	
     }	
      SET_OSD_EVENT_MESSAGE(_OSDEVENT_SAVE_NVRAM_REGIONDATA_MSG);
-	sendOK();
 
+
+   sendOK();
 
 }
 
 
-void s_gdata(char*para)
+void s_gdata(char*para)// data 114
 {
 
   BYTE idx , i=0;
   BYTE channel;
   BYTE gidx =0 ;
-  BYTE buf_in[SEND_DATA_SIZE];
+  BYTE buf_in[114];
   BYTE nvram_crc =0 ;
 //  BYTE ori_crc =0 ;
   //------------------
@@ -621,16 +631,17 @@ void s_gdata(char*para)
   gidx =(BYTE) para[2]-0x30;
  //para[5]  0x20
   //---------------------------
-  memset(buf_in , 0 , SEND_DATA_SIZE);
+  memset(buf_in , 0 , 114);
 
-  for(i=0; i<SEND_DATA_SIZE ;i++)
+  for(i=0; i<114 ;i++)
   {
 	 buf_in[i] = (BYTE)para[3+i];
 	 nvram_crc +=buf_in[i];
   }
 
+ 
 
-  RTDEepromSaveGammaModeData(idx,channel, gidx , SEND_DATA_SIZE , buf_in);
+  RTDEepromSaveGammaModeData(idx,channel, gidx , 114 , buf_in);
    // return crc
 //  memset(buf_in , 0 , 320);
 
@@ -643,10 +654,12 @@ void s_gdata(char*para)
 //  }
 
  // if(nvram_crc == ori_crc)
-   printf("OK%bc\r\n",nvram_crc);//sendOK();
+   
  // else
  // 	sendERR();
 
+ 
+   printf("%bc\r\n",nvram_crc);//sendOK();
 
 }
 //void RTDEepromLoadGammaModeData(uint8_t index , uint8_t channel , uint8_t* buf_out)
@@ -663,7 +676,7 @@ void g_nvram(char *para)
 	 para2 = para[2] - 0x30 ;
 
 
-for(k=0 ;k<6 ;k++)
+for(k=0 ;k<4;k++)
 {
   for(j=0 ;j<3 ;j++)
   {
@@ -702,6 +715,9 @@ void s_checksum(char*para)
    int i =0 ,k=0;
    BYTE buf[2052];
    para= NULL;
+
+   sendOK(); 
+   
   for(k=0 ; k<6 ;k++)
   { 
      crc= 0;
@@ -718,6 +734,7 @@ void s_checksum(char*para)
     RTDEepromSaveGammaCRC(k,&crc);
   }
   
+
 #else
 
    BYTE crc=0xAA ;
@@ -731,7 +748,7 @@ void s_checksum(char*para)
    RTDEepromSaveGammaCRC(0,&crc);
 
 #endif
-  sendOK(); 
+
 
 
 }
@@ -856,9 +873,18 @@ static bit is_uart_message_complete(void)
   return gB_RcvStatus;
 
 }
+static void call_start_cmd(void){
+	StopRcvMsg();
+	memcpy(acRecvBuf, g_pucUartData, gB_RcvCount);
+	memset(g_pucUartData , 0 ,MAX_BUFF_SIZE);
+	gB_RcvCount =0 ;
 
+
+}
 void UserInterfaceUartIntHandler_SERIALPORT(void)
 {
+	
+
 	
 	if(RI)
 	{
@@ -872,10 +898,21 @@ void UserInterfaceUartIntHandler_SERIALPORT(void)
 	
 		 if((gB_RcvCount > 1) && g_pucUartData[gB_RcvCount-1] == '\n' && g_pucUartData[gB_RcvCount-2] == '\r')	// if(is_uartbuf_ready(g_pucUartData,gB_RcvCount))
 		 {
-			  StopRcvMsg();
-			  memcpy(acRecvBuf, g_pucUartData, gB_RcvCount);
-			  memset(g_pucUartData , 0 ,MAX_BUFF_SIZE);
-			  gB_RcvCount =0 ;			  
+		    if((gB_RcvCount > 7) && g_pucUartData[0]=='s' && g_pucUartData[1]=='_' && g_pucUartData[2]=='g' 
+				&& g_pucUartData[3]=='d' && g_pucUartData[4]=='a' && g_pucUartData[5]=='t' && g_pucUartData[6]=='a')
+		    {
+                // s_gdata
+
+				if(gB_RcvCount  < 125){}
+				else{
+
+				call_start_cmd();
+				}
+			}
+			else{
+		 
+			  call_start_cmd();
+			}
 	
 		  }
 		  
@@ -883,6 +920,7 @@ void UserInterfaceUartIntHandler_SERIALPORT(void)
 		  if ((gB_RcvCount % MAX_BUFF_SIZE) ==0) 
 		  {
 			  gB_RcvCount =0 ;
+			  memset(g_pucUartData , 0 ,MAX_BUFF_SIZE);
 		  }
 	
 	  }
