@@ -65,36 +65,43 @@ const struct command commands[] = {
   {"s_brightness", s_brightness, "s_brightness 0~100\r\n"},
   {"s_sharpness", s_sharpness, "s_sharpness 0~4\r\n"},
   {"s_backlight", s_backlight, "s_backlight 0~100\r\n"},
- // {"s_power",s_power,"s_power 0/1\r\n"} ,
+  {"s_gamma", s_gamma, "s_gamma 0~5\r\n"},
+  {"g_gamma", g_gamma, "g_gamma: \r\n"},
   {"reset",s_reset,"reset:user reset\r\n"} ,
- // {"s_colortemp", s_colortemp, "s_colortemp 0~5\r\n"},
-//  {"s_tiling", s_tiling, "s_tiling row column pos\r\n"},
-//  {"s_aspect", s_aspect, "s_aspect 0~4\r\n"},
-//  {"s_pattern", s_pattern, "s_pattern 0/1 r(0~255) g(0~255) b(0~255)\r\n"}, 
+  {"g_contrast",g_contrast,"g_contrast:get contrast value\r\n"} ,
+  {"g_brightness",g_brightness,"g_brightness:get brightness value\r\n"} ,
+  {"g_sharpness", g_sharpness, "g_sharpness:get sharpness value \r\n"},
+  {"g_backlight", g_backlight, "g_backlight:get backlight value\r\n"},
+  {"help", s_help,"help:show function\r\n"},
+
+
+
   {"s_rootkey", s_rootkey, "s_rootkey xxxxx\r\n"},
   {"s_secureboot", s_secureboot, "s_secureboot \r\n"},
   {"s_pq", s_pq, "s_pq 0~1\r\n"},
-  {"s_gamma", s_gamma, "s_gamma 0~6\r\n"},
+
   {"s_s", s_resetbuffer, "s_s \r\n"},
   {"s_crc", s_checksum, "s_crc idx crc  \r\n"},
   {"s_gdata", s_gdata, "s_gdata \r\n"},
-  {"g_gamma", g_gamma, "g_gamma: \r\n"},
+
  // {"s_reboot", s_reboot, "s_reboot: software reset \r\n"},
+  // {"s_power",s_power,"s_power 0/1\r\n"} ,
+   // {"s_colortemp", s_colortemp, "s_colortemp 0~5\r\n"},
+  //  {"s_tiling", s_tiling, "s_tiling row column pos\r\n"},
+  //  {"s_aspect", s_aspect, "s_aspect 0~4\r\n"},
+  //  {"s_pattern", s_pattern, "s_pattern 0/1 r(0~255) g(0~255) b(0~255)\r\n"}, 
 
 //  {"g_colorinfo", g_colorinfo, "g_colorinfo : colorspace colorrange colorimetry \r\n"},
    
 //  {"g_colortemp", g_colortemp, "g_colortemp:get colotemp value\r\n"},
  // {"g_power",g_power,"g_power:get power status\r\n"} ,
-  {"g_contrast",g_contrast,"g_contrast:get contrast value\r\n"} ,
-  {"g_brightness",g_brightness,"g_brightness:get brightness value\r\n"} ,
-  {"g_sharpness", g_sharpness, "g_sharpness:get sharpness value \r\n"},
-  {"g_backlight", g_backlight, "g_backlight:get backlight value\r\n"},
+
  // {"g_aspect", g_aspect, "g_aspect:get aspect ratio value\r\n"},
  // {"g_paneltime", g_paneltime, "g_paneltime:get panel time (hour min)\r\n"},
   {"g_nvram", g_nvram, "g_nvram:idx(0~5), channel(0~2)\r\n"},
 //  {"s_gdata", s_gdata, "s_gdata \r\n"},
 
-  {"help", s_help,"help:show function\r\n"} ,
+
 
    {NULL, NULL, NULL}
 	
@@ -580,7 +587,7 @@ void s_gamma(char* para)
    if(u32Para > _GAMMA_AMOUNT){
    	sendERR(); return ;
    	}
- //  sendOK();
+  // sendOK();
 
  /// _nop_ ();    // delay
  //  _nop_ ();
@@ -606,10 +613,20 @@ void s_gamma(char* para)
 		}
 	
     }	
-     SET_OSD_EVENT_MESSAGE(_OSDEVENT_SAVE_NVRAM_REGIONDATA_MSG);
+  //   SET_OSD_EVENT_MESSAGE(_OSDEVENT_SAVE_NVRAM_REGIONDATA_MSG);
+ 
+            RTDNVRamSaveOsdInputPortData(UserAdjustGetSelectRegionPort());
+         
+
+     
+            RTDNVRamSaveOsdInputSourceData(SysRegionGetSourceType(GET_OSD_SYSTEM_DISPLAY_REGION()));
+        
+
+    
+            RTDNVRamSaveOsdRegionData(GET_OSD_DISPLAY_MODE(), GET_OSD_SELECT_REGION());
 
 
-   sendOK();
+  sendOK();
 
 }
 
@@ -718,7 +735,7 @@ void s_checksum(char*para)
 
    sendOK(); 
    
-  for(k=0 ; k<6 ;k++)
+  for(k=0 ; k<4 ;k++)
   { 
      crc= 0;
 	 memset(buf , 0 , 2052);
@@ -760,7 +777,8 @@ void s_help(char *params)
 	params=NULL;
    // printf("support command list\r\n");
 
-	for (i = 0; commands[i].name; i++){
+	for (i = 0; commands[i].name; i++)
+	{
 
 		printf("%s",commands[i].syntax);
 

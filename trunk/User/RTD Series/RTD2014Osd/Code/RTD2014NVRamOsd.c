@@ -815,7 +815,7 @@ void RTDEepromSaveGammaModeData(uint8_t index, uint8_t channel , int idx ,int si
 //--------------------------------------------------
 void RTDEepromStartup(void)
 {
-#if 0
+#if 1
     BYTE ucCnt = 0;
 
     // Check twice if VERSION CODE matches
